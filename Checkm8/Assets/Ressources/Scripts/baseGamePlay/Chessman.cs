@@ -8,8 +8,8 @@ public class Chessman : MonoBehaviour
     public GameObject movePlate;//Partie en surbrillance permettant de déplacer nos pièces
 
     //Position du board
-    private int xBoard = -1;
-    private int yBoard = -1;
+    public int xBoard = -1;
+    public int yBoard = -1;
 
     //Quel joueur joue
     private string player;
@@ -73,11 +73,11 @@ public class Chessman : MonoBehaviour
         float y = yBoard;
 
         //Valeurs à tester (celles ci ne sont pas bonnes)
-        x *= 0.66f;
-        y *= 0.66f;
+        x *= 0.12f;
+        y *= 0.12f;
 
-        x += -2.3f;
-        y += -2.3f;
+        x += -0.415f;
+        y += -0.415f;
 
         this.transform.position = new Vector3(x,y,0);
     }
