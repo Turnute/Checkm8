@@ -65,6 +65,19 @@ public class Controller : MonoBehaviour
 
     public void SetPositionEmpty(int posX, int posY)
     {
-        
+        positions[posX, posY] = null;
+    }
+
+    public GameObject GetPosition(int posX, int posY)//Avoir une pièce à une position donnée
+    {
+        return positions[posX, posY];
+    }
+
+    public bool PositionOnBoard(int posX, int posY)//La position est-elle sur le board
+    {
+        if(posX < 0 || posY<0 || posX >= positions.GetLength(0) || posY >= positions.GetLength(1))
+            return false;
+        else
+            return true;
     }
 }
