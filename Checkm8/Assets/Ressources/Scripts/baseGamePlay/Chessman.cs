@@ -21,7 +21,7 @@ public class Chessman : MonoBehaviour
     {
         controller = GameObject.FindWithTag("GameController");
 
-        //Pour placer cchaque pièce à la bonne place
+        //Pour placer chaque pièce à la bonne place
         setCoords();
 
         //On donne le bon sprite à chaque pièce (et la bonne couleur -> A faire plus tard)
@@ -29,40 +29,52 @@ public class Chessman : MonoBehaviour
         {
             case "queen_p1":
                 this.GetComponent<SpriteRenderer>().sprite = queen;
+                this.GetComponent<SpriteRenderer>().color = Color.white;
                 break;
             case "king_p1":
                 this.GetComponent<SpriteRenderer>().sprite = king;
+                this.GetComponent<SpriteRenderer>().color = Color.white;
                 break;
             case "bishop_p1":
                 this.GetComponent<SpriteRenderer>().sprite = bishop;
+                this.GetComponent<SpriteRenderer>().color = Color.white;
                 break;
             case "knight_p1":
                 this.GetComponent<SpriteRenderer>().sprite = knight;
+                this.GetComponent<SpriteRenderer>().color = Color.white;
                 break;
             case "rook_p1":
                 this.GetComponent<SpriteRenderer>().sprite = rook;
+                this.GetComponent<SpriteRenderer>().color = Color.white;
                 break;
             case "pawn_p1":
                 this.GetComponent<SpriteRenderer>().sprite = pawn;
+                this.GetComponent<SpriteRenderer>().color = Color.white;
                 break;
 
             case "queen_p2":
                 this.GetComponent<SpriteRenderer>().sprite = queen;
+                this.GetComponent<SpriteRenderer>().color = Color.black;
                 break;
             case "king_p2":
                 this.GetComponent<SpriteRenderer>().sprite = king;
+                this.GetComponent<SpriteRenderer>().color = Color.black;
                 break;
             case "bishop_p2":
                 this.GetComponent<SpriteRenderer>().sprite = bishop;
+                this.GetComponent<SpriteRenderer>().color = Color.black;
                 break;
             case "knight_p2":
                 this.GetComponent<SpriteRenderer>().sprite = knight;
+                this.GetComponent<SpriteRenderer>().color = Color.black;
                 break;
             case "rook_p2":
                 this.GetComponent<SpriteRenderer>().sprite = rook;
+                this.GetComponent<SpriteRenderer>().color = Color.black;
                 break;
             case "pawn_p2":
                 this.GetComponent<SpriteRenderer>().sprite = pawn;
+                this.GetComponent<SpriteRenderer>().color = Color.black;
                 break;
         }
     }
@@ -72,12 +84,12 @@ public class Chessman : MonoBehaviour
         float x = xBoard;
         float y = yBoard;
 
-        //Valeurs à tester (celles ci ne sont pas bonnes)
+        //Valeurs à tester (valeures temporaires)
         x *= 0.12f;
-        y *= 0.12f;
+        y *= 0.125f;
 
-        x += -0.415f;
-        y += -0.415f;
+        x += -0.417f;
+        y += -0.413f;
 
         this.transform.position = new Vector3(x,y,0);
     }

@@ -62,4 +62,9 @@ public class Controller : MonoBehaviour
 
         positions[cm.xBoard,cm.yBoard] = obj;
     }
+
+    public void SetPositionEmpty(int posX, int posY)
+    {
+        
+    }
 }
