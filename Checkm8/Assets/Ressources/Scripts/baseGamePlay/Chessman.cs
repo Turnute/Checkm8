@@ -93,4 +93,88 @@ public class Chessman : MonoBehaviour
 
         this.transform.position = new Vector3(x,y,0);
     }
+
+    public void DestroyMovePlates()
+    {
+        GameObject[] movePlates = GameObject.FindGameObjectsWithTag("MovePlate");
+
+        for(int i=0; i< movePlates.Length; i++)
+        {
+            Destroy(movePlates[i]);
+        }
+    }
+
+    public void InitiateMovePlates()
+    {
+        //On créé des paternes de surbrillance différents en fonction de la pièce active
+        switch(this.name)
+        {
+            case "queen_p1":
+            case "queen_p2":
+                LineMovePlate(1,0);
+                LineMovePlate(0,1);
+                LineMovePlate(1,1);
+                LineMovePlate(-1,0);
+                LineMovePlate(-1,1);
+                LineMovePlate(1,-1);
+                LineMovePlate(0,-1);
+                LineMovePlate(-1,-1);
+                break;
+            case "knight_p1" :
+            case "knight_p2" :
+                LMovePlate();
+                break;
+            case "bishop_p1":
+            case "bishop_p2":
+                LineMovePlate(1,1);
+                LineMovePlate(1,-1);
+                LineMovePlate(-1,1);
+                LineMovePlate(-1,-1);
+                break;
+            case "king_p1":
+            case "king_p2":
+                SurroundMovePlate();
+                break;
+            case "rook_p1":
+            case "rook_p2":
+                LineMovePlate(1,0);
+                LineMovePlate(0,1);
+                LineMovePlate(-1,0);
+                LineMovePlate(0,-1);
+                break;
+            case "pawn_p2":
+                PawnMovePlate(xBoard, yBoard - 1);
+                break;
+            case "pawn_p1":
+                PawnMovePlate(xBoard, yBoard + 1);
+                break;
+        }
+    }
+
+    public void LineMovePlate(int xIncrement, int yIncrement)
+    {
+
+    }
+
+    public void LMovePlate()
+    {
+
+    }
+
+    public void SurroundMovePlate()
+    {
+
+    }
+
+    public void PawnMovePlate(int xBoard, int yBoard)
+    {
+
+    }
+
+    private void OnMouseUp()
+    {
+        DestroyMovePlates();
+
+        InitiateMovePlates();
+    }
 }
