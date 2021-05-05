@@ -18,6 +18,6 @@ public class TitleScreen : MonoBehaviour
     * This is a temporary function, it will be changed later
     */
     public void startGame(){
-        SceneManager.LoadScene("1v1_game");
+        SceneManager.LoadScene("FrontPage");
     }
 }
