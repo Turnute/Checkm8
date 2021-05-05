@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Controller : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class Controller : MonoBehaviour
     private GameObject[] player1 = new GameObject[16];//(car 16 pièces)
     private GameObject[] player2 = new GameObject[16];
 
-    private string currentPlayer = "1";
+    private string currentPlayer = "p1";
 
     private bool gameOver = false;
 
@@ -79,5 +80,39 @@ public class Controller : MonoBehaviour
             return false;
         else
             return true;
+    }
+
+    public string GetCurrentPlayer()
+    {
+        return currentPlayer;
+    }
+
+    public bool isGameOver()
+    {
+        return gameOver;
+    }
+
+    public void NextTurn()
+    {
+        if(currentPlayer == "p1")
+        {
+            currentPlayer = "p2";
+        }else{
+            currentPlayer = "p1";
+        }
+    }
+
+    public void Winner(string winnerPlayer)
+    {
+        gameOver = true;
+        //Gestion de l'écran de victoire
+    }
+
+    public void Update()
+    {
+        if(gameOver)//Gestion du game over à faire
+        {
+            Debug.Log("Partie terminée");
+        }
     }
 }
