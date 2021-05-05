@@ -30,6 +30,13 @@ public class MovePlate : MonoBehaviour
         {
             GameObject piece = controller.GetComponent<Controller>().GetPosition(matrixX,matrixY);
 
+            if(piece.name == "king_p1")
+                controller.GetComponent<Controller>().Winner("p2");
+
+            if(piece.name == "king_p2")
+                controller.GetComponent<Controller>().Winner("p1");
+
+
             Destroy(piece);//A FAIRE -> AJOUTER UNE ANIMATION DE DESTRUCTION
         }
 
@@ -40,6 +47,8 @@ public class MovePlate : MonoBehaviour
         pieceCicked.GetComponent<Chessman>().setCoords();
 
         controller.GetComponent<Controller>().SetPosition(pieceCicked);
+
+        controller.GetComponent<Controller>().NextTurn();
 
         pieceCicked.GetComponent<Chessman>().DestroyMovePlates();
     }
