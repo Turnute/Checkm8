@@ -1,23 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TitleScreen : MonoBehaviour
 {
 
     /**
-    * Start is called before the first frame update
+    * Exit game when the program call it
     */
-    void Start()
-    {
-
+    public void quitGame(){
+        Debug.Log("exitgame");
+        Application.Quit();
     }
 
     /**
-    * Update is called once per frame
+    * This is a temporary function, it will be changed later
     */
-    void Update()
-    {
-        
+    public void startGame(){
+        SceneManager.LoadScene("1v1_game");
     }
 }
