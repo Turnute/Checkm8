@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class Controller : MonoBehaviour
 {
     public GameObject chesspiece;
+    public GameObject lighting;
     public static int size = 8;//Taille du plateau de jeu, changeant en fonction du nombre de joueur
 
     private GameObject[,] positions = new GameObject[size,size];//Ensemble des positions sur le board
@@ -112,6 +114,7 @@ public class Controller : MonoBehaviour
     {
         if(gameOver)//Gestion du game over à faire
         {
+            lighting.GetComponent<Animator>().SetBool("gameOver",true);
             Debug.Log("Partie terminée");
         }
     }
