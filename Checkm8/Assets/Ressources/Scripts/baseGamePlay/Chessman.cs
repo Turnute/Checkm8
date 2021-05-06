@@ -20,6 +20,8 @@ public class Chessman : MonoBehaviour
     //True dès lors qu'une pièce bouge
     public bool hasMoved = false;
 
+    public Color pieceColor;
+
     public void Activate()
     {
         controller = GameObject.FindWithTag("GameController");
@@ -33,62 +35,74 @@ public class Chessman : MonoBehaviour
             case "queen_p1":
                 this.GetComponent<SpriteRenderer>().sprite = queen;
                 this.GetComponent<SpriteRenderer>().color = Color.white;
+                pieceColor = Color.white;
                 player = "p1";
                 break;
             case "king_p1":
                 this.GetComponent<SpriteRenderer>().sprite = king;
                 this.GetComponent<SpriteRenderer>().color = Color.white;
+                pieceColor = Color.white;
                 player = "p1";
                 break;
             case "bishop_p1":
                 this.GetComponent<SpriteRenderer>().sprite = bishop;
                 this.GetComponent<SpriteRenderer>().color = Color.white;
+                pieceColor = Color.white;
                 player = "p1";
                 break;
             case "knight_p1":
                 this.GetComponent<SpriteRenderer>().sprite = knight;
                 this.GetComponent<SpriteRenderer>().color = Color.white;
+                pieceColor = Color.white;
                 player = "p1";
                 break;
             case "rook_p1":
                 this.GetComponent<SpriteRenderer>().sprite = rook;
                 this.GetComponent<SpriteRenderer>().color = Color.white;
+                pieceColor = Color.white;
                 player = "p1";
                 break;
             case "pawn_p1":
                 this.GetComponent<SpriteRenderer>().sprite = pawn;
                 this.GetComponent<SpriteRenderer>().color = Color.white;
+                pieceColor = Color.white;
                 player = "p1";
                 break;
 
             case "queen_p2":
                 this.GetComponent<SpriteRenderer>().sprite = queen;
                 this.GetComponent<SpriteRenderer>().color = Color.black;
+                pieceColor = Color.black;
                 player = "p2";
                 break;
             case "king_p2":
                 this.GetComponent<SpriteRenderer>().sprite = king;
                 this.GetComponent<SpriteRenderer>().color = Color.black;
+                pieceColor = Color.black;
                 player = "p2";
                 break;
             case "bishop_p2":
                 this.GetComponent<SpriteRenderer>().sprite = bishop;
                 this.GetComponent<SpriteRenderer>().color = Color.black;
+                pieceColor = Color.black;
                 player = "p2";
                 break;
             case "knight_p2":
                 this.GetComponent<SpriteRenderer>().sprite = knight;
                 this.GetComponent<SpriteRenderer>().color = Color.black;
+                pieceColor = Color.black;
                 player = "p2";
                 break;
             case "rook_p2":
                 this.GetComponent<SpriteRenderer>().sprite = rook;
                 this.GetComponent<SpriteRenderer>().color = Color.black;
+                pieceColor = Color.black;
                 player = "p2";
                 break;
             case "pawn_p2":
                 this.GetComponent<SpriteRenderer>().sprite = pawn;
                 this.GetComponent<SpriteRenderer>().color = Color.black;
+                pieceColor = Color.black;
                 player = "p2";
                 break;
         }
@@ -336,5 +350,15 @@ public class Chessman : MonoBehaviour
 
             InitiateMovePlates();
         }
+    }
+
+    private void OnMouseOver()
+    {
+        gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
+    }
+
+    private void OnMouseExit()
+    {
+        gameObject.GetComponent<SpriteRenderer>().color = pieceColor;
     }
 }
