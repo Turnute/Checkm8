@@ -3,11 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Experimental.Rendering.Universal;
+using UnityEngine.UI;
 
 public class Controller : MonoBehaviour
 {
     public GameObject chesspiece;
     public GameObject lighting;
+    public GameObject winnerText;
+    public GameObject glowEffect;
+    public GameObject buttonRestart, buttonNext;
+    public GameObject p1Win,p2Win;//Les portraits des joueurs(A modif)
+    public Text winnerName;
     public static int size = 8;//Taille du plateau de jeu, changeant en fonction du nombre de joueur
 
     private GameObject[,] positions = new GameObject[size,size];//Ensemble des positions sur le board
@@ -107,15 +113,35 @@ public class Controller : MonoBehaviour
     public void Winner(string winnerPlayer)
     {
         gameOver = true;
-        //Gestion de l'écran de victoire
+        if(winnerPlayer == "p1")
+        {
+            winnerName.text = "Player 1 won !";
+            p1Win.SetActive(true);
+        }else{
+            winnerName.text = "Player 2 won !";
+            p2Win.SetActive(true);
+        }
+        glowEffect.SetActive(true);
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene("1v1_game");
+    }
+
+    public void NextGame()
+    {
+        SceneManager.LoadScene("WorkInProgress");//Rediriger vers l'écran de sélection de niveau
     }
 
     public void Update()
     {
         if(gameOver)//Gestion du game over à faire
         {
+            buttonNext.SetActive(true);
+            buttonRestart.SetActive(true);
             lighting.GetComponent<Animator>().SetBool("gameOver",true);
-            Debug.Log("Partie terminée");
+            winnerText.SetActive(true);
         }
     }
 }
