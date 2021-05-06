@@ -18,8 +18,8 @@ public class Controller : MonoBehaviour
 
     private GameObject[,] positions = new GameObject[size,size];//Ensemble des positions sur le board
     //Ensemble des joueurs(que 2 pour l'instant)
-    private GameObject[] player1 = new GameObject[16];//(car 16 pièces)
-    private GameObject[] player2 = new GameObject[16];
+    public GameObject[] player1 = new GameObject[16];//(car 16 pièces)
+    public GameObject[] player2 = new GameObject[16];
 
     private string currentPlayer = "p1";
 

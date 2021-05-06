@@ -346,19 +346,30 @@ public class Chessman : MonoBehaviour
     {
         if(!controller.GetComponent<Controller>().isGameOver() && controller.GetComponent<Controller>().GetCurrentPlayer() == player)
         {
+            //On enlève la surbrillance de toutes les pièces
+            if(player == "p1")
+            {
+                for(int i=0; i<controller.GetComponent<Controller>().player1.Length;i++)
+                {
+                    controller.GetComponent<Controller>().player1[i].GetComponent<SpriteRenderer>().color = pieceColor;
+                }
+            }else{
+                for(int i=0; i<controller.GetComponent<Controller>().player2.Length;i++)
+                {
+                    controller.GetComponent<Controller>().player2[i].GetComponent<SpriteRenderer>().color = pieceColor;
+                }
+            }
+            
             DestroyMovePlates();
 
             InitiateMovePlates();
+
+            gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
         }
     }
 
-    private void OnMouseOver()
-    {
-        gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
-    }
-
-    private void OnMouseExit()
+    /*private void OnMouseExit()
     {
         gameObject.GetComponent<SpriteRenderer>().color = pieceColor;
-    }
+    }*/
 }
