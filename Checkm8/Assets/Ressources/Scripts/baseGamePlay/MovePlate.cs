@@ -45,6 +45,7 @@ public class MovePlate : MonoBehaviour
         pieceCicked.GetComponent<Chessman>().xBoard = matrixX;
         pieceCicked.GetComponent<Chessman>().yBoard = matrixY;
         pieceCicked.GetComponent<Chessman>().setCoords();
+        pieceCicked.GetComponent<Chessman>().hasMoved = true;
 
         controller.GetComponent<Controller>().SetPosition(pieceCicked);
 

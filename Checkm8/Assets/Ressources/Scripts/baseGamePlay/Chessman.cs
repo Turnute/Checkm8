@@ -14,8 +14,11 @@ public class Chessman : MonoBehaviour
     //Quel joueur joue
     public string player;
 
-    //Tous les sprites possibles
+    //Tous les sprites possibles(Rajouter les différents sets)
     public Sprite queen, king, bishop, knight, rook, pawn;
+
+    //True dès lors qu'une pièce bouge
+    public bool hasMoved = false;
 
     public void Activate()
     {
@@ -155,10 +158,20 @@ public class Chessman : MonoBehaviour
                 LineMovePlate(0,-1);
                 break;
             case "pawn_p2":
-                PawnMovePlate(xBoard, yBoard - 1);
+                if(!hasMoved)
+                {
+                    PawnMovePlateFirstTurn(xBoard,yBoard-1,-1);
+                }else{
+                    PawnMovePlate(xBoard, yBoard - 1);
+                }
                 break;
             case "pawn_p1":
-                PawnMovePlate(xBoard, yBoard + 1);
+                if(!hasMoved)
+                {
+                    PawnMovePlateFirstTurn(xBoard, yBoard + 1,1);
+                }else{
+                    PawnMovePlate(xBoard, yBoard + 1);
+                }
                 break;
         }
     }
@@ -247,6 +260,33 @@ public class Chessman : MonoBehaviour
             }
         }
 
+    }
+
+    public void PawnMovePlateFirstTurn(int x, int y,int which_player)
+    {
+        Controller cont = controller.GetComponent<Controller>();
+
+        if(cont.PositionOnBoard(x,y))
+        {
+            if(cont.GetPosition(x,y) == null)
+            {
+                MovePlateSpawn(x,y);
+            }
+            if(cont.GetPosition(x,y+which_player) == null)
+            {
+                MovePlateSpawn(x,y+which_player);
+            }
+
+            if(cont.PositionOnBoard(x+1,y) && cont.GetPosition(x+1,y) != null && cont.GetPosition(x+1,y).GetComponent<Chessman>().player != player)
+            {
+                MovePlateAttackSpawn(x+1,y);
+            }
+
+            if(cont.PositionOnBoard(x-1,y) && cont.GetPosition(x-1,y) != null && cont.GetPosition(x-1,y).GetComponent<Chessman>().player != player)
+            {
+                MovePlateAttackSpawn(x-1,y);
+            }
+        }
     }
 
     public void MovePlateSpawn(int posX, int posY)
