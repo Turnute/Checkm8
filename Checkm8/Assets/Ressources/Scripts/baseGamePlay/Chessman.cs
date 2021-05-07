@@ -6,6 +6,7 @@ public class Chessman : MonoBehaviour
 {
     public GameObject controller;
     public GameObject movePlate;//Partie en surbrillance permettant de déplacer nos pièces
+    public GameObject moveSFX;
 
     //Position du board
     public int xBoard = -1;
@@ -27,7 +28,7 @@ public class Chessman : MonoBehaviour
         controller = GameObject.FindWithTag("GameController");
 
         //Pour placer chaque pièce à la bonne place
-        setCoords();
+        setCoords(false);
 
         //On donne le bon sprite à chaque pièce (et la bonne couleur -> A faire plus tard)
         switch(this.name)
@@ -108,7 +109,7 @@ public class Chessman : MonoBehaviour
         }
     }
 
-    public void setCoords()
+    public void setCoords(bool shouldPlay)
     {
         float x = xBoard;
         float y = yBoard;
@@ -121,6 +122,9 @@ public class Chessman : MonoBehaviour
         y += -0.413f;
 
         this.transform.position = new Vector3(x,y,0);
+
+        if(shouldPlay)
+        moveSFX.GetComponent<AudioSource>().Play(0);
     }
 
     public void DestroyMovePlates()
@@ -351,12 +355,14 @@ public class Chessman : MonoBehaviour
             {
                 for(int i=0; i<controller.GetComponent<Controller>().player1.Length;i++)
                 {
-                    controller.GetComponent<Controller>().player1[i].GetComponent<SpriteRenderer>().color = pieceColor;
+                    if(controller.GetComponent<Controller>().player1[i])
+                        controller.GetComponent<Controller>().player1[i].GetComponent<SpriteRenderer>().color = pieceColor;
                 }
             }else{
                 for(int i=0; i<controller.GetComponent<Controller>().player2.Length;i++)
                 {
-                    controller.GetComponent<Controller>().player2[i].GetComponent<SpriteRenderer>().color = pieceColor;
+                    if(controller.GetComponent<Controller>().player2[i])
+                        controller.GetComponent<Controller>().player2[i].GetComponent<SpriteRenderer>().color = pieceColor;
                 }
             }
             
@@ -367,6 +373,7 @@ public class Chessman : MonoBehaviour
             gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
         }
     }
+
 
     /*private void OnMouseExit()
     {

@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
+  moveSFX: {fileID: 0}
   isAttacking: 0
 --- !u!61 &601224562539940691
 BoxCollider2D:
