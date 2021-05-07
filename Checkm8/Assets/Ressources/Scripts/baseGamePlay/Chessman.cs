@@ -446,7 +446,7 @@ public class Chessman : MonoBehaviour
             {
                 MovePlateSpawn(x,y);
             }
-            if(cont.GetPosition(x,y+which_player) == null)
+            if(cont.GetPosition(x,y+which_player) == null && cont.GetPosition(x,y) == null)
             {
                 MovePlateSpawn(x,y+which_player);
             }
@@ -473,7 +473,7 @@ public class Chessman : MonoBehaviour
             {
                 BegHelpSpawn(x,y);
             }
-            if(cont.GetPosition(x,y+which_player) == null)
+            if(cont.GetPosition(x,y+which_player) == null && cont.GetPosition(x,y) == null)
             {
                 BegHelpSpawn(x,y+which_player);
             }
