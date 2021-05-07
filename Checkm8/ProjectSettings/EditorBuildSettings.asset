@@ -20,4 +20,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/OfflineScene.unity
     guid: 26c74aacae75d4976a0799ee4ea85e73
+  - enabled: 1
+    path: Assets/Scenes/OnlineScene.unity
+    guid: 39ba109e39174475bbbf05c196b826c6
+  - enabled: 1
+    path: Assets/Scenes/SettingsScene.unity
+    guid: db3a0f77521c14242a7ee3139e004765
+  - enabled: 1
+    path: Assets/Scenes/LocalScene.unity
+    guid: e53eaa2c0f44f4e4bba6804f5b691b47
   m_configObjects: {}
