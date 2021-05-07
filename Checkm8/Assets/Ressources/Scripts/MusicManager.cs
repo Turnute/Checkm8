@@ -40,6 +40,7 @@ public class MusicManager : MonoBehaviour
         {
             if (!title_theme.GetComponent<AudioSource>().isPlaying)
             {
+                inGameTheme.GetComponent<AudioSource>().Stop();
                 title_theme.GetComponent<AudioSource>().Play(0);
             }
         }
@@ -48,7 +49,7 @@ public class MusicManager : MonoBehaviour
             if (!inGameTheme.GetComponent<AudioSource>().isPlaying)
             {
                 title_theme.GetComponent<AudioSource>().Stop();
-                //inGameTheme.GetComponent<AudioSource>().Play(0);
+                inGameTheme.GetComponent<AudioSource>().Play(0);
             }
                
         }

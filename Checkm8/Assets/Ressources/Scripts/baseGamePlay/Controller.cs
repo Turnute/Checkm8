@@ -14,6 +14,7 @@ public class Controller : MonoBehaviour
     public GameObject buttonRestart, buttonNext;
     public GameObject p1Win,p2Win;//Les portraits des joueurs(A modif)
     public Text winnerName;
+    public Text currentPlayerDisplay;
     public static int size = 8;//Taille du plateau de jeu, changeant en fonction du nombre de joueur
 
     private GameObject[,] positions = new GameObject[size,size];//Ensemble des positions sur le board
@@ -138,10 +139,16 @@ public class Controller : MonoBehaviour
     {
         if(gameOver)//Gestion du game over à faire
         {
+            currentPlayerDisplay.text = " ";
             buttonNext.SetActive(true);
             buttonRestart.SetActive(true);
             lighting.GetComponent<Animator>().SetBool("gameOver",true);
             winnerText.SetActive(true);
+        }else{
+            if(currentPlayer == "p1")
+                currentPlayerDisplay.text = "Player 1 turn";
+            else   
+                currentPlayerDisplay.text = "Player 2 turn";
         }
     }
 }
