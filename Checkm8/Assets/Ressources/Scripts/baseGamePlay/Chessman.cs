@@ -6,6 +6,7 @@ public class Chessman : MonoBehaviour
 {
     public GameObject controller;
     public GameObject movePlate;//Partie en surbrillance permettant de déplacer nos pièces
+    public GameObject beginnerHelp;
     public GameObject moveSFX;
 
     //Position du board
@@ -20,6 +21,8 @@ public class Chessman : MonoBehaviour
 
     //True dès lors qu'une pièce bouge
     public bool hasMoved = false;
+
+    public bool selected;//true quand on a cliqué sur la pièce
 
     public Color pieceColor;
 
@@ -137,6 +140,16 @@ public class Chessman : MonoBehaviour
         }
     }
 
+    public void DestroyBeginnerHelp()
+    {
+        GameObject[] bhelps = GameObject.FindGameObjectsWithTag("MovePlateBeginner");
+
+        for(int i=0; i< bhelps.Length; i++)
+        {
+            Destroy(bhelps[i]);
+        }
+    }
+
     public void InitiateMovePlates()
     {
         //On créé des paternes de surbrillance différents en fonction de la pièce active
@@ -194,6 +207,63 @@ public class Chessman : MonoBehaviour
         }
     }
 
+    void InitiateBeginnerHelp()
+    {
+        //On créé des paternes de surbrillance différents en fonction de la pièce active
+        switch(this.name)
+        {
+            case "queen_p1":
+            case "queen_p2":
+                LineBegHelp(1,0);
+                LineBegHelp(0,1);
+                LineBegHelp(1,1);
+                LineBegHelp(-1,0);
+                LineBegHelp(-1,1);
+                LineBegHelp(1,-1);
+                LineBegHelp(0,-1);
+                LineBegHelp(-1,-1);
+                break;
+            case "knight_p1" :
+            case "knight_p2" :
+                LBegHelp();
+                break;
+            case "bishop_p1":
+            case "bishop_p2":
+                LineBegHelp(1,1);
+                LineBegHelp(1,-1);
+                LineBegHelp(-1,1);
+                LineBegHelp(-1,-1);
+                break;
+            case "king_p1":
+            case "king_p2":
+                SurroundBegHelp();
+                break;
+            case "rook_p1":
+            case "rook_p2":
+                LineBegHelp(1,0);
+                LineBegHelp(0,1);
+                LineBegHelp(-1,0);
+                LineBegHelp(0,-1);
+                break;
+            case "pawn_p2":
+                if(!hasMoved)
+                {
+                    PawnBegHelpFirstTurn(xBoard,yBoard-1,-1);
+                }else{
+                    PawnBegHelp(xBoard, yBoard - 1);
+                }
+                break;
+            case "pawn_p1":
+                if(!hasMoved)
+                {
+                    PawnBegHelpFirstTurn(xBoard, yBoard + 1,1);
+                }else{
+                    PawnBegHelp(xBoard, yBoard + 1);
+                }
+                break;
+        }
+    }
+
     public void LineMovePlate(int xIncrement, int yIncrement)
     {
         Controller cont = controller.GetComponent<Controller>();
@@ -214,6 +284,26 @@ public class Chessman : MonoBehaviour
         }
     }
 
+    public void LineBegHelp(int xIncrement, int yIncrement)
+    {
+        Controller cont = controller.GetComponent<Controller>();
+
+        int x = xBoard + xIncrement;
+        int y = yBoard + yIncrement;
+
+        while(cont.PositionOnBoard(x,y) && cont.GetPosition(x,y) == null)
+        {
+            BegHelpSpawn(x,y);
+            x += xIncrement;
+            y += yIncrement;
+        }
+
+        if(cont.PositionOnBoard(x,y) && cont.GetPosition(x,y).GetComponent<Chessman>().player != player)
+        {
+            BegHelpAttackSpawn(x,y);
+        }
+    }
+
     public void LMovePlate()
     {
         PointMovePlate(xBoard + 1, yBoard + 2);
@@ -226,6 +316,18 @@ public class Chessman : MonoBehaviour
         PointMovePlate(xBoard -2, yBoard + 1);
     }
 
+    public void LBegHelp()
+    {
+        PointBegHelp(xBoard + 1, yBoard + 2);
+        PointBegHelp(xBoard - 1, yBoard + 2);
+        PointBegHelp(xBoard + 2, yBoard + 1);
+        PointBegHelp(xBoard + 2, yBoard - 1);
+        PointBegHelp(xBoard + 1, yBoard - 2);
+        PointBegHelp(xBoard - 1, yBoard - 2);
+        PointBegHelp(xBoard -2, yBoard -1);
+        PointBegHelp(xBoard -2, yBoard + 1);
+    }
+
     public void SurroundMovePlate()
     {
         PointMovePlate(xBoard, yBoard + 1);
@@ -236,6 +338,18 @@ public class Chessman : MonoBehaviour
         PointMovePlate(xBoard + 1, yBoard + 1);
         PointMovePlate(xBoard -1, yBoard);
         PointMovePlate(xBoard + 1, yBoard -1);
+    }
+
+    public void SurroundBegHelp()
+    {
+        PointBegHelp(xBoard, yBoard + 1);
+        PointBegHelp(xBoard, yBoard - 1);
+        PointBegHelp(xBoard + 1, yBoard);
+        PointBegHelp(xBoard -1, yBoard - 1);
+        PointBegHelp(xBoard - 1, yBoard +1);
+        PointBegHelp(xBoard + 1, yBoard + 1);
+        PointBegHelp(xBoard -1, yBoard);
+        PointBegHelp(xBoard + 1, yBoard -1);
     }
 
     public void PointMovePlate(int x, int y)
@@ -252,6 +366,24 @@ public class Chessman : MonoBehaviour
             }else if(cont.GetPosition(x,y).GetComponent<Chessman>().player != player)
                 {
                     MovePlateAttackSpawn(x,y);
+                }
+        }
+    }
+
+    public void PointBegHelp(int x, int y)
+    {
+        Controller cont = controller.GetComponent<Controller>();
+
+        if(cont.PositionOnBoard(x,y))
+        {
+            GameObject piece = cont.GetPosition(x,y);
+
+            if(piece == null)
+            {
+                BegHelpSpawn(x,y);
+            }else if(cont.GetPosition(x,y).GetComponent<Chessman>().player != player)
+                {
+                    BegHelpAttackSpawn(x,y);
                 }
         }
     }
@@ -275,6 +407,30 @@ public class Chessman : MonoBehaviour
             if(cont.PositionOnBoard(x-1,y) && cont.GetPosition(x-1,y) != null && cont.GetPosition(x-1,y).GetComponent<Chessman>().player != player)
             {
                 MovePlateAttackSpawn(x-1,y);
+            }
+        }
+
+    }
+
+    public void PawnBegHelp(int x, int y)
+    {
+        Controller cont = controller.GetComponent<Controller>();
+
+        if(cont.PositionOnBoard(x,y))
+        {
+            if(cont.GetPosition(x,y) == null)
+            {
+                BegHelpSpawn(x,y);
+            }
+
+            if(cont.PositionOnBoard(x+1,y) && cont.GetPosition(x+1,y) != null && cont.GetPosition(x+1,y).GetComponent<Chessman>().player != player)
+            {
+                BegHelpAttackSpawn(x+1,y);
+            }
+
+            if(cont.PositionOnBoard(x-1,y) && cont.GetPosition(x-1,y) != null && cont.GetPosition(x-1,y).GetComponent<Chessman>().player != player)
+            {
+                BegHelpAttackSpawn(x-1,y);
             }
         }
 
@@ -307,6 +463,33 @@ public class Chessman : MonoBehaviour
         }
     }
 
+    public void PawnBegHelpFirstTurn(int x, int y,int which_player)
+    {
+        Controller cont = controller.GetComponent<Controller>();
+
+        if(cont.PositionOnBoard(x,y))
+        {
+            if(cont.GetPosition(x,y) == null)
+            {
+                BegHelpSpawn(x,y);
+            }
+            if(cont.GetPosition(x,y+which_player) == null)
+            {
+                BegHelpSpawn(x,y+which_player);
+            }
+
+            if(cont.PositionOnBoard(x+1,y) && cont.GetPosition(x+1,y) != null && cont.GetPosition(x+1,y).GetComponent<Chessman>().player != player)
+            {
+                BegHelpAttackSpawn(x+1,y);
+            }
+
+            if(cont.PositionOnBoard(x-1,y) && cont.GetPosition(x-1,y) != null && cont.GetPosition(x-1,y).GetComponent<Chessman>().player != player)
+            {
+                BegHelpAttackSpawn(x-1,y);
+            }
+        }
+    }
+
     public void MovePlateSpawn(int posX, int posY)
     {
         float x = posX;
@@ -324,6 +507,20 @@ public class Chessman : MonoBehaviour
 
         mpScript.setPieceClicked(gameObject);
         mpScript.SetCoords(posX,posY);
+    }
+
+    public void BegHelpSpawn(int posX, int posY)
+    {
+        float x = posX;
+        float y = posY;
+
+        x *= 0.125f;
+        y *= 0.125f;
+
+        x += -0.438f;
+        y += -0.438f;
+
+        GameObject mp = Instantiate(beginnerHelp, new Vector3(x,y,0), Quaternion.identity);
     }
 
     public void MovePlateAttackSpawn(int posX, int posY)
@@ -346,6 +543,22 @@ public class Chessman : MonoBehaviour
         mpScript.SetCoords(posX,posY);
     }
 
+    public void BegHelpAttackSpawn(int posX, int posY)
+    {
+        float x = posX;
+        float y = posY;
+
+        x *= 0.125f;
+        y *= 0.125f;
+
+        x += -0.438f;
+        y += -0.438f;
+
+        GameObject mp = Instantiate(beginnerHelp, new Vector3(x,y,0), Quaternion.identity);
+
+        mp.GetComponent<SpriteRenderer>().color = Color.red;
+    }
+
     private void OnMouseUp()
     {
         if(!controller.GetComponent<Controller>().isGameOver() && controller.GetComponent<Controller>().GetCurrentPlayer() == player)
@@ -365,6 +578,9 @@ public class Chessman : MonoBehaviour
                         controller.GetComponent<Controller>().player2[i].GetComponent<SpriteRenderer>().color = pieceColor;
                 }
             }
+            selected = true;
+
+            DestroyBeginnerHelp();
             
             DestroyMovePlates();
 
@@ -374,9 +590,16 @@ public class Chessman : MonoBehaviour
         }
     }
 
-
-    /*private void OnMouseExit()
+    void OnMouseOver()
     {
-        gameObject.GetComponent<SpriteRenderer>().color = pieceColor;
-    }*/
+        if(!selected)
+        InitiateBeginnerHelp();
+    }
+
+
+    private void OnMouseExit()
+    {
+        if(!selected)
+        DestroyBeginnerHelp();
+    }
 }

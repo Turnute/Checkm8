@@ -226,6 +226,8 @@ MonoBehaviour:
   controller: {fileID: 0}
   movePlate: {fileID: 6525618987531047233, guid: 4ef6200b0e017ca479c979f4f4970ad3,
     type: 3}
+  beginnerHelp: {fileID: 6522122063238379014, guid: 761a24c9ebd9538498eca345fb72a032,
+    type: 3}
   moveSFX: {fileID: 2558010840232917903}
   xBoard: -1
   yBoard: -1
