@@ -47,6 +47,7 @@ public class MovePlate : MonoBehaviour
         pieceCicked.GetComponent<Chessman>().setCoords(true);
         pieceCicked.GetComponent<Chessman>().selected = false;
         pieceCicked.GetComponent<Chessman>().hasMoved = true;
+        pieceCicked.GetComponent<Chessman>().callPromote(pieceCicked.GetComponent<Chessman>().player);
         pieceCicked.GetComponent<SpriteRenderer>().color = pieceCicked.GetComponent<Chessman>().pieceColor;
 
         controller.GetComponent<Controller>().SetPosition(pieceCicked);

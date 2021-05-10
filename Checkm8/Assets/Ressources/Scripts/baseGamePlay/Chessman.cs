@@ -152,7 +152,9 @@ public class Chessman : MonoBehaviour
 
     public void InitiateMovePlates()
     {
-        //On créé des paternes de surbrillance différents en fonction de la pièce active
+        if(!controller.GetComponent<Controller>().promotingPanelUp)
+        {
+           //On créé des paternes de surbrillance différents en fonction de la pièce active
         switch(this.name)
         {
             case "queen_p1":
@@ -204,11 +206,14 @@ public class Chessman : MonoBehaviour
                     PawnMovePlate(xBoard, yBoard + 1);
                 }
                 break;
+        } 
         }
     }
 
     void InitiateBeginnerHelp()
     {
+        if(!controller.GetComponent<Controller>().promotingPanelUp)
+        {
         //On créé des paternes de surbrillance différents en fonction de la pièce active
         switch(this.name)
         {
@@ -261,6 +266,7 @@ public class Chessman : MonoBehaviour
                     PawnBegHelp(xBoard, yBoard + 1);
                 }
                 break;
+        }
         }
     }
 
@@ -587,6 +593,28 @@ public class Chessman : MonoBehaviour
             InitiateMovePlates();
 
             gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
+        }
+    }
+
+    public void callPromote(string which_player)
+    {
+        if(which_player == "p1")
+        {
+            if(yBoard == 7 && this.name == "pawn_p1")
+            {
+                //On ouvre le panneau de promotion
+                controller.GetComponent<Controller>().promotePanel.SetActive(true);
+                controller.GetComponent<Controller>().promotingPanelUp = true;
+                controller.GetComponent<Controller>().pieceToPromote = gameObject;
+            }
+        }else{
+            if(yBoard == 0 && this.name == "pawn_p2")
+            {
+                //On ouvre le panneau de promotion
+                controller.GetComponent<Controller>().promotePanel.SetActive(true);
+                controller.GetComponent<Controller>().promotingPanelUp = true;
+                controller.GetComponent<Controller>().pieceToPromote = gameObject;
+            }
         }
     }
 

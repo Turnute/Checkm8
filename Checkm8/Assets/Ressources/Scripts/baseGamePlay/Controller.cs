@@ -13,6 +13,7 @@ public class Controller : MonoBehaviour
     public GameObject glowEffect;
     public GameObject buttonRestart, buttonNext;
     public GameObject p1Win,p2Win;//Les portraits des joueurs(A modif)
+    public GameObject promotePanel;
     public Text winnerName;
     public Text currentPlayerDisplay;
     public static int size = 8;//Taille du plateau de jeu, changeant en fonction du nombre de joueur
@@ -23,6 +24,9 @@ public class Controller : MonoBehaviour
     public GameObject[] player2 = new GameObject[16];
 
     private string currentPlayer = "p1";
+
+    public bool promotingPanelUp = false;//True lorsque l'on effectue une promotion
+    public GameObject pieceToPromote;
 
     private bool gameOver = false;
 
