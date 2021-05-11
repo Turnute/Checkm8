@@ -3,33 +3,40 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ButtonController : MonoBehaviour
-{/*
-    public void Update(){
-        if(IsMouseOver())
-        {
-            
-        }
-        else
-        {
-            
-        }
-    }
-
-    public bool IsMouseOver()
+public class ButtonController : MonoBehaviour ,IPointerEnterHandler, IPointerExitHandler
+{
+    
+    public void OnPointerEnter(PointerEventData eventData)
     {
-        return EventSystem.current.IsPointerOverGameObject();
-    }
-*/
-    public void OnMouseOver(){
-        Debug.Log("Mouse is over GameObject.");
-
-        transform.localScale = new Vector3(1.01f, 1.01f, 0);
+        StartCoroutine("StarPulsing");
     }
 
-    public void OnMouseExit(){
-        Debug.Log("Mouse is no longer on GameObject.");
-            
-        transform.localScale = new Vector3(1f, 1f, 0);
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        for (float i = 0f; i <= 1f; i += 0.1f)
+        {
+            transform.localScale = new Vector3(
+            (Mathf.Lerp(transform.localScale.x, transform.localScale.x - 0.005f, Mathf.SmoothStep(0f, 1f, i))),
+            (Mathf.Lerp(transform.localScale.y, transform.localScale.y - 0.005f, Mathf.SmoothStep(0f, 1f, i))),
+            transform.localScale.z
+            );
+        }
+        
+    }
+    private IEnumerator StarPulsing()
+    {
+        
+        for (float i = 0f; i <= 1f; i += 0.1f)
+        {
+            transform.localScale = new Vector3(
+            (Mathf.Lerp(transform.localScale.x, transform.localScale.x + 0.005f, Mathf.SmoothStep(0f, 1f, i))),
+            (Mathf.Lerp(transform.localScale.y, transform.localScale.y + 0.005f, Mathf.SmoothStep(0f, 1f, i))),
+            transform.localScale.z
+            );
+            yield return new WaitForSeconds(0.015f);
+        }
+
+     
+        
     }
 }

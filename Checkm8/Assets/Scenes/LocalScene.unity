@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -257,6 +257,7 @@ GameObject:
   - component: {fileID: 735290127}
   - component: {fileID: 735290126}
   - component: {fileID: 735290125}
+  - component: {fileID: 735290128}
   m_Layer: 5
   m_Name: RulesetsButton
   m_TagString: Untagged
@@ -374,6 +375,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 735290123}
   m_CullTransparentMesh: 0
+--- !u!114 &735290128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 735290123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38ec95c957e5e4a708819c56d5850fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1007651593
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,8 +421,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 181.7, y: -176.13998}
-  m_SizeDelta: {x: 438.34253, y: 89.49238}
+  m_AnchoredPosition: {x: 180, y: -160}
+  m_SizeDelta: {x: 440, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1007651595
 MonoBehaviour:
@@ -530,6 +543,7 @@ GameObject:
   - component: {fileID: 1399829470}
   - component: {fileID: 1399829469}
   - component: {fileID: 1399829468}
+  - component: {fileID: 1399829471}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -647,6 +661,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1399829466}
   m_CullTransparentMesh: 0
+--- !u!114 &1399829471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399829466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38ec95c957e5e4a708819c56d5850fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1484694800
 GameObject:
   m_ObjectHideFlags: 0
@@ -659,6 +685,7 @@ GameObject:
   - component: {fileID: 1484694804}
   - component: {fileID: 1484694803}
   - component: {fileID: 1484694802}
+  - component: {fileID: 1484694805}
   m_Layer: 5
   m_Name: 4PButton
   m_TagString: Untagged
@@ -776,6 +803,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1484694800}
   m_CullTransparentMesh: 0
+--- !u!114 &1484694805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1484694800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38ec95c957e5e4a708819c56d5850fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1932199540
 GameObject:
   m_ObjectHideFlags: 0
@@ -788,6 +827,7 @@ GameObject:
   - component: {fileID: 1932199544}
   - component: {fileID: 1932199543}
   - component: {fileID: 1932199542}
+  - component: {fileID: 1932199545}
   m_Layer: 5
   m_Name: 2PButton
   m_TagString: Untagged
@@ -905,6 +945,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1932199540}
   m_CullTransparentMesh: 0
+--- !u!114 &1932199545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932199540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38ec95c957e5e4a708819c56d5850fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2003904692
 GameObject:
   m_ObjectHideFlags: 0
@@ -1020,6 +1072,7 @@ GameObject:
   - component: {fileID: 2014250470}
   - component: {fileID: 2014250469}
   - component: {fileID: 2014250472}
+  - component: {fileID: 2014250473}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1123,6 +1176,22 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!114 &2014250473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2014250468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56666c5a40171f54783dd416a44f42bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EventMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_MaxRayIntersections: 0
 --- !u!1 &2124744871
 GameObject:
   m_ObjectHideFlags: 0
