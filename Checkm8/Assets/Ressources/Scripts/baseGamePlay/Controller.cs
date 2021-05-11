@@ -22,8 +22,11 @@ public class Controller : MonoBehaviour
     //Ensemble des joueurs(que 2 pour l'instant)
     public GameObject[] player1 = new GameObject[16];//(car 16 pièces)
     public GameObject[] player2 = new GameObject[16];
+    //Les couleurs des pièces des joueurs
+    public static Color p1Color;
+    public static Color p2Color;
 
-    private string currentPlayer = "p1";
+    public string currentPlayer = "p1";
 
     public bool promotingPanelUp = false;//True lorsque l'on effectue une promotion
     public GameObject pieceToPromote;

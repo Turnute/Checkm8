@@ -118,10 +118,10 @@ public class Chessman : MonoBehaviour
         float y = yBoard;
 
         //Valeurs à tester (valeures temporaires)
-        x *= 0.12f;
+        x *= 0.125f;
         y *= 0.125f;
 
-        x += -0.417f;
+        x += -0.435f;
         y += -0.413f;
 
         this.transform.position = new Vector3(x,y,0);
@@ -596,6 +596,8 @@ public class Chessman : MonoBehaviour
         }
     }
 
+
+    //Actions spéciales
     public void callPromote(string which_player)
     {
         if(which_player == "p1")
