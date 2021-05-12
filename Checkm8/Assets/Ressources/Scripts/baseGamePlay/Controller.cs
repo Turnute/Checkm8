@@ -58,7 +58,7 @@ public class Controller : MonoBehaviour
             SetPosition(player1[i]);
             SetPosition(player2[i]);
         }
-    
+        CheckMateManager.playerInstantiated = true;
     }
 
     
