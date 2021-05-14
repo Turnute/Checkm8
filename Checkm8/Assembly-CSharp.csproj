@@ -72,6 +72,7 @@
     <Compile Include="Assets\Ressources\Scripts\baseGamePlay\MovePlate.cs" />
     <Compile Include="Assets\Ressources\Scripts\baseGamePlay\PromoteScript.cs" />
     <Compile Include="Assets\Ressources\Scripts\baseGamePlay\SpecialActions.cs" />
+    <Compile Include="Assets\SaveLoad\Scripts\SaveSystem.cs" />
     <Compile Include="Assets\SelectCoins.cs" />
     <Compile Include="Assets\SettingsManagers.cs" />
     <None Include="Assets\Ressources\Fonts\Oswald\README.txt" />
