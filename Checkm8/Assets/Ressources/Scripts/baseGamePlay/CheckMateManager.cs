@@ -263,6 +263,14 @@ public class CheckMateManager : MonoBehaviour
             }else{
                 kingp2.GetComponent<SpriteRenderer>().color = Color.red;
             }
+        }else{
+            //Gestion des éléments liés à cette situation(musique, surbrillance du roi, restriction de mouvement de toutes les pièces(PROCHAINE CHOSE A FAIRE)...)
+            if(controller.GetComponent<Controller>().currentPlayer == "p1")
+            {
+                kingp1.GetComponent<SpriteRenderer>().color = kingp1.GetComponent<Chessman>().pieceColor;
+            }else{
+                kingp2.GetComponent<SpriteRenderer>().color = kingp2.GetComponent<Chessman>().pieceColor;
+            }
         }
     }
 }
