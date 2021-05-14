@@ -437,6 +437,7 @@ MonoBehaviour:
   promotePanel: {fileID: 1875312579}
   winnerName: {fileID: 746447673}
   currentPlayerDisplay: {fileID: 1326650144}
+  cmManager: {fileID: 363324454}
   player1:
   - {fileID: 0}
   - {fileID: 0}
@@ -501,6 +502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 363324454}
+  check: 0
   movesPossible: []
 --- !u!1 &513763097
 GameObject:

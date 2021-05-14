@@ -52,11 +52,13 @@ public class MovePlate : MonoBehaviour
 
         controller.GetComponent<Controller>().SetPosition(pieceCicked);
 
+        controller.GetComponent<CheckMateManager>().movesPossible.Clear();
+
         controller.GetComponent<CheckMateManager>().PredictAllMoves(controller.GetComponent<Controller>().currentPlayer);
 
-        controller.GetComponent<Controller>().NextTurn();
-
         controller.GetComponent<CheckMateManager>().check = false;
+
+        controller.GetComponent<Controller>().NextTurn();
 
         pieceCicked.GetComponent<Chessman>().DestroyMovePlates();
     }

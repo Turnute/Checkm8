@@ -16,6 +16,7 @@ public class Controller : MonoBehaviour
     public GameObject promotePanel;
     public Text winnerName;
     public Text currentPlayerDisplay;
+    public GameObject cmManager;
     public static int size = 8;//Taille du plateau de jeu, changeant en fonction du nombre de joueur
 
     private GameObject[,] positions = new GameObject[size,size];//Ensemble des positions sur le board
@@ -113,8 +114,10 @@ public class Controller : MonoBehaviour
         if(currentPlayer == "p1")
         {
             currentPlayer = "p2";
+            cmManager.GetComponent<CheckMateManager>().isCheck();
         }else{
             currentPlayer = "p1";
+            cmManager.GetComponent<CheckMateManager>().isCheck();
         }
     }
 
