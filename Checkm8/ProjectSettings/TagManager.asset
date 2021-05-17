@@ -6,6 +6,7 @@ TagManager:
   tags:
   - MovePlate
   - MovePlateBeginner
+  - cancel
   layers:
   - Default
   - TransparentFX

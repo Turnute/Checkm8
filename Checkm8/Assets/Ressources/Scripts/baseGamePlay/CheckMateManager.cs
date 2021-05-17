@@ -74,7 +74,7 @@ public class CheckMateManager : MonoBehaviour
                 LineCompute(piece,0,-1);
                 break;
             case "pawn_p2":
-                if(!piece.GetComponent<Chessman>().hasMoved)
+                if(piece.GetComponent<Chessman>().hasMoved == 0)
                 {
                     PawnFirstTurnCompute(piece,piece.GetComponent<Chessman>().xBoard,piece.GetComponent<Chessman>().yBoard-1,-1);
                 }else{
@@ -82,7 +82,7 @@ public class CheckMateManager : MonoBehaviour
                 }
                 break;
             case "pawn_p1":
-                if(!piece.GetComponent<Chessman>().hasMoved)
+                if(piece.GetComponent<Chessman>().hasMoved == 0)
                 {
                     PawnFirstTurnCompute(piece,piece.GetComponent<Chessman>().xBoard, piece.GetComponent<Chessman>().yBoard + 1,1);
                 }else{
@@ -229,8 +229,6 @@ public class CheckMateManager : MonoBehaviour
                 {
                     check = true;
                 }
-                Debug.Log("Pos" + pos);
-                Debug.Log("Move" + movesPossible[i]);
             }
         }
         return false;
@@ -249,8 +247,6 @@ public class CheckMateManager : MonoBehaviour
             if(controller.GetComponent<Controller>().player2[i].name == "king_p2")  
                 kingp2 = controller.GetComponent<Controller>().player2[i];
         }
-        Debug.Log(kingp1.GetComponent<Chessman>().xBoard);
-        Debug.Log(kingp1.GetComponent<Chessman>().yBoard);
         playerInstantiated = false;
         }
 
@@ -259,17 +255,21 @@ public class CheckMateManager : MonoBehaviour
             //Gestion des éléments liés à cette situation(musique, surbrillance du roi, restriction de mouvement de toutes les pièces(PROCHAINE CHOSE A FAIRE)...)
             if(controller.GetComponent<Controller>().currentPlayer == "p1")
             {
-                kingp1.GetComponent<SpriteRenderer>().color = Color.red;
+                if(kingp1)
+                    kingp1.GetComponent<SpriteRenderer>().color = Color.red;
             }else{
-                kingp2.GetComponent<SpriteRenderer>().color = Color.red;
+                if(kingp2)
+                    kingp2.GetComponent<SpriteRenderer>().color = Color.red;
             }
         }else{
             //Gestion des éléments liés à cette situation(musique, surbrillance du roi, restriction de mouvement de toutes les pièces(PROCHAINE CHOSE A FAIRE)...)
             if(controller.GetComponent<Controller>().currentPlayer == "p1")
             {
-                kingp1.GetComponent<SpriteRenderer>().color = kingp1.GetComponent<Chessman>().pieceColor;
+                if(kingp1)
+                    kingp1.GetComponent<SpriteRenderer>().color = kingp1.GetComponent<Chessman>().pieceColor;
             }else{
-                kingp2.GetComponent<SpriteRenderer>().color = kingp2.GetComponent<Chessman>().pieceColor;
+                if(kingp2)
+                    kingp2.GetComponent<SpriteRenderer>().color = kingp2.GetComponent<Chessman>().pieceColor;
             }
         }
     }
