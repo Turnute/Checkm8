@@ -36,7 +36,7 @@ public class MusicManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if(scene.name == "Title_screen")
+        if(scene.name != "1v1_game")
         {
             if (!title_theme.GetComponent<AudioSource>().isPlaying)
             {

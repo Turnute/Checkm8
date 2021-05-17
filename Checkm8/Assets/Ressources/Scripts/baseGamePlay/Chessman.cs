@@ -20,7 +20,7 @@ public class Chessman : MonoBehaviour
     public Sprite queen, king, bishop, knight, rook, pawn;
 
     //True dès lors qu'une pièce bouge
-    public bool hasMoved = false;
+    public int hasMoved = 0;
 
     public bool selected;//true quand on a cliqué sur la pièce
 
@@ -191,7 +191,7 @@ public class Chessman : MonoBehaviour
                 LineMovePlate(0,-1);
                 break;
             case "pawn_p2":
-                if(!hasMoved)
+                if(hasMoved == 0)
                 {
                     PawnMovePlateFirstTurn(xBoard,yBoard-1,-1);
                 }else{
@@ -199,7 +199,7 @@ public class Chessman : MonoBehaviour
                 }
                 break;
             case "pawn_p1":
-                if(!hasMoved)
+                if(hasMoved == 0)
                 {
                     PawnMovePlateFirstTurn(xBoard, yBoard + 1,1);
                 }else{
@@ -251,7 +251,7 @@ public class Chessman : MonoBehaviour
                 LineBegHelp(0,-1);
                 break;
             case "pawn_p2":
-                if(!hasMoved)
+                if(hasMoved == 0)
                 {
                     PawnBegHelpFirstTurn(xBoard,yBoard-1,-1);
                 }else{
@@ -259,7 +259,7 @@ public class Chessman : MonoBehaviour
                 }
                 break;
             case "pawn_p1":
-                if(!hasMoved)
+                if(hasMoved == 0)
                 {
                     PawnBegHelpFirstTurn(xBoard, yBoard + 1,1);
                 }else{

@@ -36,9 +36,14 @@ public class MovePlate : MonoBehaviour
             if(piece.name == "king_p2")
                 controller.GetComponent<Controller>().Winner("p1");
 
-
+            SpecialActions.pieceEaten = piece.name;
+            SpecialActions.pieceHasBeenEaten = true;
+            SpecialActions.pieceEatenPos = new Vector2(piece.GetComponent<Chessman>().xBoard, piece.GetComponent<Chessman>().yBoard);
+            SpecialActions.nbMovePieceEaten = piece.GetComponent<Chessman>().hasMoved;
             Destroy(piece);//A FAIRE -> AJOUTER UNE ANIMATION DE DESTRUCTION
         }
+        SpecialActions.lastPiece = pieceCicked;
+        SpecialActions.lastPos = new Vector2(pieceCicked.GetComponent<Chessman>().xBoard, pieceCicked.GetComponent<Chessman>().yBoard);
 
         controller.GetComponent<Controller>().SetPositionEmpty(pieceCicked.GetComponent<Chessman>().xBoard, pieceCicked.GetComponent<Chessman>().yBoard);
 
@@ -46,7 +51,7 @@ public class MovePlate : MonoBehaviour
         pieceCicked.GetComponent<Chessman>().yBoard = matrixY;
         pieceCicked.GetComponent<Chessman>().setCoords(true);
         pieceCicked.GetComponent<Chessman>().selected = false;
-        pieceCicked.GetComponent<Chessman>().hasMoved = true;
+        pieceCicked.GetComponent<Chessman>().hasMoved ++;
         pieceCicked.GetComponent<Chessman>().callPromote(pieceCicked.GetComponent<Chessman>().player);
         pieceCicked.GetComponent<SpriteRenderer>().color = pieceCicked.GetComponent<Chessman>().pieceColor;
 
@@ -61,6 +66,8 @@ public class MovePlate : MonoBehaviour
         controller.GetComponent<Controller>().NextTurn();
 
         pieceCicked.GetComponent<Chessman>().DestroyMovePlates();
+
+        SpecialActions.cancelButton.SetActive(true);
     }
 
     public void SetCoords(int posX, int posY)

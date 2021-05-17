@@ -14,6 +14,7 @@ public class Controller : MonoBehaviour
     public GameObject buttonRestart, buttonNext;
     public GameObject p1Win,p2Win;//Les portraits des joueurs(A modif)
     public GameObject promotePanel;
+    public GameObject quitPanel;
     public Text winnerName;
     public Text currentPlayerDisplay;
     public GameObject cmManager;
@@ -142,7 +143,17 @@ public class Controller : MonoBehaviour
 
     public void NextGame()
     {
-        SceneManager.LoadScene("WorkInProgress");//Rediriger vers l'écran de sélection de niveau
+        SceneManager.LoadScene("SelectionScene");
+    }
+
+    public void QuitGame()
+    {
+        quitPanel.SetActive(true);
+    }
+
+    public void CloseQuitPanel()
+    {
+        quitPanel.SetActive(false);
     }
 
     public void Update()
