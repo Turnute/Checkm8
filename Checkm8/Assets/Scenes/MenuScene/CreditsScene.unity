@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -155,8 +155,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -301.25, y: -76.87308}
-  m_SizeDelta: {x: 197.5, y: 84.94217}
+  m_AnchoredPosition: {x: -301.25, y: -78.39}
+  m_SizeDelta: {x: 197.5, y: 87.9704}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &24708834
 MonoBehaviour:
@@ -629,8 +629,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -98.495, y: -76.873}
-  m_SizeDelta: {x: 197.5, y: 84.94217}
+  m_AnchoredPosition: {x: -89.03, y: -85.28}
+  m_SizeDelta: {x: 216.4263, y: 101.75571}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &947123051
 MonoBehaviour:
@@ -673,7 +673,7 @@ MonoBehaviour:
 
     (Lead Programmer)
 
-    (Composer, Lead designer)'
+    (Composer, Lead designer, Game designer)'
 --- !u!222 &947123052
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -824,8 +824,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 98.54999, y: -76.873}
-  m_SizeDelta: {x: 197.5, y: 84.94217}
+  m_AnchoredPosition: {x: 151.17, y: -76.873}
+  m_SizeDelta: {x: 92.26984, y: 84.94217}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1362772535
 MonoBehaviour:
