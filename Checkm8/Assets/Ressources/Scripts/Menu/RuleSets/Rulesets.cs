@@ -34,6 +34,8 @@ public class Rulesets : MonoBehaviour
         HelpMenu = GameObject.Find("HelpCanva");
         TimerMenu = GameObject.Find("TimerCanva");
 
+        HelpMenu.SetActive(false);
+
         PauseButton = false ;
          Time = 0;
 
@@ -83,6 +85,7 @@ public class Rulesets : MonoBehaviour
     public void HelpMenushow(bool isOpen)
     {
         HelpMenu.SetActive(isOpen);
+        //TimerMenu.SetActive(false);
     }
 
 
