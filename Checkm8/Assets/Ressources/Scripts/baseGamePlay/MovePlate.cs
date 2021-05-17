@@ -41,6 +41,8 @@ public class MovePlate : MonoBehaviour
             SpecialActions.pieceEatenPos = new Vector2(piece.GetComponent<Chessman>().xBoard, piece.GetComponent<Chessman>().yBoard);
             SpecialActions.nbMovePieceEaten = piece.GetComponent<Chessman>().hasMoved;
             Destroy(piece);//A FAIRE -> AJOUTER UNE ANIMATION DE DESTRUCTION
+        }else{
+            SpecialActions.pieceHasBeenEaten = false;
         }
         SpecialActions.lastPiece = pieceCicked;
         SpecialActions.lastPos = new Vector2(pieceCicked.GetComponent<Chessman>().xBoard, pieceCicked.GetComponent<Chessman>().yBoard);
