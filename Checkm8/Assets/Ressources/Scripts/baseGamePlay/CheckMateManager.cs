@@ -7,6 +7,7 @@ public class CheckMateManager : MonoBehaviour
     public GameObject controller;
     public static bool playerInstantiated = false;
     public bool check = false;
+    public bool stillCheck = false;
 
     //Les rois des deux joueurs
     private GameObject kingp1;
@@ -208,7 +209,7 @@ public class CheckMateManager : MonoBehaviour
     }
 
     //Vérifie si le roi est en échec
-    public bool isCheck()
+    public void isCheck()
     {
         for (int i = 0; i < movesPossible.Count; i++)
         {
@@ -231,7 +232,75 @@ public class CheckMateManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    public bool StillCheck()//Appelé par SimulateMove pour tester si un déplacement annulerai la situation d'échec ou non
+    {
+        for (int i = 0; i < movesPossible.Count; i++)
+        {
+            if(controller.GetComponent<Controller>().currentPlayer == "p1")
+            {
+                float x = kingp1.GetComponent<Chessman>().xBoard;
+                float y = kingp1.GetComponent<Chessman>().yBoard;
+                Vector2 pos = new Vector2(x,y);
+                if(pos == movesPossible[i])
+                {
+                    return true;
+                }
+            }else{
+                float x = kingp2.GetComponent<Chessman>().xBoard;
+                float y = kingp2.GetComponent<Chessman>().yBoard;
+                Vector2 pos = new Vector2(x,y);
+                if(pos == movesPossible[i])
+                {
+                    return true;
+                }
+            }
+        }
         return false;
+    }
+
+    public bool SimulateMove(int x, int y)//Simule un déplacement associé à un moveplate et regarde si ce dernier permet de sortir de l'echec
+    {
+        //Créer un faux pion afin de simuler un coup
+        GameObject token = controller.GetComponent<Controller>().Create("pawn_p1", x, y);//A FAIRE--> SPRITE INVISIBLE
+
+        //Positionnement du pion au lieu du moveplate seulement en mémoire pas visuellement(si ennemi on le mange)
+        GameObject foe = controller.GetComponent<Controller>().GetPosition(x,y);
+        if(foe != null && foe.GetComponent<Chessman>().player != controller.GetComponent<Controller>().currentPlayer)
+        {
+            controller.GetComponent<Controller>().SetPositionEmpty(x,y);//Simulation de la mort de la pièce ennemi
+        }
+        controller.GetComponent<Controller>().SetPosition(token);
+
+        //Mise à jour de la liste des moves disponibles
+        movesPossible.Clear();
+        if(controller.GetComponent<Controller>().currentPlayer == "p1")
+        {
+            PredictAllMoves("p2");
+        }else{
+            PredictAllMoves("p1");
+        }
+
+        //Appelle de StillCheck(si true on ressort false et inversement)
+        if(StillCheck())
+        {
+            stillCheck =  false;
+        }else{
+            stillCheck =  true;
+        }
+
+        //Annulation des déplacements et remise à zéro de la logique
+        Destroy(token);
+        if(foe != null && foe.GetComponent<Chessman>().player != controller.GetComponent<Controller>().currentPlayer)
+        {
+            controller.GetComponent<Controller>().SetPosition(foe);//On remet l'ennemi dans la logique du jeu
+        }else{
+            controller.GetComponent<Controller>().SetPositionEmpty(x,y);
+        }
+        movesPossible.Clear();
+
+        return stillCheck;
     }
 
     void Update()
@@ -262,15 +331,9 @@ public class CheckMateManager : MonoBehaviour
                     kingp2.GetComponent<SpriteRenderer>().color = Color.red;
             }
         }else{
-            //Gestion des éléments liés à cette situation(musique, surbrillance du roi, restriction de mouvement de toutes les pièces(PROCHAINE CHOSE A FAIRE)...)
-            if(controller.GetComponent<Controller>().currentPlayer == "p1")
-            {
-                if(kingp1)
-                    kingp1.GetComponent<SpriteRenderer>().color = kingp1.GetComponent<Chessman>().pieceColor;
-            }else{
-                if(kingp2)
-                    kingp2.GetComponent<SpriteRenderer>().color = kingp2.GetComponent<Chessman>().pieceColor;
-            }
+             kingp1.GetComponent<SpriteRenderer>().color = kingp1.GetComponent<Chessman>().pieceColor;
+             kingp2.GetComponent<SpriteRenderer>().color = kingp2.GetComponent<Chessman>().pieceColor;
+            
         }
     }
 }
