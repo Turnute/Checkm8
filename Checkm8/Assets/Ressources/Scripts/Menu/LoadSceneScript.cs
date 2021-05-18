@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class LoadSceneScript : MonoBehaviour
 {
-    private static int previousScene;
+    private static int previousScene = 0;
 
     /**
      * Exit game when the program call it
@@ -29,13 +29,6 @@ public class LoadSceneScript : MonoBehaviour
      */
     public void loadPreviousScene()
     {
-        if (previousScene != null)
-        {
-            SceneManager.LoadScene(previousScene);
-        }
-        else
-        {
-            SceneManager.LoadScene(0);
-        }
+        SceneManager.LoadScene(previousScene);
     }
 }
