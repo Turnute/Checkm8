@@ -9,6 +9,9 @@ public class CheckMateManager : MonoBehaviour
     public bool check = false;
     public bool stillCheck = false;
 
+    //Musiques à jouer sur la scène
+    public GameObject inGameTheme, kingInDanger;
+
     //Les rois des deux joueurs
     private GameObject kingp1;
     private GameObject kingp2;
@@ -321,6 +324,11 @@ public class CheckMateManager : MonoBehaviour
 
         if(check)
         {
+            if (!kingInDanger.GetComponent<AudioSource>().isPlaying)
+            {
+                inGameTheme.GetComponent<AudioSource>().Stop();
+                kingInDanger.GetComponent<AudioSource>().Play(0);
+            }
             //Gestion des éléments liés à cette situation(musique, surbrillance du roi, restriction de mouvement de toutes les pièces(PROCHAINE CHOSE A FAIRE)...)
             if(controller.GetComponent<Controller>().currentPlayer == "p1")
             {
@@ -331,9 +339,13 @@ public class CheckMateManager : MonoBehaviour
                     kingp2.GetComponent<SpriteRenderer>().color = Color.red;
             }
         }else{
-             kingp1.GetComponent<SpriteRenderer>().color = kingp1.GetComponent<Chessman>().pieceColor;
-             kingp2.GetComponent<SpriteRenderer>().color = kingp2.GetComponent<Chessman>().pieceColor;
-            
+            kingp1.GetComponent<SpriteRenderer>().color = kingp1.GetComponent<Chessman>().pieceColor;
+            kingp2.GetComponent<SpriteRenderer>().color = kingp2.GetComponent<Chessman>().pieceColor;
+            if (!inGameTheme.GetComponent<AudioSource>().isPlaying)
+            {
+                inGameTheme.GetComponent<AudioSource>().Play(0);
+                kingInDanger.GetComponent<AudioSource>().Stop();
+            }
         }
     }
 }
