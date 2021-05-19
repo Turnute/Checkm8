@@ -8,6 +8,8 @@ public class CheckMateManager : MonoBehaviour
     public static bool playerInstantiated = false;
     public bool check = false;
     public bool stillCheck = false;
+    private bool isFoe = false;
+    private bool isLastPiece = false;
 
     //Musiques à jouer sur la scène
     public GameObject inGameTheme, kingInDanger;
@@ -29,6 +31,7 @@ public class CheckMateManager : MonoBehaviour
                 if(controller.GetComponent<Controller>().player1[i])
                 {
                     ComputeMoves(controller.GetComponent<Controller>().player1[i]);
+                    Debug.Log(controller.GetComponent<Controller>().player1[i].GetComponent<Chessman>().name);
                 }
             }else{
                 if(controller.GetComponent<Controller>().player2[i])
@@ -266,14 +269,48 @@ public class CheckMateManager : MonoBehaviour
     public bool SimulateMove(int x, int y)//Simule un déplacement associé à un moveplate et regarde si ce dernier permet de sortir de l'echec
     {
         //Créer un faux pion afin de simuler un coup
-        GameObject token = controller.GetComponent<Controller>().Create("pawn_p1", x, y);//A FAIRE--> SPRITE INVISIBLE
+        GameObject token = null;
+        if(controller.GetComponent<Controller>().PositionOnBoard(x,y))
+        {
+            if(controller.GetComponent<Controller>().currentPlayer == "p1")
+                token = controller.GetComponent<Controller>().Create("pawn_p1", -1, -1);
+            if(controller.GetComponent<Controller>().currentPlayer == "p2")
+                token = controller.GetComponent<Controller>().Create("pawn_p2", -1, -1);
+        }
 
         //Positionnement du pion au lieu du moveplate seulement en mémoire pas visuellement(si ennemi on le mange)
-        GameObject foe = controller.GetComponent<Controller>().GetPosition(x,y);
+        GameObject foe = null;
+        string foeType = "";
+        int foeIndex = -1;
+        if(controller.GetComponent<Controller>().PositionOnBoard(x,y))
+        {
+            foe = controller.GetComponent<Controller>().GetPosition(x,y);
+        }
+        
         if(foe != null && foe.GetComponent<Chessman>().player != controller.GetComponent<Controller>().currentPlayer)
         {
+            foeType = foe.GetComponent<Chessman>().name;
+            if(controller.GetComponent<Controller>().currentPlayer == "p1")
+            {
+                foeIndex = System.Array.IndexOf(controller.GetComponent<Controller>().player2,foe);
+                controller.GetComponent<Controller>().player2[foeIndex] = null;
+            }else{
+                foeIndex = System.Array.IndexOf(controller.GetComponent<Controller>().player1,foe);
+                controller.GetComponent<Controller>().player1[foeIndex] = null;
+            }
+            isFoe = true;
+            if(foe == SpecialActions.lastPiece)
+                isLastPiece = true;
+            
             controller.GetComponent<Controller>().SetPositionEmpty(x,y);//Simulation de la mort de la pièce ennemi
+            Destroy(foe);
         }
+        if(controller.GetComponent<Controller>().PositionOnBoard(x,y))
+        {
+            token.GetComponent<Chessman>().xBoard = x;
+            token.GetComponent<Chessman>().yBoard = y;
+        }
+
         controller.GetComponent<Controller>().SetPosition(token);
 
         //Mise à jour de la liste des moves disponibles
@@ -295,11 +332,24 @@ public class CheckMateManager : MonoBehaviour
 
         //Annulation des déplacements et remise à zéro de la logique
         Destroy(token);
-        if(foe != null && foe.GetComponent<Chessman>().player != controller.GetComponent<Controller>().currentPlayer)
+        if(isFoe)
         {
-            controller.GetComponent<Controller>().SetPosition(foe);//On remet l'ennemi dans la logique du jeu
+            GameObject restauredFoe = controller.GetComponent<Controller>().Create(foeType,x,y);
+            if(isLastPiece)
+                SpecialActions.lastPiece = restauredFoe;
+            
+            if(controller.GetComponent<Controller>().currentPlayer == "p1")
+            {
+                controller.GetComponent<Controller>().player2[foeIndex] = restauredFoe;
+            }else{
+                controller.GetComponent<Controller>().player1[foeIndex] = restauredFoe;
+            }
+            controller.GetComponent<Controller>().SetPosition(restauredFoe);//On remet l'ennemi dans la logique du jeu
+            isFoe = false;
+            isLastPiece = false;
         }else{
-            controller.GetComponent<Controller>().SetPositionEmpty(x,y);
+            if(controller.GetComponent<Controller>().PositionOnBoard(x,y))
+                controller.GetComponent<Controller>().SetPositionEmpty(x,y);
         }
         movesPossible.Clear();
 
@@ -329,7 +379,7 @@ public class CheckMateManager : MonoBehaviour
                 inGameTheme.GetComponent<AudioSource>().Stop();
                 kingInDanger.GetComponent<AudioSource>().Play(0);
             }
-            //Gestion des éléments liés à cette situation(musique, surbrillance du roi, restriction de mouvement de toutes les pièces(PROCHAINE CHOSE A FAIRE)...)
+            //Gestion des éléments liés à cette situation(restriction de mouvement de toutes les pièces(PROCHAINE CHOSE A FAIRE)...)
             if(controller.GetComponent<Controller>().currentPlayer == "p1")
             {
                 if(kingp1)
