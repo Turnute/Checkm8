@@ -182,7 +182,7 @@ public class CheckMateManager : MonoBehaviour
                 Vector2 pos = new Vector2(x,y);
                 movesPossible.Add(pos); 
             }
-            if(cont.GetPosition(x,y+which_player) == null && cont.GetPosition(x,y) == null)
+            if(cont.PositionOnBoard(x,y+which_player) && cont.GetPosition(x,y+which_player) == null && cont.GetPosition(x,y) == null)
             {
                 Vector2 pos = new Vector2(x,y+which_player);
                 movesPossible.Add(pos); 
