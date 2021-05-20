@@ -55,7 +55,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Ressources\Scripts\EasterEgg.cs" />
      <Compile Include="Assets\Ressources\Scripts\Menu\ButtonController.cs" />
      <Compile Include="Assets\Ressources\Scripts\Menu\CharacterSlot.cs" />
      <Compile Include="Assets\Ressources\Scripts\Menu\LoadSceneScript.cs" />
