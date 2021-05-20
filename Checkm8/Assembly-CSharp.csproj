@@ -69,8 +69,7 @@
     <Compile Include="Assets\Ressources\Scripts\Menu\LoadSceneScript.cs" />
     <Compile Include="Assets\Ressources\Scripts\Menu\RuleSets\Rulesets.cs" />
     <Compile Include="Assets\Ressources\Scripts\Menu\RuleSets\SaveSystem.cs" />
-    <Compile Include="Assets\Ressources\Scripts\Menu\SelectionScene\CharacterSlot.cs" />
-    <Compile Include="Assets\Ressources\Scripts\Menu\SelectionScene\NoCharacterSlot.cs" />
+    <Compile Include="Assets\Ressources\Scripts\Menu\SelectionScene\CharacterSlot2Players.cs" />
     <Compile Include="Assets\Ressources\Scripts\Menu\SelectionScene\SelectCoins.cs" />
     <Compile Include="Assets\Ressources\Scripts\MusicManager.cs" />
     <Compile Include="Assets\Ressources\Scripts\baseGamePlay\CheckMateManager.cs" />
