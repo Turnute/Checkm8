@@ -1,14 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Rulesets : MonoBehaviour
 {
+
+
     private UnityEngine.UI.Toggle toggle;
 
     public static bool PauseButton;
     public static float Time;
     public static float AddTime;
+    public static float MultTimer;
+    public static float MultTimeTurn;
 
     public static bool AlliedMouvement;
     public static bool EnemyMouvement;
@@ -25,10 +30,13 @@ public class Rulesets : MonoBehaviour
     public static float DemoEventProb;
     public static float ProtecEventProb;
     public static float SofEventProb;
+    
 
     GameObject HelpMenu;
     GameObject TimerMenu;
     GameObject EventMenu;
+
+    
 
 
 
@@ -45,6 +53,8 @@ public class Rulesets : MonoBehaviour
         EventMenu.SetActive(false);
 
         PauseButton = false ;
+        MultTimer = 1;
+        MultTimeTurn = 1;
         Time = 0;
         AddTime = 0;
 
@@ -63,7 +73,55 @@ public class Rulesets : MonoBehaviour
         DemoEventProb = 1;
         ProtecEventProb = 1;
         SofEventProb = 1;
+
+
+       
 }
+    // Setter pour les valeurs des Timers
+
+    public void selectMultTimerTurn(int select)
+    {
+        switch (select)
+        {
+            case 1:
+                MultTimeTurn = 60;
+                break;
+            case 2:
+                MultTimeTurn = 3600;
+                break;
+            default:
+                MultTimeTurn = 1;
+                break;
+        }
+    }
+
+    public void selectMultTimer(int select)
+    {
+        switch (select)
+        {
+            case 1:
+                MultTimer = 60;
+                break;
+            case 2:
+                MultTimer = 3600;
+                break;
+            default:
+                MultTimer = 1;
+                break;
+        }
+    }
+
+    public void SetTime(string isTime)
+    {
+        Time = (float.Parse(isTime)*MultTimer);
+        Debug.Log(Time);
+    }
+
+    public void SetTimeTurn(string isAddTime)
+    {
+        AddTime = (float.Parse(isAddTime) * MultTimeTurn);
+        Debug.Log(AddTime);
+    }
 
 
     // Setter pour les valeurs de Help
@@ -93,55 +151,55 @@ public class Rulesets : MonoBehaviour
 
     //Setter pour les valeurs des Events
 
-    public void SetAllEventProb(float isAllEventProb)
-    {
-        AllEventProb = isAllEventProb;
+    public void SetAllEventProb(string isAllEventProb)
+    { 
+        AllEventProb = float.Parse(isAllEventProb);
         Debug.Log(AllEventProb);
     }
-    public void SetNbTurnEvent(float isNbTurnEvent)
+    public void SetNbTurnEvent(string isNbTurnEvent)
     {
-        NbTurnEvent = isNbTurnEvent;
+        NbTurnEvent = float.Parse(isNbTurnEvent);
         Debug.Log("it work");
     }
-    public void SetTPEventProb(float isTPEventProb)
+    public void SetTPEventProb(string isTPEventProb)
     {
-        TPEventProb = isTPEventProb;
+        TPEventProb = float.Parse(isTPEventProb);
         Debug.Log("it work");
     }
-    public void SetRotEventProb(float isRotEventProb)
+    public void SetRotEventProb(string isRotEventProb)
     {
-        RotEventProb = isRotEventProb;
+        RotEventProb = float.Parse(isRotEventProb);
         Debug.Log("it work");
     }
-    public void SetRDMEventProb(float isRDMEventProb)
+    public void SetRDMEventProb(string isRDMEventProb)
     {
-        RDMEventProb = isRDMEventProb;
+        RDMEventProb = float.Parse(isRDMEventProb);
         Debug.Log("it work");
     }
-    public void SetEruptionEventProb(float isEruptionEventProb)
+    public void SetEruptionEventProb(string isEruptionEventProb)
     {
-        EruptionEventProb = isEruptionEventProb;
+        EruptionEventProb = float.Parse(isEruptionEventProb);
         Debug.Log("it work");
     }
-    public void SetPromEventProb(float isPromEventProb)
+    public void SetPromEventProb(string isPromEventProb)
     {
-        PromEventProb = isPromEventProb;
+        PromEventProb = float.Parse(isPromEventProb);
         Debug.Log("it work");
     }
-    public void SetDemoEventProb(float isDemoEventProb)
+    public void SetDemoEventProb(string isDemoEventProb)
     {
-        DemoEventProb = isDemoEventProb;
+        DemoEventProb = float.Parse(isDemoEventProb);
         Debug.Log("it work");
     }
   
-    public void SetProtecEventProb(float isProtecEventProb)
+    public void SetProtecEventProb(string isProtecEventProb)
     {
-        ProtecEventProb = isProtecEventProb;
+        ProtecEventProb = float.Parse(isProtecEventProb);
         Debug.Log("it work");
     }
-    public void SetSofEventProbb(float isSofEventProb)
+    public void SetSofEventProbb(string isSofEventProb)
     {
-        SofEventProb = isSofEventProb;
+        SofEventProb = float.Parse(isSofEventProb);
         Debug.Log("it work");
     }
 
