@@ -9,14 +9,17 @@ public class SelectCoins : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
 
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
-    //private Vector2 defaultPos;
+    private Vector2 defaultPos;
+
+    public bool isDrop;
 
 
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
-        //defaultPos = rectTransform.anchoredPosition;
+        defaultPos = rectTransform.anchoredPosition;
+        isDrop = false;
     }
 
 
@@ -40,6 +43,16 @@ public class SelectCoins : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
         Debug.Log("OnEndDrag");
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
+
+        if (!isDrop)
+        {
+            rectTransform.anchoredPosition = defaultPos;
+        }
+        else
+        {
+            isDrop = false;
+        }
+
     }
 
 }
