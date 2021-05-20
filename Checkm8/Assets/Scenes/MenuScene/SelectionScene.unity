@@ -447,8 +447,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 289.32, y: 31.197}
-  m_SizeDelta: {x: 185.3833, y: 76.75366}
+  m_AnchoredPosition: {x: 283.2, y: 29.774}
+  m_SizeDelta: {x: 180.15332, y: 79.6004}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &307134192
 MonoBehaviour:
@@ -499,6 +499,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fabbd9277c57d42c0bc163cebc7bd07f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  P1coin: {fileID: 1057959152}
+  P2coin: {fileID: 1727150519}
 --- !u!1 &363247766
 GameObject:
   m_ObjectHideFlags: 0
@@ -760,8 +762,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 87.096, y: 31.201}
-  m_SizeDelta: {x: 174.19165, y: 76.74574}
+  m_AnchoredPosition: {x: 84.73, y: 29.774}
+  m_SizeDelta: {x: 169.46143, y: 79.60033}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &562835575
 MonoBehaviour:
@@ -812,6 +814,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fabbd9277c57d42c0bc163cebc7bd07f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  P1coin: {fileID: 1057959152}
+  P2coin: {fileID: 1727150519}
 --- !u!1 &625373692
 GameObject:
   m_ObjectHideFlags: 0
@@ -1058,8 +1062,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -110.41, y: 31.193}
-  m_SizeDelta: {x: 174.19165, y: 76.74585}
+  m_AnchoredPosition: {x: -107.73999, y: 29.77}
+  m_SizeDelta: {x: 168.84338, y: 79.59294}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &748326025
 MonoBehaviour:
@@ -1110,6 +1114,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fabbd9277c57d42c0bc163cebc7bd07f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  P1coin: {fileID: 1057959152}
+  P2coin: {fileID: 1727150519}
 --- !u!1 &852309192
 GameObject:
   m_ObjectHideFlags: 0
@@ -1373,8 +1379,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -87.096, y: 110.53}
-  m_SizeDelta: {x: 174.19165, y: 76.74585}
+  m_AnchoredPosition: {x: -84.43, y: 107.99}
+  m_SizeDelta: {x: 168.86087, y: 76.85544}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &958302789
 MonoBehaviour:
@@ -1425,6 +1431,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fabbd9277c57d42c0bc163cebc7bd07f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  P1coin: {fileID: 1057959152}
+  P2coin: {fileID: 1727150519}
 --- !u!1 &1057959150
 GameObject:
   m_ObjectHideFlags: 0
@@ -1477,6 +1485,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 495394028}
+  isDrop: 0
 --- !u!114 &1057959153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1642,8 +1651,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -290.2, y: 110.53}
-  m_SizeDelta: {x: 185.3833, y: 76.75366}
+  m_AnchoredPosition: {x: -283.26, y: 108}
+  m_SizeDelta: {x: 182.2049, y: 76.841705}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1217392158
 MonoBehaviour:
@@ -1694,6 +1703,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fabbd9277c57d42c0bc163cebc7bd07f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  P1coin: {fileID: 1057959152}
+  P2coin: {fileID: 1727150519}
 --- !u!1 &1339251686
 GameObject:
   m_ObjectHideFlags: 0
@@ -1729,8 +1740,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 301.64, y: 110.53}
-  m_SizeDelta: {x: 160.73822, y: 76.750244}
+  m_AnchoredPosition: {x: 294.54, y: 107.99}
+  m_SizeDelta: {x: 157.46344, y: 76.858215}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1339251688
 MonoBehaviour:
@@ -1781,6 +1792,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fabbd9277c57d42c0bc163cebc7bd07f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  P1coin: {fileID: 1057959152}
+  P2coin: {fileID: 1727150519}
 --- !u!1 &1353027572
 GameObject:
   m_ObjectHideFlags: 0
@@ -2127,6 +2140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 495394028}
+  isDrop: 0
 --- !u!114 &1727150520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2211,8 +2225,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -302.52, y: 31.195}
-  m_SizeDelta: {x: 160.74078, y: 76.750244}
+  m_AnchoredPosition: {x: -295.23, y: 29.77}
+  m_SizeDelta: {x: 158.25308, y: 79.59332}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1801290947
 MonoBehaviour:
@@ -2263,6 +2277,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fabbd9277c57d42c0bc163cebc7bd07f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  P1coin: {fileID: 1057959152}
+  P2coin: {fileID: 1727150519}
 --- !u!1 &1806856829
 GameObject:
   m_ObjectHideFlags: 0
@@ -2354,8 +2370,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 109.3, y: 109.24}
-  m_SizeDelta: {x: 174.19165, y: 79.34024}
+  m_AnchoredPosition: {x: 107.66, y: 107.99}
+  m_SizeDelta: {x: 170.91693, y: 76.851654}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1932819810
 MonoBehaviour:
@@ -2406,3 +2422,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fabbd9277c57d42c0bc163cebc7bd07f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  P1coin: {fileID: 1057959152}
+  P2coin: {fileID: 1727150519}
