@@ -292,6 +292,7 @@ public class CheckMateManager : MonoBehaviour
                 controller.GetComponent<Controller>().player2[foeIndex] = null;
             }else{
                 foeIndex = System.Array.IndexOf(controller.GetComponent<Controller>().player1,foe);
+                Debug.Log(foeIndex);
                 controller.GetComponent<Controller>().player1[foeIndex] = null;
             }
             isFoe = true;
