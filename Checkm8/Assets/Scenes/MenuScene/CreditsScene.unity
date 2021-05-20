@@ -1359,6 +1359,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2080128217}
   - component: {fileID: 2080128216}
+  - component: {fileID: 2080128215}
   m_Layer: 0
   m_Name: SceneController
   m_TagString: Untagged
@@ -1366,6 +1367,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &2080128215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2080128214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa78194bf8bcbc84d963573b4ffa89b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2080128216
 MonoBehaviour:
   m_ObjectHideFlags: 0
