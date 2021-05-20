@@ -1,13 +1,12 @@
-﻿<Properties>
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Ressources/Scripts/Menu/CharacterSlot.cs">
+﻿<Properties StartupConfiguration="{96610222-F55A-E7B5-5A65-4615B50CAB4B}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Ressources/Scripts/Menu/SelectionScene/SelectCoins.cs">
     <Files>
-      <File FileName="Assets/Ressources/Scripts/Menu/SelectCoins.cs" Line="26" Column="1" />
-      <File FileName="Assets/Ressources/Scripts/Menu/CharacterSlot.cs" Line="8" Column="5" />
+      <File FileName="Assets/Ressources/Scripts/Menu/SelectionScene/SelectCoins.cs" Line="43" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="8666e4b7-0dbe-412b-bffd-f73881442730" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="41f424b4-7cca-4222-809c-69b2a3ec34f4" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
