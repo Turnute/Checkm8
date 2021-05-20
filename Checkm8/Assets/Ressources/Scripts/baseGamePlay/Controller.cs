@@ -115,9 +115,20 @@ public class Controller : MonoBehaviour
         if(currentPlayer == "p1")
         {
             currentPlayer = "p2";
+            if(SpecialActions.which_player_roqued == currentPlayer)
+            {
+                SpecialActions.petitRoque = false;
+                SpecialActions.grandRoque = false;
+            }
+
             cmManager.GetComponent<CheckMateManager>().isCheck();
         }else{
             currentPlayer = "p1";
+            if(SpecialActions.which_player_roqued == currentPlayer)
+            {
+                SpecialActions.petitRoque = false;
+                SpecialActions.grandRoque = false;
+            }
             cmManager.GetComponent<CheckMateManager>().isCheck();
         }
     }

@@ -31,7 +31,6 @@ public class CheckMateManager : MonoBehaviour
                 if(controller.GetComponent<Controller>().player1[i])
                 {
                     ComputeMoves(controller.GetComponent<Controller>().player1[i]);
-                    Debug.Log(controller.GetComponent<Controller>().player1[i].GetComponent<Chessman>().name);
                 }
             }else{
                 if(controller.GetComponent<Controller>().player2[i])
@@ -266,16 +265,13 @@ public class CheckMateManager : MonoBehaviour
         return false;
     }
 
-    public bool SimulateMove(int x, int y)//Simule un déplacement associé à un moveplate et regarde si ce dernier permet de sortir de l'echec
+    public bool SimulateMove(GameObject piece, int x, int y)//Simule un déplacement associé à un moveplate et regarde si ce dernier permet de sortir de l'echec
     {
         //Créer un faux pion afin de simuler un coup
         GameObject token = null;
-        if(controller.GetComponent<Controller>().PositionOnBoard(x,y))
+        if(controller.GetComponent<Controller>().PositionOnBoard(x,y))//Prendre la bonne pièce pour le token
         {
-            if(controller.GetComponent<Controller>().currentPlayer == "p1")
-                token = controller.GetComponent<Controller>().Create("pawn_p1", -1, -1);
-            if(controller.GetComponent<Controller>().currentPlayer == "p2")
-                token = controller.GetComponent<Controller>().Create("pawn_p2", -1, -1);
+            token = controller.GetComponent<Controller>().Create(piece.GetComponent<Chessman>().name, piece.GetComponent<Chessman>().xBoard, piece.GetComponent<Chessman>().yBoard);
         }
 
         //Positionnement du pion au lieu du moveplate seulement en mémoire pas visuellement(si ennemi on le mange)
@@ -305,8 +301,9 @@ public class CheckMateManager : MonoBehaviour
             controller.GetComponent<Controller>().SetPositionEmpty(x,y);//Simulation de la mort de la pièce ennemi
             Destroy(foe);
         }
-        if(controller.GetComponent<Controller>().PositionOnBoard(x,y))
+        if(controller.GetComponent<Controller>().PositionOnBoard(x,y))//Déplacement du token
         {
+            controller.GetComponent<Controller>().SetPositionEmpty(token.GetComponent<Chessman>().xBoard,token.GetComponent<Chessman>().yBoard);
             token.GetComponent<Chessman>().xBoard = x;
             token.GetComponent<Chessman>().yBoard = y;
         }
@@ -350,6 +347,10 @@ public class CheckMateManager : MonoBehaviour
         }else{
             if(controller.GetComponent<Controller>().PositionOnBoard(x,y))
                 controller.GetComponent<Controller>().SetPositionEmpty(x,y);
+        }
+        if(controller.GetComponent<Controller>().PositionOnBoard(x,y))//Replacement de la position de notre pièce de base
+        {
+            controller.GetComponent<Controller>().SetPosition(piece);
         }
         movesPossible.Clear();
 

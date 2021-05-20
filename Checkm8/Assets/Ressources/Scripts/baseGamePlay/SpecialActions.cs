@@ -13,6 +13,9 @@ public class SpecialActions : MonoBehaviour
     public static Vector2 lastPos;//La postion de la dernière pièce avant son dernier déplacement
     public static Vector2 pieceEatenPos;
     public static int nbMovePieceEaten;
+    public static bool grandRoque = false;
+    public static string which_player_roqued;
+    public static bool petitRoque = false;
     private bool rookFind = false;//True lorsque l'on a récupéré la première tour 
     public GameObject roqueImpossible;//Message qui s'affiche lorsqu'on ne peut pas faire de Roque
     private float displayTimer = 2.5f;
@@ -55,6 +58,9 @@ public class SpecialActions : MonoBehaviour
                 controller.GetComponent<Controller>().SetPositionEmpty(4,0);
                 controller.GetComponent<Controller>().SetPositionEmpty(7,0);
                 controller.GetComponent<Controller>().NextTurn();
+                petitRoque = true;
+                which_player_roqued = "p1";
+                cancelButton.SetActive(true);
             }else{
                 printWarningMessage();
             }
@@ -93,6 +99,9 @@ public class SpecialActions : MonoBehaviour
                 controller.GetComponent<Controller>().SetPositionEmpty(4,7);
                 controller.GetComponent<Controller>().SetPositionEmpty(7,7);
                 controller.GetComponent<Controller>().NextTurn();
+                petitRoque = true;
+                which_player_roqued = "p2";
+                cancelButton.SetActive(true);
             }else{
                 printWarningMessage();
             }
@@ -137,6 +146,9 @@ public class SpecialActions : MonoBehaviour
                 controller.GetComponent<Controller>().SetPositionEmpty(4,0);
                 controller.GetComponent<Controller>().SetPositionEmpty(0,0);
                 controller.GetComponent<Controller>().NextTurn();
+                grandRoque = true;
+                which_player_roqued = "p1";
+                cancelButton.SetActive(true);
             }else{
                 printWarningMessage();
             }
@@ -175,6 +187,9 @@ public class SpecialActions : MonoBehaviour
                 controller.GetComponent<Controller>().SetPositionEmpty(4,7);
                 controller.GetComponent<Controller>().SetPositionEmpty(0,7);
                 controller.GetComponent<Controller>().NextTurn();
+                grandRoque = true;
+                which_player_roqued = "p2";
+                cancelButton.SetActive(true);
             }else{
                 printWarningMessage();
             }
@@ -189,17 +204,155 @@ public class SpecialActions : MonoBehaviour
 
     public void CancelMove()
     {
-        //On annule le dernier déplacement
-        controller.GetComponent<Controller>().SetPositionEmpty(lastPiece.GetComponent<Chessman>().xBoard,lastPiece.GetComponent<Chessman>().yBoard);
+        //On annule le dernier déplacement(on teste avant quel genre de déplacement cela était)
+        if(petitRoque)
+        {
+            if(controller.GetComponent<Controller>().currentPlayer == "p2")
+            {
+                GameObject rook = null;
+                GameObject king = null;
+                //On va chercher la tour et le roi du bon joueur
+                for(int i=0; i<controller.GetComponent<Controller>().player1.Length;i++)
+                {
+                    if(controller.GetComponent<Controller>().player1[i])
+                    {
+                        if(controller.GetComponent<Controller>().player1[i].name == "rook_p1")
+                            rookFind = true;
 
-        lastPiece.GetComponent<Chessman>().xBoard = (int)lastPos.x;
-        lastPiece.GetComponent<Chessman>().yBoard = (int)lastPos.y;
-        lastPiece.GetComponent<Chessman>().setCoords(true);
-        lastPiece.GetComponent<Chessman>().hasMoved--;
-        controller.GetComponent<Controller>().SetPosition(lastPiece);
-        controller.GetComponent<CheckMateManager>().movesPossible.Clear();
-        controller.GetComponent<CheckMateManager>().PredictAllMoves(controller.GetComponent<Controller>().currentPlayer);
-        controller.GetComponent<CheckMateManager>().check = false;
+                        if(controller.GetComponent<Controller>().player1[i].name == "rook_p1" && rookFind)  
+                            rook = controller.GetComponent<Controller>().player1[i];
+                        
+                        if(controller.GetComponent<Controller>().player1[i].name == "king_p1")
+                            king = controller.GetComponent<Controller>().player1[i];
+                    }
+                }
+                    rookFind = false;
+                
+                    //On annule le roque
+                    king.GetComponent<Chessman>().xBoard = 4;
+                    king.GetComponent<Chessman>().hasMoved --;
+                    rook.GetComponent<Chessman>().xBoard = 7;
+                    rook.GetComponent<Chessman>().hasMoved --;
+                    controller.GetComponent<Controller>().SetPosition(king);
+                    king.GetComponent<Chessman>().setCoords(false);
+                    controller.GetComponent<Controller>().SetPosition(rook);
+                    rook.GetComponent<Chessman>().setCoords(true);
+                    controller.GetComponent<Controller>().SetPositionEmpty(6,0);
+                    controller.GetComponent<Controller>().SetPositionEmpty(5,0);
+            }else{
+                GameObject rook = null;
+                GameObject king = null;
+                //On va chercher la tour et le roi du bon joueur
+                for(int i=0; i<controller.GetComponent<Controller>().player2.Length;i++)
+                {
+                    if(controller.GetComponent<Controller>().player2[i])
+                    {
+                        if(controller.GetComponent<Controller>().player2[i].name == "rook_p2")
+                            rookFind = true;
+
+                        if(controller.GetComponent<Controller>().player2[i].name == "rook_p2" && rookFind)  
+                            rook = controller.GetComponent<Controller>().player2[i];
+                        
+                        if(controller.GetComponent<Controller>().player2[i].name == "king_p2")
+                            king = controller.GetComponent<Controller>().player2[i];
+                    }
+                }
+                    rookFind = false;
+                
+                    //On annule le roque
+                    king.GetComponent<Chessman>().xBoard = 4;
+                    king.GetComponent<Chessman>().hasMoved --;
+                    rook.GetComponent<Chessman>().xBoard = 7;
+                    rook.GetComponent<Chessman>().hasMoved --;
+                    controller.GetComponent<Controller>().SetPosition(king);
+                    king.GetComponent<Chessman>().setCoords(false);
+                    controller.GetComponent<Controller>().SetPosition(rook);
+                    rook.GetComponent<Chessman>().setCoords(true);
+                    controller.GetComponent<Controller>().SetPositionEmpty(6,7);
+                    controller.GetComponent<Controller>().SetPositionEmpty(5,7);
+            }
+                
+        }else if(grandRoque)
+            {
+                if(controller.GetComponent<Controller>().currentPlayer == "p2")
+                {
+                    GameObject rook = null;
+                    GameObject king = null;
+                    //On va chercher la tour et le roi du bon joueur
+                    for(int i=0; i<controller.GetComponent<Controller>().player1.Length;i++)
+                    {
+                        if(controller.GetComponent<Controller>().player1[i])
+                        {
+                            if(controller.GetComponent<Controller>().player1[i].name == "rook_p1" && !rookFind)
+                            {
+                                rook = controller.GetComponent<Controller>().player1[i];
+                                rookFind = true;
+                            }
+                            
+                            if(controller.GetComponent<Controller>().player1[i].name == "king_p1")
+                                king = controller.GetComponent<Controller>().player1[i];
+                        }
+                    }
+                        rookFind = false;
+                
+                        //On annule le roque
+                        king.GetComponent<Chessman>().xBoard = 4;
+                        king.GetComponent<Chessman>().hasMoved --;
+                        rook.GetComponent<Chessman>().xBoard = 0;
+                        rook.GetComponent<Chessman>().hasMoved --;
+                        controller.GetComponent<Controller>().SetPosition(king);
+                        king.GetComponent<Chessman>().setCoords(false);
+                        controller.GetComponent<Controller>().SetPosition(rook);
+                        rook.GetComponent<Chessman>().setCoords(true);
+                        controller.GetComponent<Controller>().SetPositionEmpty(2,0);
+                        controller.GetComponent<Controller>().SetPositionEmpty(3,0);
+                    
+                }else{
+                    GameObject rook = null;
+                    GameObject king = null;
+                    //On va chercher la tour et le roi du bon joueur
+                    for(int i=0; i<controller.GetComponent<Controller>().player2.Length;i++)
+                    {
+                        if(controller.GetComponent<Controller>().player2[i])
+                        {
+                            if(controller.GetComponent<Controller>().player2[i].name == "rook_p2" && !rookFind)
+                            {
+                                rook = controller.GetComponent<Controller>().player2[i];
+                                rookFind = true;
+                            }
+                            
+                            if(controller.GetComponent<Controller>().player2[i].name == "king_p2")
+                                king = controller.GetComponent<Controller>().player2[i];
+                        }
+                    }
+                        rookFind = false;
+
+                        //On annule le roque
+                        king.GetComponent<Chessman>().xBoard = 4;
+                        king.GetComponent<Chessman>().hasMoved --;
+                        rook.GetComponent<Chessman>().xBoard = 0;
+                        rook.GetComponent<Chessman>().hasMoved --;
+                        controller.GetComponent<Controller>().SetPosition(king);
+                        king.GetComponent<Chessman>().setCoords(false);
+                        controller.GetComponent<Controller>().SetPosition(rook);
+                        rook.GetComponent<Chessman>().setCoords(true);
+                        controller.GetComponent<Controller>().SetPositionEmpty(2,7);
+                        controller.GetComponent<Controller>().SetPositionEmpty(3,7);
+                }
+
+            }else{
+                controller.GetComponent<Controller>().SetPositionEmpty(lastPiece.GetComponent<Chessman>().xBoard,lastPiece.GetComponent<Chessman>().yBoard);
+
+                lastPiece.GetComponent<Chessman>().xBoard = (int)lastPos.x;
+                lastPiece.GetComponent<Chessman>().yBoard = (int)lastPos.y;
+                lastPiece.GetComponent<Chessman>().setCoords(true);
+                lastPiece.GetComponent<Chessman>().hasMoved--;
+                controller.GetComponent<Controller>().SetPosition(lastPiece);
+                controller.GetComponent<CheckMateManager>().movesPossible.Clear();
+                controller.GetComponent<CheckMateManager>().PredictAllMoves(controller.GetComponent<Controller>().currentPlayer);
+                controller.GetComponent<CheckMateManager>().check = false;
+            }
+
         //Si une pièce a été mangée on la recrée et on la met à sa place
         if(pieceHasBeenEaten)
         {
