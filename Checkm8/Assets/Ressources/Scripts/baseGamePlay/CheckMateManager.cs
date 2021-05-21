@@ -319,9 +319,13 @@ public class CheckMateManager : MonoBehaviour
                 controller.GetComponent<Controller>().SetPositionEmpty(token.GetComponent<Chessman>().xBoard,token.GetComponent<Chessman>().yBoard);
                 if(controller.GetComponent<Controller>().currentPlayer == "p1")
                 {
+                    token.GetComponent<Chessman>().xBoard = x;
+                    token.GetComponent<Chessman>().yBoard = y;
                     kingp1 = token;
                     isKingAlly = true;
                 }else{
+                    token.GetComponent<Chessman>().xBoard = x;
+                    token.GetComponent<Chessman>().yBoard = y;
                     kingp2 = token;
                     isKingAlly = true;
                 }
