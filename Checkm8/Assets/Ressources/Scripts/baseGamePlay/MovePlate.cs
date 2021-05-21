@@ -37,6 +37,13 @@ public class MovePlate : MonoBehaviour
                 controller.GetComponent<Controller>().Winner("p1");
 
             SpecialActions.pieceEaten = piece.name;
+            if(controller.GetComponent<Controller>().currentPlayer == "p1")
+            {
+                SpecialActions.pieceEatenIndex = System.Array.IndexOf(controller.GetComponent<Controller>().player2,piece);
+            }else{
+                SpecialActions.pieceEatenIndex = System.Array.IndexOf(controller.GetComponent<Controller>().player1,piece);
+            }
+            
             SpecialActions.pieceHasBeenEaten = true;
             SpecialActions.pieceEatenPos = new Vector2(piece.GetComponent<Chessman>().xBoard, piece.GetComponent<Chessman>().yBoard);
             SpecialActions.nbMovePieceEaten = piece.GetComponent<Chessman>().hasMoved;

@@ -10,6 +10,8 @@ public class CheckMateManager : MonoBehaviour
     public bool stillCheck = false;
     private bool isFoe = false;
     private bool isLastPiece = false;
+    private bool isKing = false;//True si la pièce mangeable est le roi adverse
+    private bool isKingAlly = false;//True si la pièce dont on calcule les move est notre roi
 
     //Musiques à jouer sur la scène
     public GameObject inGameTheme, kingInDanger;
@@ -274,7 +276,7 @@ public class CheckMateManager : MonoBehaviour
             token = controller.GetComponent<Controller>().Create(piece.GetComponent<Chessman>().name, piece.GetComponent<Chessman>().xBoard, piece.GetComponent<Chessman>().yBoard);
         }
 
-        //Positionnement du pion au lieu du moveplate seulement en mémoire pas visuellement(si ennemi on le mange)
+        //Positionnement du pion au lieu du moveplate seulement en mémoire pas visuellement(si ennemi, on le mange)
         GameObject foe = null;
         string foeType = "";
         int foeIndex = -1;
@@ -295,6 +297,10 @@ public class CheckMateManager : MonoBehaviour
                 Debug.Log(foeIndex);
                 controller.GetComponent<Controller>().player1[foeIndex] = null;
             }
+            if(foeType == "king_p1" || foeType == "king_p2")//Si la pièce ennemi est un roi
+            {
+                isKing = true;
+            }
             isFoe = true;
             if(foe == SpecialActions.lastPiece)
                 isLastPiece = true;
@@ -304,9 +310,22 @@ public class CheckMateManager : MonoBehaviour
         }
         if(controller.GetComponent<Controller>().PositionOnBoard(x,y))//Déplacement du token
         {
-            controller.GetComponent<Controller>().SetPositionEmpty(token.GetComponent<Chessman>().xBoard,token.GetComponent<Chessman>().yBoard);
-            token.GetComponent<Chessman>().xBoard = x;
-            token.GetComponent<Chessman>().yBoard = y;
+            if(token.GetComponent<Chessman>().name == "king_p1" || token.GetComponent<Chessman>().name == "king_p2")//Si on calcul les move du roi
+            {
+                controller.GetComponent<Controller>().SetPositionEmpty(token.GetComponent<Chessman>().xBoard,token.GetComponent<Chessman>().yBoard);
+                if(controller.GetComponent<Controller>().currentPlayer == "p1")
+                {
+                    kingp1 = token;
+                    isKingAlly = true;
+                }else{
+                    kingp2 = token;
+                    isKingAlly = true;
+                }
+            }else{
+                controller.GetComponent<Controller>().SetPositionEmpty(token.GetComponent<Chessman>().xBoard,token.GetComponent<Chessman>().yBoard);
+                token.GetComponent<Chessman>().xBoard = x;
+                token.GetComponent<Chessman>().yBoard = y;
+            }
         }
 
         controller.GetComponent<Controller>().SetPosition(token);
@@ -345,6 +364,16 @@ public class CheckMateManager : MonoBehaviour
             controller.GetComponent<Controller>().SetPosition(restauredFoe);//On remet l'ennemi dans la logique du jeu
             isFoe = false;
             isLastPiece = false;
+            if(isKing)
+            {
+                if(controller.GetComponent<Controller>().currentPlayer == "p1")
+                {
+                    kingp2 = controller.GetComponent<Controller>().player2[5];
+                }else{
+                    kingp1 = controller.GetComponent<Controller>().player1[5];
+                }
+                isKing = false;
+            }
         }else{
             if(controller.GetComponent<Controller>().PositionOnBoard(x,y))
                 controller.GetComponent<Controller>().SetPositionEmpty(x,y);
@@ -352,6 +381,17 @@ public class CheckMateManager : MonoBehaviour
         if(controller.GetComponent<Controller>().PositionOnBoard(x,y))//Replacement de la position de notre pièce de base
         {
             controller.GetComponent<Controller>().SetPosition(piece);
+            if(isKingAlly)
+            {
+                if(controller.GetComponent<Controller>().currentPlayer == "p1")
+                {
+                    kingp1 = piece;
+                    isKingAlly = false;
+                }else{
+                    kingp2 = piece;
+                    isKingAlly = false;
+                }
+            }
         }
         movesPossible.Clear();
 
@@ -391,8 +431,10 @@ public class CheckMateManager : MonoBehaviour
                     kingp2.GetComponent<SpriteRenderer>().color = Color.red;
             }
         }else{
-            kingp1.GetComponent<SpriteRenderer>().color = kingp1.GetComponent<Chessman>().pieceColor;
-            kingp2.GetComponent<SpriteRenderer>().color = kingp2.GetComponent<Chessman>().pieceColor;
+            if(kingp1)
+                kingp1.GetComponent<SpriteRenderer>().color = kingp1.GetComponent<Chessman>().pieceColor;
+            if(kingp2)
+                kingp2.GetComponent<SpriteRenderer>().color = kingp2.GetComponent<Chessman>().pieceColor;
             if (!inGameTheme.GetComponent<AudioSource>().isPlaying)
             {
                 inGameTheme.GetComponent<AudioSource>().Play(0);

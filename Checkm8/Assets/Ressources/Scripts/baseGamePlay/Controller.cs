@@ -15,7 +15,7 @@ public class Controller : MonoBehaviour
     public GameObject p1Win,p2Win;//Les portraits des joueurs(A modif)
     public GameObject promotePanel;
     public GameObject quitPanel;
-    public GameObject pauseButton, pRoque, gRoque;
+    public GameObject pauseButton, pRoque, gRoque, roqueText;
     public Text winnerName;
     public Text currentPlayerDisplay;
     public GameObject cmManager;
@@ -180,6 +180,7 @@ public class Controller : MonoBehaviour
             pauseButton.SetActive(false);
             pRoque.SetActive(false);
             gRoque.SetActive(false);
+            roqueText.SetActive(false);
         }else{
             if(currentPlayer == "p1")
                 currentPlayerDisplay.text = "Player 1 turn";
