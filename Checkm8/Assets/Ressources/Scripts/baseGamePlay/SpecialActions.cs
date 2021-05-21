@@ -58,6 +58,8 @@ public class SpecialActions : MonoBehaviour
                 rook.GetComponent<Chessman>().setCoords(true);
                 controller.GetComponent<Controller>().SetPositionEmpty(4,0);
                 controller.GetComponent<Controller>().SetPositionEmpty(7,0);
+                controller.GetComponent<CheckMateManager>().movesPossible.Clear();
+                controller.GetComponent<CheckMateManager>().PredictAllMoves(controller.GetComponent<Controller>().currentPlayer);
                 controller.GetComponent<Controller>().NextTurn();
                 petitRoque = true;
                 which_player_roqued = "p1";
@@ -99,6 +101,8 @@ public class SpecialActions : MonoBehaviour
                 rook.GetComponent<Chessman>().setCoords(true);
                 controller.GetComponent<Controller>().SetPositionEmpty(4,7);
                 controller.GetComponent<Controller>().SetPositionEmpty(7,7);
+                controller.GetComponent<CheckMateManager>().movesPossible.Clear();
+                controller.GetComponent<CheckMateManager>().PredictAllMoves(controller.GetComponent<Controller>().currentPlayer);
                 controller.GetComponent<Controller>().NextTurn();
                 petitRoque = true;
                 which_player_roqued = "p2";
@@ -146,6 +150,8 @@ public class SpecialActions : MonoBehaviour
                 rook.GetComponent<Chessman>().setCoords(true);
                 controller.GetComponent<Controller>().SetPositionEmpty(4,0);
                 controller.GetComponent<Controller>().SetPositionEmpty(0,0);
+                controller.GetComponent<CheckMateManager>().movesPossible.Clear();
+                controller.GetComponent<CheckMateManager>().PredictAllMoves(controller.GetComponent<Controller>().currentPlayer);
                 controller.GetComponent<Controller>().NextTurn();
                 grandRoque = true;
                 which_player_roqued = "p1";
@@ -187,6 +193,8 @@ public class SpecialActions : MonoBehaviour
                 rook.GetComponent<Chessman>().setCoords(true);
                 controller.GetComponent<Controller>().SetPositionEmpty(4,7);
                 controller.GetComponent<Controller>().SetPositionEmpty(0,7);
+                controller.GetComponent<CheckMateManager>().movesPossible.Clear();
+                controller.GetComponent<CheckMateManager>().PredictAllMoves(controller.GetComponent<Controller>().currentPlayer);
                 controller.GetComponent<Controller>().NextTurn();
                 grandRoque = true;
                 which_player_roqued = "p2";
@@ -450,9 +458,18 @@ public class SpecialActions : MonoBehaviour
             pieceEaten = "";
         }
 
+        //On efface les potentielles movePlates créé par l'adversaire
+        GameObject[] movePlates = GameObject.FindGameObjectsWithTag("MovePlate");
+        for(int i=0; i< movePlates.Length;i++)
+        {
+            Destroy(movePlates[i]);
+        }
+
         //On redonne la main au joueur ayant annulé
         pieceHasBeenEaten = false;
         pieceEaten = "";
+        controller.GetComponent<CheckMateManager>().movesPossible.Clear();
+        controller.GetComponent<CheckMateManager>().PredictAllMoves(controller.GetComponent<Controller>().currentPlayer);
         controller.GetComponent<Controller>().NextTurn();
         
         //On grise le bouton tant qu'il n'y a pas de nouveau move de fait
