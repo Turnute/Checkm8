@@ -241,6 +241,11 @@ public class CheckMateManager : MonoBehaviour
         }
     }
 
+    public bool isCheckMate(string currentPlayer)
+    {
+        return false;
+    }
+
     public bool StillCheck()//Appelé par SimulateMove pour tester si un déplacement annulerai la situation d'échec ou non
     {
         for (int i = 0; i < movesPossible.Count; i++)
@@ -294,7 +299,6 @@ public class CheckMateManager : MonoBehaviour
                 controller.GetComponent<Controller>().player2[foeIndex] = null;
             }else{
                 foeIndex = System.Array.IndexOf(controller.GetComponent<Controller>().player1,foe);
-                Debug.Log(foeIndex);
                 controller.GetComponent<Controller>().player1[foeIndex] = null;
             }
             if(foeType == "king_p1" || foeType == "king_p2")//Si la pièce ennemi est un roi
@@ -315,9 +319,13 @@ public class CheckMateManager : MonoBehaviour
                 controller.GetComponent<Controller>().SetPositionEmpty(token.GetComponent<Chessman>().xBoard,token.GetComponent<Chessman>().yBoard);
                 if(controller.GetComponent<Controller>().currentPlayer == "p1")
                 {
+                    token.GetComponent<Chessman>().xBoard = x;
+                    token.GetComponent<Chessman>().yBoard = y;
                     kingp1 = token;
                     isKingAlly = true;
                 }else{
+                    token.GetComponent<Chessman>().xBoard = x;
+                    token.GetComponent<Chessman>().yBoard = y;
                     kingp2 = token;
                     isKingAlly = true;
                 }
@@ -426,9 +434,13 @@ public class CheckMateManager : MonoBehaviour
             {
                 if(kingp1)
                     kingp1.GetComponent<SpriteRenderer>().color = Color.red;
+                if(isCheckMate("p1"))
+                    controller.GetComponent<Controller>().Winner("p2");
             }else{
                 if(kingp2)
                     kingp2.GetComponent<SpriteRenderer>().color = Color.red;
+                if(isCheckMate("p2"))
+                    controller.GetComponent<Controller>().Winner("p1");
             }
         }else{
             if(kingp1)
