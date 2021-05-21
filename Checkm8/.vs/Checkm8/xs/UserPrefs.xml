@@ -1,13 +1,16 @@
 ﻿<Properties StartupConfiguration="{96610222-F55A-E7B5-5A65-4615B50CAB4B}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Ressources/Scripts/Menu/SelectionScene/SelectCoins.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Ressources/Scripts/Menu/SelectionScene/InputName.cs">
     <Files>
-      <File FileName="Assets/Ressources/Scripts/Menu/SelectionScene/SelectCoins.cs" Line="17" Column="55" />
-      <File FileName="Assets/Ressources/Scripts/Menu/SelectionScene/CharacterSlot2Players.cs" Line="15" Column="6" />
+      <File FileName="Assets/Ressources/Scripts/Menu/SelectionScene/SelectCoins.cs" Line="51" Column="41" />
+      <File FileName="Assets/Ressources/Scripts/Menu/SelectionScene/CharacterSlot2Players.cs" Line="30" Column="135" />
+      <File FileName="Assets/Ressources/Scripts/Menu/SelectionScene/PieceSelected.cs" Line="16" Column="6" />
+      <File FileName="Assets/Ressources/Scripts/Menu/SelectionScene/PieceColorModify.cs" Line="18" Column="6" />
+      <File FileName="Assets/Ressources/Scripts/Menu/SelectionScene/InputName.cs" Line="6" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="41f424b4-7cca-4222-809c-69b2a3ec34f4" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="7fa869b6-adb2-47ed-ae12-69b9e11df1ea" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

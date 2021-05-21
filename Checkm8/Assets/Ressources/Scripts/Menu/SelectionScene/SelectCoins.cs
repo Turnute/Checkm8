@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class SelectCoins : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     [SerializeField] private Canvas canvas;
+    [SerializeField] public SpriteRenderer pieceSelected;
 
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
@@ -47,6 +48,7 @@ public class SelectCoins : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
         if (!isDrop)
         {
             rectTransform.anchoredPosition = defaultPos;
+            pieceSelected.sprite = null;
         }
         else
         {
