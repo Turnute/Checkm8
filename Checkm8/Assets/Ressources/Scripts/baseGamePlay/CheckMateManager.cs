@@ -243,7 +243,46 @@ public class CheckMateManager : MonoBehaviour
 
     public bool isCheckMate(string currentPlayer)
     {
-        return false;
+        if(currentPlayer == "p1")
+        {
+            for(int i=0; i<controller.GetComponent<Controller>().player1.Length;i++)
+            {
+                if(controller.GetComponent<Controller>().player1[i])
+                {
+                    controller.GetComponent<Controller>().player1[i].GetComponent<Chessman>().InitiateMovePlates();
+                }
+            }
+            GameObject[] move = GameObject.FindGameObjectsWithTag("MovePlate");
+            if(move.Length == 0)
+            {
+                return true;
+            }else{
+                for(int i=0;i<move.Length;i++)
+                {
+                    Destroy(move[i]);
+                }
+                return false;
+            }
+        }else{
+            for(int i=0; i<controller.GetComponent<Controller>().player2.Length;i++)
+            {
+                if(controller.GetComponent<Controller>().player2[i])
+                {
+                    controller.GetComponent<Controller>().player2[i].GetComponent<Chessman>().InitiateMovePlates();
+                }
+            }
+            GameObject[] move = GameObject.FindGameObjectsWithTag("MovePlate");
+            if(move.Length == 0)
+            {
+                return true;
+            }else{
+                for(int i=0;i<move.Length;i++)
+                {
+                    Destroy(move[i]);
+                }
+                return false;
+            }
+        }
     }
 
     public bool StillCheck()//Appelé par SimulateMove pour tester si un déplacement annulerai la situation d'échec ou non

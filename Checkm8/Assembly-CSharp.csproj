@@ -625,6 +625,9 @@
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>C:/Users/33625/Documents/GitHub/Checkm8/Checkm8/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.Toolchain.Win-x86_64-Linux-x86_64">
+ <HintPath>C:/Users/33625/Documents/GitHub/Checkm8/Checkm8/Library/ScriptAssemblies/Unity.Toolchain.Win-x86_64-Linux-x86_64.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.2D.Animation.Runtime">
  <HintPath>C:/Users/33625/Documents/GitHub/Checkm8/Checkm8/Library/ScriptAssemblies/Unity.2D.Animation.Runtime.dll</HintPath>
  </Reference>
@@ -712,6 +715,9 @@
  <Reference Include="Unity.2D.Animation.Editor">
  <HintPath>C:/Users/33625/Documents/GitHub/Checkm8/Checkm8/Library/ScriptAssemblies/Unity.2D.Animation.Editor.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.Sysroot.Linux_x86_64">
+ <HintPath>C:/Users/33625/Documents/GitHub/Checkm8/Checkm8/Library/ScriptAssemblies/Unity.Sysroot.Linux_x86_64.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.ShaderGraph.Editor">
  <HintPath>C:/Users/33625/Documents/GitHub/Checkm8/Checkm8/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>
  </Reference>
@@ -720,6 +726,9 @@
  </Reference>
  <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
  <HintPath>C:/Users/33625/Documents/GitHub/Checkm8/Checkm8/Library/ScriptAssemblies/Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.SysrootPackage.Editor">
+ <HintPath>C:/Users/33625/Documents/GitHub/Checkm8/Checkm8/Library/ScriptAssemblies/Unity.SysrootPackage.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
  <HintPath>C:/Users/33625/Documents/GitHub/Checkm8/Checkm8/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
@@ -732,15 +741,6 @@
  </Reference>
  <Reference Include="UnityEditor.UI">
  <HintPath>C:/Users/33625/Documents/GitHub/Checkm8/Checkm8/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Toolchain.Win-x86_64-Linux-x86_64">
- <HintPath>C:/Users/33625/Documents/GitHub/Checkm8/Checkm8/Library/ScriptAssemblies/Unity.Toolchain.Win-x86_64-Linux-x86_64.dll</HintPath>
- </Reference>
- <Reference Include="Unity.Sysroot.Linux_x86_64">
- <HintPath>C:/Users/33625/Documents/GitHub/Checkm8/Checkm8/Library/ScriptAssemblies/Unity.Sysroot.Linux_x86_64.dll</HintPath>
- </Reference>
- <Reference Include="Unity.SysrootPackage.Editor">
- <HintPath>C:/Users/33625/Documents/GitHub/Checkm8/Checkm8/Library/ScriptAssemblies/Unity.SysrootPackage.Editor.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
