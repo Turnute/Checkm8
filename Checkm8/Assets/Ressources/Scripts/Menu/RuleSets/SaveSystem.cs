@@ -1,13 +1,49 @@
-﻿
-
+﻿using UnityEngine;
 using System.IO;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveSystem {
 
-    private static readonly string SAVE_FOLDER = Application.dataPath + "/Saves/";
+    public static void SaveConfig(Rulesets config) 
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/Config.cfg";
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        DataConfig data = new DataConfig(config);
+
+        formatter.Serialize(stream, data);
+        stream.Close();
+    }
+ 
+    public static DataConfig loadConfing ()
+    {
+        string path = Application.persistentDataPath + "/config.cfg";
+        if(File.Exists(path))
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(path, FileMode.Open);
+
+            DataConfig data = formatter.Deserialize(stream) as DataConfig;
+
+            stream.Close();
+
+            return data;
+        }
+        else
+        {
+            Debug.LogError("Config file not found in " + path);
+            return null;
+        }
+    }
+
+      
+
+
+
+
+
+   /* private static readonly string SAVE_FOLDER = Application.dataPath + "/Saves/";
     private const string SAVE_EXTENSION = "txt";
 
     public static void Init() {
@@ -52,5 +88,5 @@ public static class SaveSystem {
             return null;
         }
     }
-
+    */
 }
