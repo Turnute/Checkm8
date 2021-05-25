@@ -270,6 +270,62 @@ public class Chessman : MonoBehaviour
         }
     }
 
+    public void InitiateTest()
+    {
+        switch(this.name)
+        {
+            case "queen_p1":
+            case "queen_p2":
+                LineTest(1,0);
+                LineTest(0,1);
+                LineTest(1,1);
+                LineTest(-1,0);
+                LineTest(-1,1);
+                LineTest(1,-1);
+                LineTest(0,-1);
+                LineTest(-1,-1);
+                break;
+            case "knight_p1" :
+            case "knight_p2" :
+                LTest();
+                break;
+            case "bishop_p1":
+            case "bishop_p2":
+                LineTest(1,1);
+                LineTest(1,-1);
+                LineTest(-1,1);
+                LineTest(-1,-1);
+                break;
+            case "king_p1":
+            case "king_p2":
+                SurroundTest();
+                break;
+            case "rook_p1":
+            case "rook_p2":
+                LineTest(1,0);
+                LineTest(0,1);
+                LineTest(-1,0);
+                LineTest(0,-1);
+                break;
+            case "pawn_p2":
+                if(hasMoved == 0)
+                {
+                    PawnTestFirstTurn(xBoard,yBoard-1,-1);
+                }else{
+                    PawnTest(xBoard, yBoard - 1);
+                }
+                break;
+            case "pawn_p1":
+                if(hasMoved == 0)
+                {
+                    PawnTestFirstTurn(xBoard, yBoard + 1,1);
+                }else{
+                    PawnTest(xBoard, yBoard + 1);
+                }
+                break;
+        }
+    }
+
     public void LineMovePlate(int xIncrement, int yIncrement)
     {
         Controller cont = controller.GetComponent<Controller>();
@@ -306,6 +362,51 @@ public class Chessman : MonoBehaviour
                 if(controller.GetComponent<CheckMateManager>().SimulateMove(gameObject,x,y))
                     MovePlateAttackSpawn(x,y);
             }
+        //}
+    }
+
+    public void LineTest(int xIncrement, int yIncrement)
+    {
+        Controller cont = controller.GetComponent<Controller>();
+
+        int x = xBoard + xIncrement;
+        int y = yBoard + yIncrement;
+
+        /*if(!controller.GetComponent<CheckMateManager>().check)
+        {
+        while(cont.PositionOnBoard(x,y) && cont.GetPosition(x,y) == null)
+        {
+            MovePlateSpawn(x,y);
+            x += xIncrement;
+            y += yIncrement;
+        }
+
+        if(cont.PositionOnBoard(x,y) && cont.GetPosition(x,y).GetComponent<Chessman>().player != player)
+        {
+            MovePlateAttackSpawn(x,y);
+        }
+        }else{*/
+        int moveCounter = 0;
+            while(cont.PositionOnBoard(x,y) && cont.GetPosition(x,y) == null)
+            {
+                if(controller.GetComponent<CheckMateManager>().SimulateMove(gameObject,x,y))
+                {
+                    moveCounter++;
+                }
+                x += xIncrement;
+                y += yIncrement;
+            }
+
+            if(cont.PositionOnBoard(x,y) && cont.GetPosition(x,y).GetComponent<Chessman>().player != player)
+            {
+                if(controller.GetComponent<CheckMateManager>().SimulateMove(gameObject,x,y))
+                    moveCounter++;
+            }
+            Debug.Log(moveCounter);
+            if(moveCounter == 0)
+                controller.GetComponent<CheckMateManager>().noMoveLeft = true;
+            else
+                controller.GetComponent<CheckMateManager>().moveLeft = true;
         //}
     }
 
@@ -373,6 +474,31 @@ public class Chessman : MonoBehaviour
         PointBegHelp(xBoard -2, yBoard + 1);
     }
 
+    public void LTest()
+    {
+        Debug.Log(PointTest(xBoard, yBoard + 1) + 
+        PointTest(xBoard, yBoard - 1) + 
+        PointTest(xBoard + 1, yBoard) + 
+        PointTest(xBoard -1, yBoard - 1) + 
+        PointTest(xBoard - 1, yBoard +1) + 
+        PointTest(xBoard + 1, yBoard + 1) +
+        PointTest(xBoard -1, yBoard) +
+        PointTest(xBoard + 1, yBoard -1) );
+        if(PointTest(xBoard + 1, yBoard + 2)+
+        PointTest(xBoard - 1, yBoard + 2)+
+        PointTest(xBoard + 2, yBoard + 1)+
+        PointTest(xBoard + 2, yBoard - 1)+
+        PointTest(xBoard + 1, yBoard - 2)+
+        PointTest(xBoard - 1, yBoard - 2)+
+        PointTest(xBoard -2, yBoard -1)+
+        PointTest(xBoard -2, yBoard + 1) == 8)
+        {
+            controller.GetComponent<CheckMateManager>().noMoveLeft = true;
+        }else{
+            controller.GetComponent<CheckMateManager>().moveLeft = true;
+        }
+    }
+
     public void SurroundMovePlate()
     {
         /*if(!controller.GetComponent<CheckMateManager>().check)
@@ -415,6 +541,31 @@ public class Chessman : MonoBehaviour
         PointBegHelp(xBoard + 1, yBoard + 1);
         PointBegHelp(xBoard -1, yBoard);
         PointBegHelp(xBoard + 1, yBoard -1);
+    }
+
+    public void SurroundTest()
+    {
+        Debug.Log("t1" + PointTest(xBoard, yBoard + 1));
+        Debug.Log("t2" + PointTest(xBoard, yBoard - 1)) ;
+        Debug.Log("t3" + PointTest(xBoard + 1, yBoard)) ;
+        Debug.Log("t4" +PointTest(xBoard -1, yBoard - 1)) ; 
+        Debug.Log("t5" +PointTest(xBoard - 1, yBoard +1)) ;
+        Debug.Log("t6" +PointTest(xBoard + 1, yBoard + 1));
+        Debug.Log("t7" +PointTest(xBoard -1, yBoard)) ;
+        Debug.Log("t8" +PointTest(xBoard + 1, yBoard -1) );
+        if(PointTest(xBoard, yBoard + 1) + 
+        PointTest(xBoard, yBoard - 1) + 
+        PointTest(xBoard + 1, yBoard) + 
+        PointTest(xBoard -1, yBoard - 1) + 
+        PointTest(xBoard - 1, yBoard +1) + 
+        PointTest(xBoard + 1, yBoard + 1) +
+        PointTest(xBoard -1, yBoard) +
+        PointTest(xBoard + 1, yBoard -1) == 8)
+        {
+            controller.GetComponent<CheckMateManager>().noMoveLeft = true;
+        }else{
+            controller.GetComponent<CheckMateManager>().moveLeft = true;
+        }
     }
 
     public void PointMovePlate(int x, int y)
@@ -471,6 +622,48 @@ public class Chessman : MonoBehaviour
         }
     }
 
+    public int PointTest(int x, int y)
+    {
+        Controller cont = controller.GetComponent<Controller>();
+
+        /*if(!controller.GetComponent<CheckMateManager>().check)
+        {
+            if(cont.PositionOnBoard(x,y))
+            {
+                GameObject piece = cont.GetPosition(x,y);
+
+                if(piece == null)
+                {
+                    MovePlateSpawn(x,y);
+                }else if(cont.GetPosition(x,y).GetComponent<Chessman>().player != player)
+                    {
+                        MovePlateAttackSpawn(x,y);
+                    }
+            }
+        }else{*/
+        int result = 0;
+            if(cont.PositionOnBoard(x,y))
+            {
+                GameObject piece = cont.GetPosition(x,y);
+
+                if(piece == null)
+                {
+                    if(!controller.GetComponent<CheckMateManager>().SimulateMove(gameObject,x,y))
+                        result++;
+                }else if(cont.GetPosition(x,y).GetComponent<Chessman>().player != player)
+                    {
+                        if(!controller.GetComponent<CheckMateManager>().SimulateMove(gameObject,x,y))
+                            result++;
+                    }else{
+                        result++;
+                    }
+            }else{
+                result++;
+            }
+        return result;
+        //}
+    }
+
     public void PawnMovePlate(int x, int y)
     {
         Controller cont = controller.GetComponent<Controller>();
@@ -515,6 +708,64 @@ public class Chessman : MonoBehaviour
                         MovePlateAttackSpawn(x-1,y);
                 }
             }
+        //}
+
+    }
+
+    public void PawnTest(int x, int y)
+    {
+        Controller cont = controller.GetComponent<Controller>();
+
+        /*if(!controller.GetComponent<CheckMateManager>().check)
+        {
+            if(cont.PositionOnBoard(x,y))
+            {
+                if(cont.GetPosition(x,y) == null)
+                {
+                    MovePlateSpawn(x,y);
+                }
+
+                if(cont.PositionOnBoard(x+1,y) && cont.GetPosition(x+1,y) != null && cont.GetPosition(x+1,y).GetComponent<Chessman>().player != player)
+                {
+                    MovePlateAttackSpawn(x+1,y);
+                }
+
+                if(cont.PositionOnBoard(x-1,y) && cont.GetPosition(x-1,y) != null && cont.GetPosition(x-1,y).GetComponent<Chessman>().player != player)
+                {
+                    MovePlateAttackSpawn(x-1,y);
+                }
+            }
+        }else{*/
+        int movesPossible = 0;
+            if(cont.PositionOnBoard(x,y))
+            {
+                if(cont.GetPosition(x,y) == null)
+                {
+                    if(controller.GetComponent<CheckMateManager>().SimulateMove(gameObject,x,y))
+                    {
+                        movesPossible++;
+                    }
+                }
+
+                if(cont.PositionOnBoard(x+1,y) && cont.GetPosition(x+1,y) != null && cont.GetPosition(x+1,y).GetComponent<Chessman>().player != player)
+                {
+                    if(controller.GetComponent<CheckMateManager>().SimulateMove(gameObject,x+1,y))
+                        movesPossible++;
+                }
+
+                if(cont.PositionOnBoard(x-1,y) && cont.GetPosition(x-1,y) != null && cont.GetPosition(x-1,y).GetComponent<Chessman>().player != player)
+                {
+                    if(controller.GetComponent<CheckMateManager>().SimulateMove(gameObject,x-1,y))
+                        movesPossible++;
+                }
+            }
+        Debug.Log(movesPossible);
+        if(movesPossible == 0)
+        {
+            controller.GetComponent<CheckMateManager>().noMoveLeft = true;
+        }else{
+            controller.GetComponent<CheckMateManager>().moveLeft = true;
+        }
         //}
 
     }
@@ -595,6 +846,70 @@ public class Chessman : MonoBehaviour
                     if(controller.GetComponent<CheckMateManager>().SimulateMove(gameObject,x-1,y))
                         MovePlateAttackSpawn(x-1,y);
                 }
+            }
+        //}
+    }
+
+    public void PawnTestFirstTurn(int x, int y,int which_player)
+    {
+        Controller cont = controller.GetComponent<Controller>();
+
+        /*if(!controller.GetComponent<CheckMateManager>().check)
+        {
+            if(cont.PositionOnBoard(x,y))
+            {
+                if(cont.GetPosition(x,y) == null)
+                {
+                    MovePlateSpawn(x,y);
+                }
+                if(cont.GetPosition(x,y+which_player) == null && cont.GetPosition(x,y) == null)
+                {
+                    MovePlateSpawn(x,y+which_player);
+                }
+
+                if(cont.PositionOnBoard(x+1,y) && cont.GetPosition(x+1,y) != null && cont.GetPosition(x+1,y).GetComponent<Chessman>().player != player)
+                {
+                    MovePlateAttackSpawn(x+1,y);
+                }
+
+                if(cont.PositionOnBoard(x-1,y) && cont.GetPosition(x-1,y) != null && cont.GetPosition(x-1,y).GetComponent<Chessman>().player != player)
+                {
+                    MovePlateAttackSpawn(x-1,y);
+                }
+            }
+        }else{*/
+        int moveCounter = 0;
+            if(cont.PositionOnBoard(x,y))
+            {
+                if(cont.GetPosition(x,y) == null)
+                {
+                    if(controller.GetComponent<CheckMateManager>().SimulateMove(gameObject,x,y))
+                        moveCounter++;
+                }
+                if(cont.GetPosition(x,y+which_player) == null && cont.GetPosition(x,y) == null)
+                {
+                    if(controller.GetComponent<CheckMateManager>().SimulateMove(gameObject,x,y+which_player))
+                        moveCounter++;
+                }
+
+                if(cont.PositionOnBoard(x+1,y) && cont.GetPosition(x+1,y) != null && cont.GetPosition(x+1,y).GetComponent<Chessman>().player != player)
+                {
+                    if(controller.GetComponent<CheckMateManager>().SimulateMove(gameObject,x+1,y))
+                        moveCounter++;
+                }
+
+                if(cont.PositionOnBoard(x-1,y) && cont.GetPosition(x-1,y) != null && cont.GetPosition(x-1,y).GetComponent<Chessman>().player != player)
+                {
+                    if(controller.GetComponent<CheckMateManager>().SimulateMove(gameObject,x-1,y))
+                        moveCounter++;
+                }
+            }
+            Debug.Log(moveCounter);
+            if(moveCounter == 0)
+            {
+                controller.GetComponent<CheckMateManager>().noMoveLeft = true;
+            }else{
+                controller.GetComponent<CheckMateManager>().moveLeft = true;
             }
         //}
     }

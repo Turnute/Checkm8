@@ -8,6 +8,8 @@ public class CheckMateManager : MonoBehaviour
     public static bool playerInstantiated = false;
     public bool check = false;
     public bool stillCheck = false;
+    public bool noMoveLeft = false;
+    public bool moveLeft = false;
     private bool isFoe = false;
     private bool isLastPiece = false;
     private bool isKing = false;//True si la pièce mangeable est le roi adverse
@@ -249,6 +251,36 @@ public class CheckMateManager : MonoBehaviour
             {
                 if(controller.GetComponent<Controller>().player1[i])
                 {
+                    controller.GetComponent<Controller>().player1[i].GetComponent<Chessman>().InitiateTest();
+                }
+            }
+            if(noMoveLeft && !moveLeft)
+            {
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            for(int i=0; i<controller.GetComponent<Controller>().player2.Length;i++)
+            {
+                if(controller.GetComponent<Controller>().player2[i])
+                {
+                    controller.GetComponent<Controller>().player2[i].GetComponent<Chessman>().InitiateTest();
+                }
+            }
+            if(noMoveLeft && !moveLeft)
+            {
+                return true;
+            }else{
+                return false;
+            }
+        }
+        /*if(currentPlayer == "p1")
+        {
+            for(int i=0; i<controller.GetComponent<Controller>().player1.Length;i++)
+            {
+                if(controller.GetComponent<Controller>().player1[i])
+                {
                     controller.GetComponent<Controller>().player1[i].GetComponent<Chessman>().InitiateMovePlates();
                 }
             }
@@ -282,7 +314,7 @@ public class CheckMateManager : MonoBehaviour
                 }
                 return false;
             }
-        }
+        }*/
     }
 
     public bool StillCheck()//Appelé par SimulateMove pour tester si un déplacement annulerai la situation d'échec ou non
@@ -486,6 +518,8 @@ public class CheckMateManager : MonoBehaviour
                 kingp1.GetComponent<SpriteRenderer>().color = kingp1.GetComponent<Chessman>().pieceColor;
             if(kingp2)
                 kingp2.GetComponent<SpriteRenderer>().color = kingp2.GetComponent<Chessman>().pieceColor;
+            noMoveLeft = false;
+            moveLeft = false;
             if (!inGameTheme.GetComponent<AudioSource>().isPlaying)
             {
                 inGameTheme.GetComponent<AudioSource>().Play(0);
