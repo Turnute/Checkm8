@@ -10,6 +10,7 @@ public class CheckMateManager : MonoBehaviour
     public bool stillCheck = false;
     public bool noMoveLeft = false;
     public bool moveLeft = false;
+    private bool checkMateTested = false;
     private bool isFoe = false;
     private bool isLastPiece = false;
     private bool isKing = false;//True si la pièce mangeable est le roi adverse
@@ -505,15 +506,24 @@ public class CheckMateManager : MonoBehaviour
             {
                 if(kingp1)
                     kingp1.GetComponent<SpriteRenderer>().color = Color.red;
-                if(isCheckMate("p1"))
-                    controller.GetComponent<Controller>().Winner("p2");
+                if(!checkMateTested)
+                {
+                    if(isCheckMate("p1"))
+                        controller.GetComponent<Controller>().Winner("p2");
+                }
+                checkMateTested = true;
             }else{
                 if(kingp2)
                     kingp2.GetComponent<SpriteRenderer>().color = Color.red;
-                if(isCheckMate("p2"))
-                    controller.GetComponent<Controller>().Winner("p1");
+                if(!checkMateTested)
+                {
+                    if(isCheckMate("p2"))
+                        controller.GetComponent<Controller>().Winner("p1");
+                }
+                checkMateTested = true;
             }
         }else{
+            checkMateTested = false;
             if(kingp1)
                 kingp1.GetComponent<SpriteRenderer>().color = kingp1.GetComponent<Chessman>().pieceColor;
             if(kingp2)
