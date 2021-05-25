@@ -3,6 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+/**
+ * Author : Samuel Goubeau
+ * 
+ * Manage : Manage when user drop the token on the object, place the token at 
+ *          specific position. And change the sprite of the current player.
+ *          
+ * Using : Canvas.Select1, Canvas.Select2, Canvas.Select3, Canvas.Select4, 
+ *         Canvas.Select5, Canvas.Select6, Canvas.Select7, Canvas.Select8
+ */
 public class CharacterSlot2Players : MonoBehaviour, IDropHandler
 {
     [SerializeField] private SelectCoins P1coin;
