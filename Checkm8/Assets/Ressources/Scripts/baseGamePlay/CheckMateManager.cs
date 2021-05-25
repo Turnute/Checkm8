@@ -7,6 +7,8 @@ public class CheckMateManager : MonoBehaviour
     public GameObject controller;
     public static bool playerInstantiated = false;
     public bool check = false;
+    public bool checkMateTested = false;
+    public bool movePossible = false;//True si on peut bouger, false sinon
     public bool stillCheck = false;
     private bool isFoe = false;
     private bool isLastPiece = false;
@@ -243,7 +245,7 @@ public class CheckMateManager : MonoBehaviour
 
     public bool isCheckMate(string currentPlayer)
     {
-        if(currentPlayer == "p1")
+        /*if(currentPlayer == "p1")
         {
             for(int i=0; i<controller.GetComponent<Controller>().player1.Length;i++)
             {
@@ -282,7 +284,8 @@ public class CheckMateManager : MonoBehaviour
                 }
                 return false;
             }
-        }
+        }*/
+        return false;
     }
 
     public bool StillCheck()//Appelé par SimulateMove pour tester si un déplacement annulerai la situation d'échec ou non
@@ -473,15 +476,27 @@ public class CheckMateManager : MonoBehaviour
             {
                 if(kingp1)
                     kingp1.GetComponent<SpriteRenderer>().color = Color.red;
-                if(isCheckMate("p1"))
-                    controller.GetComponent<Controller>().Winner("p2");
+                
+                //if(!checkMateTested)
+                //{
+                    if(isCheckMate("p1"))
+                        controller.GetComponent<Controller>().Winner("p2");
+                    
+                    /*checkMateTested = true;
+                }*/
             }else{
                 if(kingp2)
                     kingp2.GetComponent<SpriteRenderer>().color = Color.red;
-                if(isCheckMate("p2"))
-                    controller.GetComponent<Controller>().Winner("p1");
+                /*if(!checkMateTested)
+                {*/
+                    if(isCheckMate("p2"))
+                        controller.GetComponent<Controller>().Winner("p1");
+
+                    //checkMateTested = true;
+                //}
             }
         }else{
+            //checkMateTested = false;
             if(kingp1)
                 kingp1.GetComponent<SpriteRenderer>().color = kingp1.GetComponent<Chessman>().pieceColor;
             if(kingp2)
