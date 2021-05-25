@@ -4,89 +4,87 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveSystem {
 
-    public static void SaveConfig(Rulesets config) 
+    private static readonly string SAVE_FOLDER = Application.dataPath + "/Config/";
+    public static void Init()
     {
-        BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/Config.cfg";
-        FileStream stream = new FileStream(path, FileMode.Create);
-
-        DataConfig data = new DataConfig(config);
-
-        formatter.Serialize(stream, data);
-        stream.Close();
-    }
- 
-    public static DataConfig loadConfing ()
-    {
-        string path = Application.persistentDataPath + "/config.cfg";
-        if(File.Exists(path))
-        {
-            BinaryFormatter formatter = new BinaryFormatter();
-            FileStream stream = new FileStream(path, FileMode.Open);
-
-            DataConfig data = formatter.Deserialize(stream) as DataConfig;
-
-            stream.Close();
-
-            return data;
-        }
-        else
-        {
-            Debug.LogError("Config file not found in " + path);
-            return null;
-        }
-    }
-
-      
-
-
-
-
-
-   /* private static readonly string SAVE_FOLDER = Application.dataPath + "/Saves/";
-    private const string SAVE_EXTENSION = "txt";
-
-    public static void Init() {
         // Test if Save Folder exists
-        if (!Directory.Exists(SAVE_FOLDER)) {
+        if (!Directory.Exists(SAVE_FOLDER))
+        {
             // Create Save Folder
             Directory.CreateDirectory(SAVE_FOLDER);
         }
     }
+    public static void SaveConfig(Rulesets config,string nb) 
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        if (nb == "")
+        {
+            string path = Application.dataPath + "/Config/DefaultConfig.cfg";
+            FileStream stream = new FileStream(path, FileMode.Create);
+            DataConfig data = new DataConfig(config);
 
-    public static void Save(string saveString) {
-        // Make sure the Save Number is unique so it doesnt overwrite a previous save file
-        int saveNumber = 1;
-        while (File.Exists(SAVE_FOLDER + "save_" + saveNumber + "." + SAVE_EXTENSION)) {
-            saveNumber++;
+            formatter.Serialize(stream, data);
+            stream.Close();
         }
-        // saveNumber is unique
-        File.WriteAllText(SAVE_FOLDER + "save_" + saveNumber + "." + SAVE_EXTENSION, saveString);
-    }
+        else
+        {
+            string path = Application.dataPath + "/Config/Config" + nb + ".cfg";
+            FileStream stream = new FileStream(path, FileMode.Create);
+            DataConfig data = new DataConfig(config);
 
-    public static string Load() {
-        DirectoryInfo directoryInfo = new DirectoryInfo(SAVE_FOLDER);
-        // Get all save files
-        FileInfo[] saveFiles = directoryInfo.GetFiles("*." + SAVE_EXTENSION);
-        // Cycle through all save files and identify the most recent one
-        FileInfo mostRecentFile = null;
-        foreach (FileInfo fileInfo in saveFiles) {
-            if (mostRecentFile == null) {
-                mostRecentFile = fileInfo;
-            } else {
-                if (fileInfo.LastWriteTime > mostRecentFile.LastWriteTime) {
-                    mostRecentFile = fileInfo;
-                }
+            formatter.Serialize(stream, data);
+            stream.Close();
+        }
+        
+    }
+ 
+    public static DataConfig loadConfig (string nb)
+    {
+
+        
+        if (nb == "")
+        {
+            string path = Application.dataPath + "/Config/DefaultConfig.cfg";
+            if (File.Exists(path))
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                FileStream stream = new FileStream(path, FileMode.Open);
+
+                DataConfig data = formatter.Deserialize(stream) as DataConfig;
+
+                stream.Close();
+
+                return data;
+            }
+            else
+            {
+                Debug.LogError("Config file not found in " + path);
+                return null;
             }
         }
+        else
+        {
+            string path = Application.dataPath + "/Config/Config" + nb + ".cfg";
+            if (File.Exists(path))
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                FileStream stream = new FileStream(path, FileMode.Open);
 
-        // If theres a save file, load it, if not return null
-        if (mostRecentFile != null) {
-            string saveString = File.ReadAllText(mostRecentFile.FullName);
-            return saveString;
-        } else {
-            return null;
+                DataConfig data = formatter.Deserialize(stream) as DataConfig;
+
+                stream.Close();
+
+                return data;
+            }
+            else
+            {
+                Debug.LogError("Config file not found in " + path);
+                return null;
+            }
+
         }
+
+        
     }
-    */
+
 }

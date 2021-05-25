@@ -7,6 +7,8 @@ using UnityEngine.UI;
 {
     private UnityEngine.UI.Toggle toggle;
 
+    private int Nsave;
+
     public static bool PauseButton;
     public static float Time;
     public static float AddTime;
@@ -47,6 +49,8 @@ using UnityEngine.UI;
         TimerMenu.SetActive(false);
         EventMenu.SetActive(false);
 
+        Nsave = 1;
+
         PauseButton = false ;
         MultTimer = 1;
         MultTimeTurn = 1;
@@ -70,33 +74,30 @@ using UnityEngine.UI;
         SofEventProb = 1;
 
 }
-    private void Update()
-    {
-        //Timer
-        GameObject.Find("");
-        //Help
-        GameObject.Find("AlliedMouvement").GetComponent<Toggle>().isOn = AlliedMouvement;
-
-        //Event
-
-    }
-
-
+   
 
     public void SaveConfig()
     {
-        SaveSystem.SaveConfig(this);
+        if(Nsave == 0)
+        {
+            //SaveSystem.SaveConfig(this, "");
+        }
+        else
+        {
+            SaveSystem.SaveConfig(this, Nsave.ToString());
+        }
+        
     }
 
-    public void LoadConfig()
+    public void LoadConfig(string nb)
     {
-        DataConfig data = SaveSystem.loadConfing();
+        DataConfig DataConfig = SaveSystem.loadConfig(nb);
 
         PauseButton = DataConfig.PauseButton;
         Time = DataConfig.Time;
         AddTime = DataConfig.AddTime;
         MultTimer = DataConfig.MultTimer;
-        MultTimeTurn = DataConfig.MultTimer;
+        MultTimeTurn = DataConfig.MultTimeTurn;
 
         AlliedMouvement = DataConfig.AlliedMouvement;
         EnemyMouvement = DataConfig.EnemyMouvement;
@@ -113,14 +114,97 @@ using UnityEngine.UI;
         DemoEventProb = DataConfig.DemoEventProb;
         ProtecEventProb = DataConfig.ProtecEventProb;
         SofEventProb = DataConfig.SofEventProb;
+
+        ReLogValue();
+    }
+
+
+
+
+    private void ReLogValue()
+    {
+        if (TimerMenu.activeSelf)
+        {
+            //Timer
+            switch (Mathf.RoundToInt(MultTimer))
+            {
+                case 60:
+                    GameObject.Find("TimeNB").GetComponent<InputField>().text = (Time/60).ToString();
+                    GameObject.Find("Unites").GetComponent<Dropdown>().value = 1;
+                    break;
+                case 3600:
+                    GameObject.Find("TimeNB").GetComponent<InputField>().text = (Time / 3600).ToString();
+                    GameObject.Find("Unites").GetComponent<Dropdown>().value = 2;
+                    break;
+                default:
+                    GameObject.Find("TimeNB").GetComponent<InputField>().text = Time.ToString();
+                    GameObject.Find("Unites").GetComponent<Dropdown>().value = 0;
+
+                    break;
+            }
+            switch (Mathf.RoundToInt(MultTimeTurn))
+            {
+                case 60:
+                    GameObject.Find("TimeTurn").GetComponent<InputField>().text = (AddTime / 60).ToString();
+                    GameObject.Find("Unites_2").GetComponent<Dropdown>().value = 1;
+                    break;
+                case 3600:
+                    GameObject.Find("TimeTurn").GetComponent<InputField>().text = (AddTime / 3600).ToString();
+                    GameObject.Find("Unites_2").GetComponent<Dropdown>().value = 2;
+                    break;
+                default:
+                    GameObject.Find("TimeTurn").GetComponent<InputField>().text = AddTime.ToString();
+                    GameObject.Find("Unites_2").GetComponent<Dropdown>().value = 0;
+
+                    break;
+            }
+            GameObject.Find("Pause").GetComponent<Toggle>().isOn = PauseButton;
+
+        }
+        else
+        {
+
+            if (HelpMenu.activeSelf)
+            {
+                //Help
+                GameObject.Find("AlliedMouvement").GetComponent<Toggle>().isOn = AlliedMouvement;
+                GameObject.Find("EnemyMouvement").GetComponent<Toggle>().isOn = EnemyMouvement;
+                GameObject.Find("AlliedinDanger").GetComponent<Toggle>().isOn = AlliedinDanger;
+                GameObject.Find("EnemyinDanger").GetComponent<Toggle>().isOn = EnemyinDanger;
+            }
+            else
+            {
+                if (EventMenu.activeSelf)
+                {
+                    //Event
+                    GameObject.Find("AllEvent").GetComponent<InputField>().text = AllEventProb.ToString();
+                    GameObject.Find("NbTurn").GetComponent<InputField>().text = NbTurnEvent.ToString();
+                    GameObject.Find("TP").GetComponent<InputField>().text = TPEventProb.ToString();
+                    GameObject.Find("Rotation").GetComponent<InputField>().text = RotEventProb.ToString();
+                    GameObject.Find("Tidal Waves").GetComponent<InputField>().text = RDMEventProb.ToString();
+                    GameObject.Find("Eruption").GetComponent<InputField>().text = EruptionEventProb.ToString();
+                    GameObject.Find("Promotion").GetComponent<InputField>().text = PromEventProb.ToString();
+                    GameObject.Find("Demotion").GetComponent<InputField>().text = DemoEventProb.ToString();
+                    GameObject.Find("Protection").GetComponent<InputField>().text = ProtecEventProb.ToString();
+                    GameObject.Find("Streak of Flames").GetComponent<InputField>().text = SofEventProb.ToString();
+                }
+            }
+
+        }
     }
 
     public void selectConfig(int Nconfig)
     {
+        Nsave = Nconfig - 1;
         switch (Nconfig)
         {
+            case 1:
+                LoadConfig("");
+                break;
+
             default:
-                LoadConfig();
+                
+                LoadConfig(Nsave.ToString());
                 break;
         }
 
@@ -133,12 +217,15 @@ using UnityEngine.UI;
         {
             case 1:
                 MultTimeTurn = 60;
+                ReLogValue();
                 break;
             case 2:
                 MultTimeTurn = 3600;
+                ReLogValue();
                 break;
             default:
                 MultTimeTurn = 1;
+                ReLogValue();
                 break;
         }
     }
@@ -149,12 +236,15 @@ using UnityEngine.UI;
         {
             case 1:
                 MultTimer = 60;
+                ReLogValue();
                 break;
             case 2:
                 MultTimer = 3600;
+                ReLogValue();
                 break;
             default:
                 MultTimer = 1;
+                ReLogValue();
                 break;
         }
     }
@@ -168,6 +258,7 @@ using UnityEngine.UI;
         TimerMenu.SetActive(false);
         EventMenu.SetActive(false);
         HelpMenu.SetActive(true);
+        ReLogValue();
 
     }
 
@@ -176,6 +267,7 @@ using UnityEngine.UI;
         HelpMenu.SetActive(false);
         EventMenu.SetActive(false);
         TimerMenu.SetActive(true);
+        ReLogValue();
     }
 
     public void EventMenushow(bool isOpen)
@@ -183,6 +275,7 @@ using UnityEngine.UI;
         HelpMenu.SetActive(false);
         TimerMenu.SetActive(false);
         EventMenu.SetActive(true);
+        ReLogValue();
     }
 
 
@@ -190,13 +283,11 @@ using UnityEngine.UI;
     public void SetTime(string isTime)
     {
         Time = (float.Parse(isTime)*MultTimer);
-        Debug.Log(Time);
     }
 
     public void SetTimeTurn(string isAddTime)
     {
         AddTime = (float.Parse(isAddTime) * MultTimeTurn);
-        Debug.Log(AddTime);
     }
 
 
@@ -204,25 +295,21 @@ using UnityEngine.UI;
     public void SetAlliedMouvement(bool isAlliedMouvement)
     {
         AlliedMouvement = isAlliedMouvement;
-        Debug.Log(AlliedMouvement);
     }
 
     public void SetEnemyMouvement(bool isEnemyMouvement)
     {
         EnemyMouvement = isEnemyMouvement;
-        Debug.Log("it work");
     }
 
     public void SetAlliedinDanger(bool isAlliedinDanger)
     {
         AlliedinDanger = isAlliedinDanger;
-        Debug.Log("it work");
     }
 
     public void SetEnemyinDanger(bool isEnemyinDanger)
     {
         EnemyinDanger = isEnemyinDanger;
-        Debug.Log("it work");
     }
 
     //Setter pour les valeurs des Events
@@ -230,53 +317,43 @@ using UnityEngine.UI;
     public void SetAllEventProb(string isAllEventProb)
     { 
         AllEventProb = float.Parse(isAllEventProb);
-        Debug.Log(AllEventProb);
     }
     public void SetNbTurnEvent(string isNbTurnEvent)
     {
         NbTurnEvent = float.Parse(isNbTurnEvent);
-        Debug.Log("it work");
     }
     public void SetTPEventProb(string isTPEventProb)
     {
         TPEventProb = float.Parse(isTPEventProb);
-        Debug.Log("it work");
     }
     public void SetRotEventProb(string isRotEventProb)
     {
         RotEventProb = float.Parse(isRotEventProb);
-        Debug.Log("it work");
     }
     public void SetRDMEventProb(string isRDMEventProb)
     {
         RDMEventProb = float.Parse(isRDMEventProb);
-        Debug.Log("it work");
     }
     public void SetEruptionEventProb(string isEruptionEventProb)
     {
         EruptionEventProb = float.Parse(isEruptionEventProb);
-        Debug.Log("it work");
     }
     public void SetPromEventProb(string isPromEventProb)
     {
         PromEventProb = float.Parse(isPromEventProb);
-        Debug.Log("it work");
     }
     public void SetDemoEventProb(string isDemoEventProb)
     {
         DemoEventProb = float.Parse(isDemoEventProb);
-        Debug.Log("it work");
     }
   
     public void SetProtecEventProb(string isProtecEventProb)
     {
         ProtecEventProb = float.Parse(isProtecEventProb);
-        Debug.Log("it work");
     }
     public void SetSofEventProbb(string isSofEventProb)
     {
         SofEventProb = float.Parse(isSofEventProb);
-        Debug.Log("it work");
     }
 
 
