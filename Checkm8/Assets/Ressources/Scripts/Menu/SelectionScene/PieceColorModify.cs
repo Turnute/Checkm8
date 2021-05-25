@@ -16,21 +16,27 @@ public class PieceColorModify : MonoBehaviour
 
     public void IncColor(SpriteRenderer piece)
     {
-        colorChoose++;
-        if (colorChoose >= colors.Length)
+        if(piece != null)
         {
-            colorChoose = 0;
+            colorChoose++;
+            if (colorChoose >= colors.Length)
+            {
+                colorChoose = 0;
+            }
+            piece.color = colors[colorChoose];
         }
-        piece.color = colors[colorChoose];
     }
 
     public void DecColor(SpriteRenderer piece)
     {
-        colorChoose--;
-        if (colorChoose < 0)
+        if(piece != null)
         {
-            colorChoose = colors.Length - 1;
+            colorChoose--;
+            if (colorChoose < 0)
+            {
+                colorChoose = colors.Length - 1;
+            }
+            piece.color = colors[colorChoose];
         }
-        piece.color = colors[colorChoose];
     }
 }
