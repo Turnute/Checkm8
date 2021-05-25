@@ -74,7 +74,6 @@
     <Compile Include="Assets\Ressources\Scripts\Menu\SelectionScene\CharacterSlot2Players.cs" />
     <Compile Include="Assets\Ressources\Scripts\Menu\SelectionScene\InputName.cs" />
     <Compile Include="Assets\Ressources\Scripts\Menu\SelectionScene\PieceColorModify.cs" />
-    <Compile Include="Assets\Ressources\Scripts\Menu\SelectionScene\PieceSelected.cs" />
     <Compile Include="Assets\Ressources\Scripts\Menu\SelectionScene\SelectCoins.cs" />
     <Compile Include="Assets\Ressources\Scripts\MusicManager.cs" />
     <Compile Include="Assets\Ressources\Scripts\baseGamePlay\CheckMateManager.cs" />

@@ -3,6 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/**
+ * Author : Samuel Goubeau
+ * 
+ * Manage : You see all sprite of piece set
+ * 
+ * Using : Canvas.Select1, Canvas.Select2, Canvas.Select3, Canvas.Select4, 
+ *         Canvas.Select5, Canvas.Select6, Canvas.Select7, Canvas.Select8
+ */
 public class ChangeSpriteSelection : MonoBehaviour
 {
     [SerializeField] private Sprite pion;
@@ -14,6 +22,7 @@ public class ChangeSpriteSelection : MonoBehaviour
 
     private int spriteShown;
     private Sprite[] spritesPiece = new Sprite[6];
+
 
     public void Start()
     {
@@ -27,6 +36,7 @@ public class ChangeSpriteSelection : MonoBehaviour
         spritesPiece[5] = tower;
     }
 
+
     public void nextSprite(SpriteRenderer piece)
     {
         spriteShown++;
@@ -37,6 +47,7 @@ public class ChangeSpriteSelection : MonoBehaviour
         }
         piece.sprite = spritesPiece[spriteShown];
     }
+
 
     public void previousSprite(SpriteRenderer piece)
     {

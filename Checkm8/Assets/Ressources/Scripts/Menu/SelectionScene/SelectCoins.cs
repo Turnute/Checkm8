@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+/**
+ * Author : Samuel Goubeau
+ * 
+ * Manage : Mange the drag and drop of tokens. 
+ * 
+ * Using : Canvas.P1Select, Canvas.P2Select
+ */
 public class SelectCoins : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     [SerializeField] private Canvas canvas;

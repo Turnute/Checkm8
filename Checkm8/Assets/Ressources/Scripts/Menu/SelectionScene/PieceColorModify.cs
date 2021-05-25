@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * Author : Samuel Goubeau
+ * 
+ * Manage : Change the color of sprite when the player click on buttons
+ * 
+ * Using : Canvas.Canvas-P1.ColInc, Canvas.Canvas-P1.ColDec, Canvas.Canvas-P2.ColInc, Canvas.Canvas-P2.ColDec
+ */
 public class PieceColorModify : MonoBehaviour
 {
     private int colorChoose;
