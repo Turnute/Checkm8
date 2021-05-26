@@ -38,75 +38,75 @@ public class Chessman : MonoBehaviour
         {
             case "queen_p1":
                 this.GetComponent<SpriteRenderer>().sprite = queen;
-                this.GetComponent<SpriteRenderer>().color = Color.white;
-                pieceColor = Color.white;
+                this.GetComponent<SpriteRenderer>().color = GameSettings.colorP1;
+                pieceColor = GameSettings.colorP1;
                 player = "p1";
                 break;
             case "king_p1":
                 this.GetComponent<SpriteRenderer>().sprite = king;
-                this.GetComponent<SpriteRenderer>().color = Color.white;
-                pieceColor = Color.white;
+                this.GetComponent<SpriteRenderer>().color = GameSettings.colorP1;
+                pieceColor = GameSettings.colorP1;
                 player = "p1";
                 break;
             case "bishop_p1":
                 this.GetComponent<SpriteRenderer>().sprite = bishop;
-                this.GetComponent<SpriteRenderer>().color = Color.white;
-                pieceColor = Color.white;
+                this.GetComponent<SpriteRenderer>().color = GameSettings.colorP1;
+                pieceColor = GameSettings.colorP1;
                 player = "p1";
                 break;
             case "knight_p1":
                 this.GetComponent<SpriteRenderer>().sprite = knight;
-                this.GetComponent<SpriteRenderer>().color = Color.white;
-                pieceColor = Color.white;
+                this.GetComponent<SpriteRenderer>().color = GameSettings.colorP1;
+                pieceColor = GameSettings.colorP1;
                 player = "p1";
                 break;
             case "rook_p1":
                 this.GetComponent<SpriteRenderer>().sprite = rook;
-                this.GetComponent<SpriteRenderer>().color = Color.white;
-                pieceColor = Color.white;
+                this.GetComponent<SpriteRenderer>().color = GameSettings.colorP1;
+                pieceColor = GameSettings.colorP1;
                 player = "p1";
                 break;
             case "pawn_p1":
                 this.GetComponent<SpriteRenderer>().sprite = pawn;
-                this.GetComponent<SpriteRenderer>().color = Color.white;
-                pieceColor = Color.white;
+                this.GetComponent<SpriteRenderer>().color = GameSettings.colorP1;
+                pieceColor = GameSettings.colorP1;
                 player = "p1";
                 break;
 
             case "queen_p2":
                 this.GetComponent<SpriteRenderer>().sprite = queen;
-                this.GetComponent<SpriteRenderer>().color = Color.black;
-                pieceColor = Color.black;
+                this.GetComponent<SpriteRenderer>().color = GameSettings.colorP2;
+                pieceColor = GameSettings.colorP2;
                 player = "p2";
                 break;
             case "king_p2":
                 this.GetComponent<SpriteRenderer>().sprite = king;
-                this.GetComponent<SpriteRenderer>().color = Color.black;
-                pieceColor = Color.black;
+                this.GetComponent<SpriteRenderer>().color = GameSettings.colorP2;
+                pieceColor = GameSettings.colorP2;
                 player = "p2";
                 break;
             case "bishop_p2":
                 this.GetComponent<SpriteRenderer>().sprite = bishop;
-                this.GetComponent<SpriteRenderer>().color = Color.black;
-                pieceColor = Color.black;
+                this.GetComponent<SpriteRenderer>().color = GameSettings.colorP2;
+                pieceColor = GameSettings.colorP2;
                 player = "p2";
                 break;
             case "knight_p2":
                 this.GetComponent<SpriteRenderer>().sprite = knight;
-                this.GetComponent<SpriteRenderer>().color = Color.black;
-                pieceColor = Color.black;
+                this.GetComponent<SpriteRenderer>().color = GameSettings.colorP2;
+                pieceColor = GameSettings.colorP2;
                 player = "p2";
                 break;
             case "rook_p2":
                 this.GetComponent<SpriteRenderer>().sprite = rook;
-                this.GetComponent<SpriteRenderer>().color = Color.black;
-                pieceColor = Color.black;
+                this.GetComponent<SpriteRenderer>().color = GameSettings.colorP2;
+                pieceColor = GameSettings.colorP2;
                 player = "p2";
                 break;
             case "pawn_p2":
                 this.GetComponent<SpriteRenderer>().sprite = pawn;
-                this.GetComponent<SpriteRenderer>().color = Color.black;
-                pieceColor = Color.black;
+                this.GetComponent<SpriteRenderer>().color = GameSettings.colorP2;
+                pieceColor = GameSettings.colorP2;
                 player = "p2";
                 break;
         }
