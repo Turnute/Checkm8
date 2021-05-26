@@ -19,6 +19,8 @@ public class Controller : MonoBehaviour
     public Text winnerName;
     public Text currentPlayerDisplay;
     public GameObject cmManager;
+    public static float timeBeforeNextTurn = 0.3f;//En secondes
+    public static bool canPlay = true;
     public static int size = 8;//Taille du plateau de jeu, changeant en fonction du nombre de joueur
 
     private GameObject[,] positions = new GameObject[size,size];//Ensemble des positions sur le board
@@ -132,6 +134,7 @@ public class Controller : MonoBehaviour
             }
             cmManager.GetComponent<CheckMateManager>().isCheck();
         }
+        canPlay = true;
     }
 
     public void Winner(string winnerPlayer)
@@ -186,6 +189,15 @@ public class Controller : MonoBehaviour
                 currentPlayerDisplay.text = "Player 1 turn";
             else   
                 currentPlayerDisplay.text = "Player 2 turn";
+        }
+        if(timeBeforeNextTurn < 0.3f)
+        {
+            timeBeforeNextTurn -= Time.deltaTime;
+        }
+        if(timeBeforeNextTurn <= 0)
+        {
+            NextTurn();
+            timeBeforeNextTurn = 0.3f;
         }
     }
 }

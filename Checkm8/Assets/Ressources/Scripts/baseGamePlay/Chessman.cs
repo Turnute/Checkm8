@@ -476,14 +476,6 @@ public class Chessman : MonoBehaviour
 
     public void LTest()
     {
-        Debug.Log(PointTest(xBoard, yBoard + 1) + 
-        PointTest(xBoard, yBoard - 1) + 
-        PointTest(xBoard + 1, yBoard) + 
-        PointTest(xBoard -1, yBoard - 1) + 
-        PointTest(xBoard - 1, yBoard +1) + 
-        PointTest(xBoard + 1, yBoard + 1) +
-        PointTest(xBoard -1, yBoard) +
-        PointTest(xBoard + 1, yBoard -1) );
         if(PointTest(xBoard + 1, yBoard + 2)+
         PointTest(xBoard - 1, yBoard + 2)+
         PointTest(xBoard + 2, yBoard + 1)+
@@ -545,14 +537,6 @@ public class Chessman : MonoBehaviour
 
     public void SurroundTest()
     {
-        Debug.Log("t1" + PointTest(xBoard, yBoard + 1));
-        Debug.Log("t2" + PointTest(xBoard, yBoard - 1)) ;
-        Debug.Log("t3" + PointTest(xBoard + 1, yBoard)) ;
-        Debug.Log("t4" +PointTest(xBoard -1, yBoard - 1)) ; 
-        Debug.Log("t5" +PointTest(xBoard - 1, yBoard +1)) ;
-        Debug.Log("t6" +PointTest(xBoard + 1, yBoard + 1));
-        Debug.Log("t7" +PointTest(xBoard -1, yBoard)) ;
-        Debug.Log("t8" +PointTest(xBoard + 1, yBoard -1) );
         if(PointTest(xBoard, yBoard + 1) + 
         PointTest(xBoard, yBoard - 1) + 
         PointTest(xBoard + 1, yBoard) + 

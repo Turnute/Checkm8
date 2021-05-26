@@ -266,11 +266,14 @@ public class CheckMateManager : MonoBehaviour
             {
                 if(controller.GetComponent<Controller>().player2[i])
                 {
+                    Debug.Log("test");
+                    Debug.Log(controller.GetComponent<Controller>().GetPosition(4,6));
                     controller.GetComponent<Controller>().player2[i].GetComponent<Chessman>().InitiateTest();
                 }
             }
             if(noMoveLeft && !moveLeft)
             {
+                Debug.Log(moveLeft);
                 return true;
             }else{
                 return false;
@@ -528,8 +531,10 @@ public class CheckMateManager : MonoBehaviour
                 kingp1.GetComponent<SpriteRenderer>().color = kingp1.GetComponent<Chessman>().pieceColor;
             if(kingp2)
                 kingp2.GetComponent<SpriteRenderer>().color = kingp2.GetComponent<Chessman>().pieceColor;
+            
             noMoveLeft = false;
             moveLeft = false;
+
             if (!inGameTheme.GetComponent<AudioSource>().isPlaying)
             {
                 inGameTheme.GetComponent<AudioSource>().Play(0);
