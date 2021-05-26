@@ -18,7 +18,7 @@ public class DataConfig
     public  bool EnemyinDanger;
 
     public  float AllEventProb;
-    public  float NbTurnEvent;
+    public  int NbTurnEvent;
     public  float TPEventProb;
     public  float RotEventProb;
     public  float RDMEventProb;

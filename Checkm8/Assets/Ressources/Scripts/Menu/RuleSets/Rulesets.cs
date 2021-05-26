@@ -21,7 +21,7 @@ using UnityEngine.UI;
     public static bool EnemyinDanger;
 
     public static float AllEventProb;
-    public static float NbTurnEvent;
+    public static int NbTurnEvent;
     public static float TPEventProb;
     public static float RotEventProb;
     public static float RDMEventProb;
@@ -80,7 +80,7 @@ using UnityEngine.UI;
     {
         if(Nsave == 0)
         {
-            //SaveSystem.SaveConfig(this, "");
+           // SaveSystem.SaveConfig(this, "");
         }
         else
         {
@@ -314,46 +314,72 @@ using UnityEngine.UI;
 
     //Setter pour les valeurs des Events
 
+        private float IsAPercent(string nb)
+    {
+        float fnb = float.Parse(nb);
+        if(fnb>= 100)
+        {
+            fnb = 100;
+        }
+
+        return fnb;
+    }
+
     public void SetAllEventProb(string isAllEventProb)
     { 
-        AllEventProb = float.Parse(isAllEventProb);
+        AllEventProb = IsAPercent(isAllEventProb);
+        ReLogValue();
     }
     public void SetNbTurnEvent(string isNbTurnEvent)
     {
-        NbTurnEvent = float.Parse(isNbTurnEvent);
+        int nb = int.Parse(isNbTurnEvent);
+            if(nb<=0)
+        {
+            nb = 1;
+        }
+        NbTurnEvent = nb;
+        ReLogValue();
     }
     public void SetTPEventProb(string isTPEventProb)
     {
-        TPEventProb = float.Parse(isTPEventProb);
+        TPEventProb = IsAPercent(isTPEventProb);
+        ReLogValue();
     }
     public void SetRotEventProb(string isRotEventProb)
     {
-        RotEventProb = float.Parse(isRotEventProb);
+        RotEventProb = IsAPercent(isRotEventProb);
+        ReLogValue();
     }
     public void SetRDMEventProb(string isRDMEventProb)
     {
-        RDMEventProb = float.Parse(isRDMEventProb);
+        RDMEventProb = IsAPercent(isRDMEventProb);
+        ReLogValue();
     }
     public void SetEruptionEventProb(string isEruptionEventProb)
     {
-        EruptionEventProb = float.Parse(isEruptionEventProb);
+        EruptionEventProb = IsAPercent(isEruptionEventProb);
+        ReLogValue();
     }
     public void SetPromEventProb(string isPromEventProb)
     {
-        PromEventProb = float.Parse(isPromEventProb);
+        PromEventProb = IsAPercent(isPromEventProb);
+        ReLogValue();
     }
     public void SetDemoEventProb(string isDemoEventProb)
     {
-        DemoEventProb = float.Parse(isDemoEventProb);
+        DemoEventProb = IsAPercent(isDemoEventProb);
+        ReLogValue();
     }
   
     public void SetProtecEventProb(string isProtecEventProb)
     {
-        ProtecEventProb = float.Parse(isProtecEventProb);
+        ProtecEventProb = IsAPercent(isProtecEventProb);
+        ReLogValue();
     }
     public void SetSofEventProbb(string isSofEventProb)
     {
-        SofEventProb = float.Parse(isSofEventProb);
+        SofEventProb = IsAPercent(isSofEventProb);
+        ReLogValue();
     }
 
 
@@ -404,7 +430,7 @@ using UnityEngine.UI;
     {
         return AllEventProb;
     }
-    public float getNbTurnEvent()
+    public int getNbTurnEvent()
     {
         return NbTurnEvent;
     }
