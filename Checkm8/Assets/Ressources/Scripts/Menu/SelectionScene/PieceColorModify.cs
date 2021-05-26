@@ -14,12 +14,14 @@ public class PieceColorModify : MonoBehaviour
     private int colorChoose;
 
     // [White, Black, Red, Green, Blue]
-    private static Color[] colors = { new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 0, 0), new Color(0, 255, 0), new Color(0, 0, 255) };
+    public static Color[] colors = { new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 0, 0), new Color(0, 255, 0), new Color(0, 0, 255) };
+
 
     void Start()
     {
         colorChoose = 0;
     }
+
 
     public void IncColor(SpriteRenderer piece)
     {
@@ -34,9 +36,10 @@ public class PieceColorModify : MonoBehaviour
         }
     }
 
+
     public void DecColor(SpriteRenderer piece)
     {
-        if(piece != null)
+        if (piece != null)
         {
             colorChoose--;
             if (colorChoose < 0)

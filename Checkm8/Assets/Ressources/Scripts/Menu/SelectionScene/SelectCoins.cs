@@ -56,7 +56,6 @@ public class SelectCoins : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
         {
             rectTransform.anchoredPosition = defaultPos;
             pieceSelected.sprite = null;
-            pieceSelected.color = new Color(255, 255, 255);
         }
         else
         {

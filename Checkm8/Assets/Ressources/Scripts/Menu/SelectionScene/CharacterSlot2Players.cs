@@ -28,11 +28,13 @@ public class CharacterSlot2Players : MonoBehaviour, IDropHandler
             {
                 eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition + new Vector2(-30.0f, 20.0f);
                 eventData.pointerDrag.GetComponent<SelectCoins>().pieceSelected.sprite = piece;
+                eventData.pointerDrag.GetComponent<SelectCoins>().pieceSelected.color = PieceColorModify.colors[0];
             }
             else if (eventData.pointerDrag.GetComponent<SelectCoins>() == P2coin)
             {
                 eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition + new Vector2(30.0f, 20.0f);
                 eventData.pointerDrag.GetComponent<SelectCoins>().pieceSelected.sprite = piece;
+                eventData.pointerDrag.GetComponent<SelectCoins>().pieceSelected.color = PieceColorModify.colors[0];
             }
             else
             {
