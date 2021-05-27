@@ -135,6 +135,7 @@ public class Controller : MonoBehaviour
             cmManager.GetComponent<CheckMateManager>().isCheck();
         }
         canPlay = true;
+        GameSettings.turnBtwnEvent--;
     }
 
     public void Winner(string winnerPlayer)
@@ -144,9 +145,12 @@ public class Controller : MonoBehaviour
         {
             winnerName.text = "Player 1 won !";
             p1Win.SetActive(true);
+            Debug.Log(p1Color);
+            p1Win.GetComponent<Image>().color = GameSettings.colorP1;
         }else{
             winnerName.text = "Player 2 won !";
-            p2Win.SetActive(true);
+            p1Win.SetActive(true);
+            p1Win.GetComponent<Image>().color = GameSettings.colorP2;
         }
         glowEffect.SetActive(true);
     }
@@ -173,7 +177,16 @@ public class Controller : MonoBehaviour
 
     public void Update()
     {
-        if(gameOver)//Gestion du game over à faire
+        //Gestion d'events
+        if(GameSettings.turnBtwnEvent == 0)
+        {
+            //On effectue un event
+            EventsManager.chooseEvent();
+            //On reset le nb d'event
+            GameSettings.turnBtwnEvent = 4;//Placeholder
+        }
+
+        if(gameOver)
         {
             currentPlayerDisplay.text = " ";
             buttonNext.SetActive(true);
