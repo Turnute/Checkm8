@@ -162,7 +162,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -99.70001, y: 85.847}
+  m_AnchoredPosition: {x: -99.70001, y: 85.846985}
   m_SizeDelta: {x: 180.64838, y: 171.69778}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &14923568
@@ -2994,11 +2994,11 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: 
+      - m_Target: {fileID: 958302792}
+        m_MethodName: previousSprite
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 761136096}
+          m_ObjectArgument: {fileID: 1212946254}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.SpriteRenderer, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -4067,7 +4067,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   P1coin: {fileID: 1057959152}
   P2coin: {fileID: 1727150519}
-  piece: {fileID: 0}
+  piece: {fileID: 21300000, guid: fa1fc6ef5f64448f4a47eaf593e67ace, type: 3}
 --- !u!114 &958302792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4080,12 +4080,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7a177ea5dc9d4d2284f5e76668c50f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pion: {fileID: 0}
-  bishop: {fileID: 0}
+  pion: {fileID: 21300000, guid: fa1fc6ef5f64448f4a47eaf593e67ace, type: 3}
+  bishop: {fileID: 21300000, guid: cca48ae54786b40ea9700a38582208fe, type: 3}
   cheval: {fileID: 0}
-  king: {fileID: 0}
-  queen: {fileID: 0}
-  tower: {fileID: 0}
+  king: {fileID: 21300000, guid: 24d7d67a7cef74174b60abf256ad0229, type: 3}
+  queen: {fileID: 21300000, guid: 70736f23abdce4ff4822bea96856a993, type: 3}
+  tower: {fileID: 21300000, guid: a61794b898dc54b99a69c46e9b81d638, type: 3}
 --- !u!1 &960224429
 GameObject:
   m_ObjectHideFlags: 0
@@ -4167,11 +4167,11 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: 
+      - m_Target: {fileID: 958302792}
+        m_MethodName: nextSprite
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 761136096}
+          m_ObjectArgument: {fileID: 1212946254}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.SpriteRenderer, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -5003,8 +5003,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1212946252}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.83799744, y: -6.080055, z: 225}
-  m_LocalScale: {x: 56.570267, y: 56.57027, z: 72.85283}
+  m_LocalPosition: {x: -7.3, y: -4.5, z: 225}
+  m_LocalScale: {x: 4, y: 4, z: 72.85283}
   m_Children: []
   m_Father: {fileID: 958302788}
   m_RootOrder: 0
@@ -5048,15 +5048,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fa1fc6ef5f64448f4a47eaf593e67ace, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 8.5, y: 13.67}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1217392156
