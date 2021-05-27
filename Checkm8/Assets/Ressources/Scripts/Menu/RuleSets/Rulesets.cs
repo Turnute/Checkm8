@@ -167,10 +167,10 @@ using UnityEngine.UI;
             if (HelpMenu.activeSelf)
             {
                 //Help
-                GameObject.Find("AlliedMouvement").GetComponent<Toggle>().isOn = AlliedMouvement;
-                GameObject.Find("EnemyMouvement").GetComponent<Toggle>().isOn = EnemyMouvement;
-                GameObject.Find("AlliedinDanger").GetComponent<Toggle>().isOn = AlliedinDanger;
-                GameObject.Find("EnemyinDanger").GetComponent<Toggle>().isOn = EnemyinDanger;
+                GameObject.Find("Toggle-AlliedMouvement").GetComponent<Toggle>().isOn = AlliedMouvement;
+                GameObject.Find("Toggle-EnemyMouvement").GetComponent<Toggle>().isOn = EnemyMouvement;
+                GameObject.Find("Toggle-AlliedinDanger").GetComponent<Toggle>().isOn = AlliedinDanger;
+                GameObject.Find("Toggle-EnemyinDanger").GetComponent<Toggle>().isOn = EnemyinDanger;
             }
             else
             {

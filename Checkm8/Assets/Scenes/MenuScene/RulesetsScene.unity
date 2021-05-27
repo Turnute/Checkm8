@@ -1112,7 +1112,7 @@ GameObject:
   - component: {fileID: 205867479}
   - component: {fileID: 205867480}
   m_Layer: 5
-  m_Name: Toggle
+  m_Name: Toggle-AlliedinDanger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1435,7 +1435,7 @@ GameObject:
   - component: {fileID: 230070450}
   - component: {fileID: 230070449}
   m_Layer: 5
-  m_Name: AlliedinDanger
+  m_Name: Canva-AlliedinDanger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1883,7 +1883,7 @@ GameObject:
   - component: {fileID: 306435067}
   - component: {fileID: 306435066}
   m_Layer: 5
-  m_Name: EnemyinDanger
+  m_Name: Canva-EnemyinDanger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3096,7 +3096,7 @@ GameObject:
   - component: {fileID: 458716930}
   - component: {fileID: 458716931}
   m_Layer: 5
-  m_Name: Toggle
+  m_Name: Toggle-AlliedMouvement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6919,7 +6919,7 @@ GameObject:
   - component: {fileID: 1294187919}
   - component: {fileID: 1294187920}
   m_Layer: 5
-  m_Name: Toggle
+  m_Name: Toggle-EnemyMouvement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10031,7 +10031,7 @@ GameObject:
   - component: {fileID: 1755950715}
   - component: {fileID: 1755950714}
   m_Layer: 5
-  m_Name: EnemyMouvement
+  m_Name: Canva-EnemyMouvement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10892,7 +10892,7 @@ GameObject:
   - component: {fileID: 1954820754}
   - component: {fileID: 1954820753}
   m_Layer: 5
-  m_Name: AlliedMouvement
+  m_Name: Canva-AlliedMouvement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
