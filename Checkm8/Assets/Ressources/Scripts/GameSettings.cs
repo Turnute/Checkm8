@@ -11,6 +11,7 @@ public class GameSettings : MonoBehaviour
 
     //Attributs nécessaires à la gestion des events
     public static int turnBtwnEvent;
+    public static float eventProbability;
 
     public static float tpProbabilty;
     public static float rotaProbabilty;
@@ -23,6 +24,19 @@ public class GameSettings : MonoBehaviour
 
     void Start()
     {
+        //Valeurs par défauts des probas
+        turnBtwnEvent = 1;
+        eventProbability = 50;
+
+        tpProbabilty = 12.5f;
+        rotaProbabilty = 12.5f;
+        twavesProbabilty = 12.5f;
+        eruptProbabilty = 12.5f;
+        promoProbabilty = 12.5f;
+        demoProbabilty = 12.5f;
+        protecProbabilty = 12.5f;
+        fstrikeProbabilty = 12.5f;
+
         //On évite les doublons
         if(!exists)
         {
@@ -31,5 +45,20 @@ public class GameSettings : MonoBehaviour
         }else{
             Destroy(gameObject);
         }
+    }
+
+    public static void UpdateProba()
+    {
+        turnBtwnEvent = Rulesets.NbTurnEvent;
+        eventProbability = Rulesets.AllEventProb;
+
+        tpProbabilty = Rulesets.TPEventProb;
+        rotaProbabilty = Rulesets.RotEventProb;
+        twavesProbabilty = Rulesets.RDMEventProb;
+        eruptProbabilty = Rulesets.EruptionEventProb;
+        promoProbabilty = Rulesets.PromEventProb;
+        demoProbabilty = Rulesets.DemoEventProb;
+        protecProbabilty = Rulesets.ProtecEventProb;
+        fstrikeProbabilty = Rulesets.SofEventProb;
     }
 }

@@ -40,6 +40,9 @@ public class Controller : MonoBehaviour
 
     void Start()
     {
+        //On se met à jour avec le ruleset actuel
+        GameSettings.UpdateProba();
+
         //Création des joueurs (2 pour l'instant)
         player1 = new GameObject[]
         {
@@ -183,7 +186,7 @@ public class Controller : MonoBehaviour
             //On effectue un event
             EventsManager.chooseEvent();
             //On reset le nb d'event
-            GameSettings.turnBtwnEvent = 4;//Placeholder
+            GameSettings.turnBtwnEvent = Rulesets.NbTurnEvent;
         }
 
         if(gameOver)
@@ -210,6 +213,7 @@ public class Controller : MonoBehaviour
         if(timeBeforeNextTurn <= 0)
         {
             NextTurn();
+            Debug.Log(GameSettings.turnBtwnEvent);
             timeBeforeNextTurn = 0.3f;
         }
     }
