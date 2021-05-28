@@ -57,7 +57,7 @@ public class EventsManager : MonoBehaviour
     {
         if(shouldEventPlay(GameSettings.eventProbability))
         {
-            float rand = Random.Range(0, 100);
+            float maxVal;
 
             //Créations d'intervalles de valeurs correspondant à chaque events
             float tp = 0 + GameSettings.tpProbabilty;
@@ -68,6 +68,9 @@ public class EventsManager : MonoBehaviour
             float demo = promo + GameSettings.demoProbabilty;
             float protect = demo + GameSettings.protecProbabilty;
             float fstrike = protect + GameSettings.fstrikeProbabilty;
+
+            maxVal = fstrike;
+            float rand = Random.Range(0, maxVal);
 
             //Choix de l'event
             if(rand >=0 && rand <=tp)
