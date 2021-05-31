@@ -8,6 +8,8 @@ TagManager:
   - MovePlateBeginner
   - cancel
   - MainTheme
+  - event
+  - piece
   layers:
   - Default
   - TransparentFX
