@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 4440544505264118957}
   m_Layer: 0
   m_Name: chesspiece
-  m_TagString: Untagged
+  m_TagString: piece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -239,6 +239,7 @@ MonoBehaviour:
   rook: {fileID: 21300000, guid: 4de434c9f95204142bceb3fa2f14686f, type: 3}
   pawn: {fileID: 21300000, guid: 5e04cdd701eeb1f458e696b1ff980880, type: 3}
   hasMoved: 0
+  selected: 0
   pieceColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!61 &4440544505264118957
 BoxCollider2D:
