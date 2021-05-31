@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
  * 
  * Manage : Manage the start of the game, with pop up display when something is wrong
  * 
- * Using : SceneManager, Canvas.StartButton, 
+ * Using : SceneManager, Canvas.StartButton
  */
 public class StartGame : MonoBehaviour
 {

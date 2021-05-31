@@ -24,7 +24,16 @@ public class UpdateColorSettings : MonoBehaviour
            case 2:
                 GameSettings.colorP2 = piece.color;
                 break;
-       }
+                /**
+                 * TODO : remove this comment when colorP3 & colorP4 will be added
+           case 3:
+                GameSettings.colorP3 = piece.color;
+                break;
+           case 4:
+                GameSettings.colorP4 = piece.color;
+                break;
+                */
+        }
 
     }
 }

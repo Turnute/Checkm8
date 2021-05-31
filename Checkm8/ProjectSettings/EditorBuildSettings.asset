@@ -30,7 +30,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MenuScene/RulesetsScene.unity
     guid: 048d5f7b9dbf7c94d944d537a8ab95f5
   - enabled: 1
-    path: Assets/Scenes/MenuScene/SelectionScene.unity
+    path: Assets/Scenes/MenuScene/SelectionScenes/SelectionScene2P.unity
     guid: 31a5809d4dfac46fa90108506c88a3d9
   - enabled: 1
     path: Assets/Scenes/MenuScene/WorkInProgress.unity
