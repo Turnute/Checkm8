@@ -9,9 +9,9 @@ using UnityEngine.SceneManagement;
  * 
  * Manage : Manage the start of the game, with pop up display when something is wrong
  * 
- * Using : SceneManager, Canvas.StartButton
+ * Using : SelectionScene2P.SceneManager, SelectionScene2P.Canvas.StartButton
  */
-public class StartGame : MonoBehaviour
+public class StartGame2P : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer Player1;
     [SerializeField] private SpriteRenderer Player2;
