@@ -1,14 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EventsManager : MonoBehaviour
 {
     public static GameObject eventPlate;
+    //public static GameObject eventPanel;
+    public static GameObject eventPanelText;
 
     void Start()
     {
+        //eventPanel = GameObject.FindGameObjectWithTag("eventPanel");
         eventPlate = GameObject.FindGameObjectWithTag("event");
+        eventPanelText = GameObject.FindGameObjectWithTag("eventText");
     }
 
     public static void EventPlateSpawn(int posX, int posY, int eventNum)
@@ -65,7 +70,7 @@ public class EventsManager : MonoBehaviour
         {
             if(controller.GetComponent<Controller>().player1[i])
             {
-                if(controller.GetComponent<Controller>().player1[i].name != "pawn_p1" && controller.GetComponent<Controller>().player2[i].name != "king_p1")
+                if(controller.GetComponent<Controller>().player1[i].name != "pawn_p1" && controller.GetComponent<Controller>().player1[i].name != "king_p1")
                      p1 = controller.GetComponent<Controller>().player1[i];
             }
             if(controller.GetComponent<Controller>().player2[i])
@@ -93,6 +98,13 @@ public class EventsManager : MonoBehaviour
 
     public static void SetDemotion()
     {
+        GameObject controller = GameObject.FindGameObjectWithTag("GameController");
+        //Animation de l'event
+        //eventPanel.SetActive(true);
+        eventPanelText.GetComponent<Text>().text = "DEMOTION";
+        controller.GetComponent<Controller>().lighting.GetComponent<Animator>().SetBool("gameOver",true);
+        EventPanel.demo = true;
+
         GameObject cont = GameObject.FindGameObjectWithTag("GameController");
         //Trouver une case libre
         List<Vector2> freePos = new List<Vector2>();

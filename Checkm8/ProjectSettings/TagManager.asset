@@ -10,6 +10,8 @@ TagManager:
   - MainTheme
   - event
   - piece
+  - eventPanel
+  - eventText
   layers:
   - Default
   - TransparentFX
