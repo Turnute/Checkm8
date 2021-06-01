@@ -65,7 +65,7 @@ public class EventsManager : MonoBehaviour
         {
             if(controller.GetComponent<Controller>().player1[i])
             {
-                if(controller.GetComponent<Controller>().player1[i].name != "pawn_p1" && controller.GetComponent<Controller>().player2[i].name != "king_p1")
+                if(controller.GetComponent<Controller>().player1[i].name != "pawn_p1" && controller.GetComponent<Controller>().player1[i].name != "king_p1")
                      p1 = controller.GetComponent<Controller>().player1[i];
             }
             if(controller.GetComponent<Controller>().player2[i])

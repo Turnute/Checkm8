@@ -165,7 +165,7 @@ public class Controller : MonoBehaviour
 
     public void NextGame()
     {
-        SceneManager.LoadScene("SelectionScene");
+        SceneManager.LoadScene("SelectionScene2P");
     }
 
     public void QuitGame()

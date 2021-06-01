@@ -15,7 +15,7 @@ public class EventsPlate : MonoBehaviour
         matrixY = posY;
     }
 
-    public void OnTriggerStay2D(Collider2D col)
+    public void OnTriggerEnter2D(Collider2D col)
     {
         if(col.gameObject.CompareTag("piece"))
         {
@@ -24,7 +24,6 @@ public class EventsPlate : MonoBehaviour
                 case 5 :
                     EventsManager.Demotion();
                     Destroy(gameObject);
-                    Debug.Log("demo");
                     break;
             }
         }
