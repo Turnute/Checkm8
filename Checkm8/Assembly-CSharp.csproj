@@ -65,7 +65,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Ressources\Scripts\EasterEgg.cs" />
-    <Compile Include="Assets\Ressources\Scripts\Game\EventsManager.cs" />
+    <Compile Include="Assets\Ressources\Scripts\Game\Events\EventsManager.cs" />
+    <Compile Include="Assets\Ressources\Scripts\Game\Events\EventsPlate.cs" />
     <Compile Include="Assets\Ressources\Scripts\Game\baseGamePlay\CheckMateManager.cs" />
     <Compile Include="Assets\Ressources\Scripts\Game\baseGamePlay\Chessman.cs" />
     <Compile Include="Assets\Ressources\Scripts\Game\baseGamePlay\Controller.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="Assets\Ressources\Scripts\Menu\RuleSets\SaveSystem.cs" />
     <Compile Include="Assets\Ressources\Scripts\Menu\SelectionScene\2Players\StartGame2P.cs" />
     <Compile Include="Assets\Ressources\Scripts\Menu\SelectionScene\4Players\StartGame4P.cs" />
+    <Compile Include="Assets\Ressources\Scripts\Menu\SelectionScene\BeginnerToken.cs" />
     <Compile Include="Assets\Ressources\Scripts\Menu\SelectionScene\ChangeSpriteSelection.cs" />
     <Compile Include="Assets\Ressources\Scripts\Menu\SelectionScene\CharacterSlot.cs" />
     <Compile Include="Assets\Ressources\Scripts\Menu\SelectionScene\InputName.cs" />
