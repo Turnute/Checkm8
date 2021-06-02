@@ -18,6 +18,8 @@ public class EventsManager : MonoBehaviour
 
     public static void EventPlateSpawn(int posX, int posY, int eventNum)
     {
+        Debug.Log("eventPlate");
+
         float x = posX;
         float y = posY;
 
@@ -35,9 +37,37 @@ public class EventsManager : MonoBehaviour
         eventScript.SetCoords(posX,posY);
     }
 
+    public static void Teleportation()
+    {
+        Debug.Log("TP");
+    }
+
     public static void SetTeleportation()
     {
-        Debug.Log("Teleportation");
+        GameObject controller = GameObject.FindGameObjectWithTag("GameController");
+
+        GameObject cont = GameObject.FindGameObjectWithTag("GameController");
+        //Trouver une case libre
+        List<Vector2> freePos = new List<Vector2>();
+        for(int i = 0;i<8;i++)
+        {
+            for(int j = 0;j<8;j++)
+            {
+                if(cont.GetComponent<Controller>().GetPosition(i,j) == null)//Si position vide
+                {
+                    freePos.Add(new Vector2(i,j));
+                }
+            }
+        }
+        //Tirage d'une case aléatoire
+        int rand = Random.Range(0, freePos.Count);
+
+        EventPlateSpawn((int)freePos[rand].x,(int)freePos[rand].y,0);
+
+        //Animation de l'event
+        eventPanelText.GetComponent<Text>().text = "TELEPORTATION";
+        controller.GetComponent<Controller>().lighting.GetComponent<Animator>().SetBool("gameOver",true);
+        EventPanel.tp = true;
     }
 
     public static void SetRotation()
@@ -81,11 +111,20 @@ public class EventsManager : MonoBehaviour
         }
 
         //On effectue la démotion
-        int x1,y1,x2,y2;
-        x1 = p1.GetComponent<Chessman>().xBoard;
-        y1 = p1.GetComponent<Chessman>().yBoard;
-        x2 = p2.GetComponent<Chessman>().xBoard;
-        y2 = p2.GetComponent<Chessman>().yBoard;
+        int x1 = 0;
+        int x2 = 0;
+        int y1 = 0;
+        int y2 = 0;
+        if(p1)
+        {
+            x1 = p1.GetComponent<Chessman>().xBoard;
+            y1 = p1.GetComponent<Chessman>().yBoard;
+        }
+        if(p2)
+        {
+            x2 = p2.GetComponent<Chessman>().xBoard;
+            y2 = p2.GetComponent<Chessman>().yBoard;
+        }   
 
         Destroy(p1);
         Destroy(p2);
@@ -99,11 +138,6 @@ public class EventsManager : MonoBehaviour
     public static void SetDemotion()
     {
         GameObject controller = GameObject.FindGameObjectWithTag("GameController");
-        //Animation de l'event
-        //eventPanel.SetActive(true);
-        eventPanelText.GetComponent<Text>().text = "DEMOTION";
-        controller.GetComponent<Controller>().lighting.GetComponent<Animator>().SetBool("gameOver",true);
-        EventPanel.demo = true;
 
         GameObject cont = GameObject.FindGameObjectWithTag("GameController");
         //Trouver une case libre
@@ -122,6 +156,11 @@ public class EventsManager : MonoBehaviour
         int rand = Random.Range(0, freePos.Count);
 
         EventPlateSpawn((int)freePos[rand].x,(int)freePos[rand].y,5);
+
+        //Animation de l'event
+        eventPanelText.GetComponent<Text>().text = "DEMOTION";
+        controller.GetComponent<Controller>().lighting.GetComponent<Animator>().SetBool("gameOver",true);
+        EventPanel.demo = true;
     }
 
     public static void SetProtection()

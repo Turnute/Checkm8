@@ -21,6 +21,10 @@ public class EventsPlate : MonoBehaviour
         {
             switch(eventNum)
             {
+                case 0 :
+                    EventsManager.Teleportation();
+                    Destroy(gameObject);
+                    break;
                 case 5 :
                     EventsManager.Demotion();
                     Destroy(gameObject);
