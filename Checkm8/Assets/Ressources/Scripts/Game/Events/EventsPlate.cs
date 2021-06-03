@@ -5,6 +5,7 @@ using UnityEngine;
 public class EventsPlate : MonoBehaviour
 {
     public int eventNum;
+    public SpriteRenderer eventImage;
    //Position du board
     int matrixX;
     int matrixY;
@@ -22,11 +23,15 @@ public class EventsPlate : MonoBehaviour
             switch(eventNum)
             {
                 case 0 :
-                    EventsManager.Teleportation();
+                    EventsManager.Teleportation(matrixX, matrixY);
                     Destroy(gameObject);
                     break;
-                case 5 :
+                /*case 5 :
                     EventsManager.Demotion();
+                    Destroy(gameObject);
+                    break;*/
+                case 7 :
+                    EventsManager.FlameStrike();
                     Destroy(gameObject);
                     break;
             }

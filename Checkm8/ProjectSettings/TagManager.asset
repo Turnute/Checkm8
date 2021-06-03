@@ -12,6 +12,9 @@ TagManager:
   - piece
   - eventPanel
   - eventText
+  - tp
+  - flame
+  - demo
   layers:
   - Default
   - TransparentFX

@@ -30,11 +30,11 @@ public class MovePlate : MonoBehaviour
         {
             GameObject piece = controller.GetComponent<Controller>().GetPosition(matrixX,matrixY);
 
-            /*if(piece.name == "king_p1")
+            if(piece.name == "king_p1")
                 controller.GetComponent<Controller>().Winner("p2");
 
             if(piece.name == "king_p2")
-                controller.GetComponent<Controller>().Winner("p1");*/
+                controller.GetComponent<Controller>().Winner("p1");
 
             SpecialActions.pieceEaten = piece.name;
             if(controller.GetComponent<Controller>().currentPlayer == "p1")

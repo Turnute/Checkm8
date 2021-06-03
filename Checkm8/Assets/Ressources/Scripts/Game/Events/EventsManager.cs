@@ -9,11 +9,18 @@ public class EventsManager : MonoBehaviour
     //public static GameObject eventPanel;
     public static GameObject eventPanelText;
 
+    public static Sprite demoIm;
+    public static Sprite tpIm;
+    public static Sprite flameIm;
+
     void Start()
     {
         //eventPanel = GameObject.FindGameObjectWithTag("eventPanel");
         eventPlate = GameObject.FindGameObjectWithTag("event");
         eventPanelText = GameObject.FindGameObjectWithTag("eventText");
+        demoIm = GameObject.FindGameObjectWithTag("demo").GetComponent<SpriteRenderer>().sprite;
+        tpIm = GameObject.FindGameObjectWithTag("tp").GetComponent<SpriteRenderer>().sprite;
+        flameIm = GameObject.FindGameObjectWithTag("flame").GetComponent<SpriteRenderer>().sprite;
     }
 
     public static void EventPlateSpawn(int posX, int posY, int eventNum)
@@ -34,37 +41,63 @@ public class EventsManager : MonoBehaviour
         EventsPlate eventScript = ev.GetComponent<EventsPlate>();
 
         eventScript.eventNum = eventNum;
+        switch(eventNum)
+        {
+            case 0:
+                eventScript.eventImage.sprite = tpIm;
+                break;
+            case 5:
+                eventScript.eventImage.sprite = demoIm;
+                break;
+            case 7:
+                eventScript.eventImage.sprite = flameIm;
+                break;
+        }
         eventScript.SetCoords(posX,posY);
     }
 
-    public static void Teleportation()
+    public static void Teleportation(int x, int y)
     {
         GameObject cont = GameObject.FindGameObjectWithTag("GameController");
-        //Récupérer 1 pièces random de chaque joueur
+        //On récupère la pièce qui vient d'aller sur la case
+        GameObject testPlayer = null;
+        testPlayer = cont.GetComponent<Controller>().GetPosition(x,y);
         GameObject piece1 = null;
         GameObject piece2 = null;
-        bool pieceFound = false;
-        int rand = Random.Range(0, cont.GetComponent<Controller>().player1.Length);
-        while(!pieceFound)
+        if(testPlayer.GetComponent<Chessman>().player == "p1")
         {
-            if(cont.GetComponent<Controller>().player1[rand])
-            {
-                piece1 = cont.GetComponent<Controller>().player1[rand];
-                pieceFound = true;
-            }else{
-                rand = Random.Range(0, cont.GetComponent<Controller>().player1.Length);
-            }
+            piece1 = testPlayer;
+        }else{
+            piece2 = testPlayer;
         }
-        rand = Random.Range(0, cont.GetComponent<Controller>().player2.Length);
-        pieceFound = false;
-        while(!pieceFound)
+        //Récupérer 1 pièces random du joueur adverse
+        bool pieceFound = false;
+        int rand = 0;
+        if(testPlayer.GetComponent<Chessman>().player == "p2")
         {
-            if(cont.GetComponent<Controller>().player2[rand])
+            rand = Random.Range(0, cont.GetComponent<Controller>().player1.Length);
+            while(!pieceFound)
             {
-                piece2 = cont.GetComponent<Controller>().player2[rand];
-                pieceFound = true;
-            }else{
-                rand = Random.Range(0, cont.GetComponent<Controller>().player2.Length);
+                if(cont.GetComponent<Controller>().player1[rand])
+                {
+                    piece1 = cont.GetComponent<Controller>().player1[rand];
+                    pieceFound = true;
+                }else{
+                    rand = Random.Range(0, cont.GetComponent<Controller>().player1.Length);
+                }
+            }
+        }else{
+            rand = Random.Range(0, cont.GetComponent<Controller>().player2.Length);
+            pieceFound = false;
+            while(!pieceFound)
+            {
+                if(cont.GetComponent<Controller>().player2[rand])
+                {
+                    piece2 = cont.GetComponent<Controller>().player2[rand];
+                    pieceFound = true;
+                }else{
+                    rand = Random.Range(0, cont.GetComponent<Controller>().player2.Length);
+                }
             }
         }
         //Les interchanger
@@ -171,9 +204,14 @@ public class EventsManager : MonoBehaviour
         GameObject pawn2 = controller.GetComponent<Controller>().Create("pawn_p2",x2,y2);
         controller.GetComponent<Controller>().SetPosition(pawn1);
         controller.GetComponent<Controller>().SetPosition(pawn2);
+
+        //Animation de l'event
+        eventPanelText.GetComponent<Text>().text = "DEMOTION";
+        controller.GetComponent<Controller>().lighting.GetComponent<Animator>().SetBool("gameOver",true);
+        EventPanel.demo = true;
     }
 
-    public static void SetDemotion()
+    /*public static void SetDemotion()
     {
         GameObject controller = GameObject.FindGameObjectWithTag("GameController");
 
@@ -199,7 +237,7 @@ public class EventsManager : MonoBehaviour
         eventPanelText.GetComponent<Text>().text = "DEMOTION";
         controller.GetComponent<Controller>().lighting.GetComponent<Animator>().SetBool("gameOver",true);
         EventPanel.demo = true;
-    }
+    }*/
 
     public static void SetProtection()
     {
@@ -208,7 +246,35 @@ public class EventsManager : MonoBehaviour
 
     public static void SetFlamesStrike()
     {
-        Debug.Log("Flames Strike");
+        GameObject controller = GameObject.FindGameObjectWithTag("GameController");
+
+        GameObject cont = GameObject.FindGameObjectWithTag("GameController");
+        //Trouver une case libre
+        List<Vector2> freePos = new List<Vector2>();
+        for(int i = 0;i<8;i++)
+        {
+            for(int j = 0;j<8;j++)
+            {
+                if(cont.GetComponent<Controller>().GetPosition(i,j) == null)//Si position vide
+                {
+                    freePos.Add(new Vector2(i,j));
+                }
+            }
+        }
+        //Tirage d'une case aléatoire
+        int rand = Random.Range(0, freePos.Count);
+
+        EventPlateSpawn((int)freePos[rand].x,(int)freePos[rand].y,7);
+
+        //Animation de l'event
+        eventPanelText.GetComponent<Text>().text = "FLAMES STRIKE";
+        controller.GetComponent<Controller>().lighting.GetComponent<Animator>().SetBool("gameOver",true);
+        EventPanel.tp = true;
+    }
+
+    public static void FlameStrike()
+    {
+        Debug.Log("FlameStrike");
     }
 
     private static bool shouldEventPlay(float proba)//Renvoie true si un event doit apparaître ce tour ci
@@ -251,7 +317,7 @@ public class EventsManager : MonoBehaviour
             if(rand >erupt && rand <=promo)
                 SetPromotion();
             if(rand >promo && rand <=demo)
-                SetDemotion();
+                Demotion();
             if(rand >demo && rand <=protect)
                 SetProtection();
             if(rand >protect && rand <=fstrike)
