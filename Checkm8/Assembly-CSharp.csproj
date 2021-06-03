@@ -81,13 +81,14 @@
     <Compile Include="Assets\Ressources\Scripts\Menu\RuleSets\SaveData.cs" />
     <Compile Include="Assets\Ressources\Scripts\Menu\RuleSets\SaveSystem.cs" />
     <Compile Include="Assets\Ressources\Scripts\Menu\SelectionScene\2Players\StartGame2P.cs" />
+    <Compile Include="Assets\Ressources\Scripts\Menu\SelectionScene\2Players\StartingToken2P.cs" />
     <Compile Include="Assets\Ressources\Scripts\Menu\SelectionScene\4Players\StartGame4P.cs" />
+    <Compile Include="Assets\Ressources\Scripts\Menu\SelectionScene\4Players\StartingToken4P.cs" />
     <Compile Include="Assets\Ressources\Scripts\Menu\SelectionScene\ChangeSpriteSelection.cs" />
     <Compile Include="Assets\Ressources\Scripts\Menu\SelectionScene\CharacterSlot.cs" />
     <Compile Include="Assets\Ressources\Scripts\Menu\SelectionScene\InputName.cs" />
     <Compile Include="Assets\Ressources\Scripts\Menu\SelectionScene\PieceColorModify.cs" />
     <Compile Include="Assets\Ressources\Scripts\Menu\SelectionScene\SelectCoins.cs" />
-    <Compile Include="Assets\Ressources\Scripts\Menu\SelectionScene\StartingToken.cs" />
     <Compile Include="Assets\Ressources\Scripts\Menu\SelectionScene\UpdateColorSettings.cs" />
     <Compile Include="Assets\Ressources\Scripts\MusicManager.cs" />
     <Compile Include="Assets\SettingsManagers.cs" />

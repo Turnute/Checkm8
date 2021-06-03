@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -249,11 +249,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 14923566}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa47e6a5b7e5e44938bc340f1983c8e6, type: 3}
+  m_Script: {fileID: 11500000, guid: 835b1bcee08a5443291f28d94eaa8e93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tkBeginnerCur: {fileID: 778280696}
-  tkBeginnerOther: {fileID: 1304185315}
+  tkStartingCur: {fileID: 778280696}
+  tkStartingOther: {fileID: 1304185315}
 --- !u!1 &20721358
 GameObject:
   m_ObjectHideFlags: 0
@@ -3423,7 +3423,7 @@ GameObject:
   - component: {fileID: 778280698}
   - component: {fileID: 778280700}
   m_Layer: 5
-  m_Name: TkBeginner
+  m_Name: TkStarting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5705,7 +5705,7 @@ GameObject:
   - component: {fileID: 1304185317}
   - component: {fileID: 1304185319}
   m_Layer: 5
-  m_Name: TkBeginner
+  m_Name: TkStarting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6594,11 +6594,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1385800811}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa47e6a5b7e5e44938bc340f1983c8e6, type: 3}
+  m_Script: {fileID: 11500000, guid: 835b1bcee08a5443291f28d94eaa8e93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tkBeginnerCur: {fileID: 1304185315}
-  tkBeginnerOther: {fileID: 778280696}
+  tkStartingCur: {fileID: 1304185315}
+  tkStartingOther: {fileID: 778280696}
 --- !u!1 &1524618171
 GameObject:
   m_ObjectHideFlags: 0

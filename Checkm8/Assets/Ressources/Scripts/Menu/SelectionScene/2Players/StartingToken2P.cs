@@ -13,12 +13,11 @@ using UnityEngine.UI;
  *         SelectionScene4P.Canvas.Canvas-P1, SelectionScene4P.Canvas.Canvas-P2, 
  *         SelectionScene4P.Canvas.Canvas-P3, SelectionScene4P.Canvas.Canvas-P4
  */
-public class StartingToken : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class StartingToken2P : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    [SerializeField] private GameObject tkBeginnerCur;
-    [SerializeField] private GameObject tkBeginnerOther;
+    [SerializeField] private GameObject tkStartingCur;
+    [SerializeField] private GameObject tkStartingOther;
 
-    private bool isActive;
     private bool isIn;
     private CanvasGroup curCanvasGroup;
     private CanvasGroup otherCanvasGroup;
@@ -26,10 +25,9 @@ public class StartingToken : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     void Start()
     {
-        curCanvasGroup = tkBeginnerCur.GetComponent<CanvasGroup>();
-        otherCanvasGroup = tkBeginnerOther.GetComponent<CanvasGroup>();
+        curCanvasGroup = tkStartingCur.GetComponent<CanvasGroup>();
+        otherCanvasGroup = tkStartingOther.GetComponent<CanvasGroup>();
 
-        isActive = false;
         curCanvasGroup.alpha = 0f;
     }
 
@@ -49,9 +47,8 @@ public class StartingToken : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         if (Input.GetAxisRaw("Fire2") > 0.5f && isIn)
         {
-            if (isActive)
+            if (curCanvasGroup.alpha != 0f)
             {
-                isActive = false;
                 curCanvasGroup.alpha = 0f;
             }
             else
@@ -61,7 +58,6 @@ public class StartingToken : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                     otherCanvasGroup.alpha = 0f;
                 }
 
-                isActive = true;
                 curCanvasGroup.alpha = 1f;
             }
         }
