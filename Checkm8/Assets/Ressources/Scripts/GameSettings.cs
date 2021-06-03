@@ -25,7 +25,7 @@ public class GameSettings : MonoBehaviour
     void Start()
     {
         //Valeurs par défauts des probas
-        turnBtwnEvent = 1;
+        turnBtwnEvent = 3;
         eventProbability = 50;
 
         tpProbabilty = 12.5f;
