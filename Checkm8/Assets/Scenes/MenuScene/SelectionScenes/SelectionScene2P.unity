@@ -2960,11 +2960,11 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: 
+      - m_Target: {fileID: 1932819813}
+        m_MethodName: nextSprite
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 761136096}
+          m_ObjectArgument: {fileID: 1027547556}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.SpriteRenderer, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -4507,8 +4507,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1027547554}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.7, y: -4.3799896, z: 225}
-  m_LocalScale: {x: 56.570267, y: 56.57027, z: 72.85283}
+  m_LocalPosition: {x: -3.3, y: -10.2, z: 225}
+  m_LocalScale: {x: 5, y: 5, z: 72.85283}
   m_Children: []
   m_Father: {fileID: 1932819809}
   m_RootOrder: 0
@@ -4552,15 +4552,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: beb9b85090f534b12abf5440175a8095, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 10.24, y: 10.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1057959150
@@ -8208,7 +8208,7 @@ MonoBehaviour:
   P2coin: {fileID: 1727150519}
   P3coin: {fileID: 0}
   P4coin: {fileID: 0}
-  piece: {fileID: 0}
+  piece: {fileID: 21300000, guid: beb9b85090f534b12abf5440175a8095, type: 3}
 --- !u!114 &1932819813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8221,12 +8221,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7a177ea5dc9d4d2284f5e76668c50f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pion: {fileID: 0}
-  bishop: {fileID: 0}
-  cheval: {fileID: 0}
-  king: {fileID: 0}
-  queen: {fileID: 0}
-  tower: {fileID: 0}
+  pion: {fileID: 21300000, guid: beb9b85090f534b12abf5440175a8095, type: 3}
+  bishop: {fileID: 21300000, guid: bd6ce879bc9fe42248addf0f76ac0930, type: 3}
+  cheval: {fileID: 21300000, guid: 53da2172d577b4a64a5e3d96af0fface, type: 3}
+  king: {fileID: 21300000, guid: 56486602a84324cd9b8932d78b93b2a5, type: 3}
+  queen: {fileID: 21300000, guid: de9e8b50ee31f4c9387edc16d432eede, type: 3}
+  tower: {fileID: 21300000, guid: 19f11407ccda74cf7b2161a51c515f3f, type: 3}
 --- !u!1 &1934061839
 GameObject:
   m_ObjectHideFlags: 0
@@ -8308,11 +8308,11 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: 
+      - m_Target: {fileID: 1932819813}
+        m_MethodName: previousSprite
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 761136096}
+          m_ObjectArgument: {fileID: 1027547556}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.SpriteRenderer, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
