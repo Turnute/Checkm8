@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -3276,8 +3276,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 761136094}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.5299988, y: -3.7299957, z: 225}
-  m_LocalScale: {x: 56.570267, y: 56.57027, z: 72.85283}
+  m_LocalPosition: {x: 0.3, y: -2.6, z: 225}
+  m_LocalScale: {x: 6, y: 6, z: 72.85283}
   m_Children: []
   m_Father: {fileID: 1217392157}
   m_RootOrder: 0
@@ -3321,7 +3321,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5e04cdd701eeb1f458e696b1ff980880, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c0fdefc4775a275449fcdc2242f49690, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3894,7 +3894,7 @@ Transform:
   m_GameObject: {fileID: 889489060}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2.5, y: 13.7, z: 0}
-  m_LocalScale: {x: 72.85275, y: 72.85275, z: 72.85275}
+  m_LocalScale: {x: 8, y: 8, z: 72.85275}
   m_Children: []
   m_Father: {fileID: 1385800812}
   m_RootOrder: 2
@@ -5190,7 +5190,7 @@ Transform:
   m_GameObject: {fileID: 1212946252}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -7.3, y: -4.5, z: 225}
-  m_LocalScale: {x: 4, y: 4, z: 72.85283}
+  m_LocalScale: {x: 6, y: 6, z: 72.85283}
   m_Children: []
   m_Father: {fileID: 958302788}
   m_RootOrder: 0
@@ -5340,7 +5340,7 @@ MonoBehaviour:
   P2coin: {fileID: 1727150519}
   P3coin: {fileID: 0}
   P4coin: {fileID: 0}
-  piece: {fileID: 21300000, guid: 5e04cdd701eeb1f458e696b1ff980880, type: 3}
+  piece: {fileID: 21300000, guid: c0fdefc4775a275449fcdc2242f49690, type: 3}
 --- !u!114 &1217392161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5353,12 +5353,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7a177ea5dc9d4d2284f5e76668c50f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pion: {fileID: 21300000, guid: 5e04cdd701eeb1f458e696b1ff980880, type: 3}
-  bishop: {fileID: 21300000, guid: 2754bf681edfb5f408766677586cb818, type: 3}
-  cheval: {fileID: 21300000, guid: 1d6c92b7679a0b14387d8984e3a28955, type: 3}
-  king: {fileID: 21300000, guid: 5eef63352af2cef4eac0fad37268699d, type: 3}
-  queen: {fileID: 21300000, guid: d55da8fbd96ca4848a459946b6a23dc3, type: 3}
-  tower: {fileID: 21300000, guid: 4de434c9f95204142bceb3fa2f14686f, type: 3}
+  pion: {fileID: 21300000, guid: c0fdefc4775a275449fcdc2242f49690, type: 3}
+  bishop: {fileID: 21300000, guid: 40b1b8dd1d1a3c54c8259f913aa474b1, type: 3}
+  cheval: {fileID: 21300000, guid: d7d007228603bda4fadaf69f25dc0caa, type: 3}
+  king: {fileID: 21300000, guid: dd9cde17af2cdeb44ab1decfdff5f481, type: 3}
+  queen: {fileID: 21300000, guid: 9d1bbe469e246724e83cf6e2433fc98f, type: 3}
+  tower: {fileID: 21300000, guid: 55b32def49d7c254db81baded8b15386, type: 3}
 --- !u!1 &1272611327
 GameObject:
   m_ObjectHideFlags: 0
@@ -7659,8 +7659,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1770150199}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4, y: 15, z: 0}
-  m_LocalScale: {x: 72.85283, y: 72.85283, z: 72.85283}
+  m_LocalPosition: {x: 2.5, y: 15.1, z: 0}
+  m_LocalScale: {x: 8, y: 8, z: 72.85283}
   m_Children: []
   m_Father: {fileID: 14923567}
   m_RootOrder: 2
@@ -7723,7 +7723,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 10.24, y: 10.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
