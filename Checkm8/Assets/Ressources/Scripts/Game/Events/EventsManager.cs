@@ -39,7 +39,45 @@ public class EventsManager : MonoBehaviour
 
     public static void Teleportation()
     {
-        Debug.Log("TP");
+        GameObject cont = GameObject.FindGameObjectWithTag("GameController");
+        //Récupérer 1 pièces random de chaque joueur
+        GameObject piece1 = null;
+        GameObject piece2 = null;
+        bool pieceFound = false;
+        int rand = Random.Range(0, cont.GetComponent<Controller>().player1.Length);
+        while(!pieceFound)
+        {
+            if(cont.GetComponent<Controller>().player1[rand])
+            {
+                piece1 = cont.GetComponent<Controller>().player1[rand];
+                pieceFound = true;
+            }else{
+                rand = Random.Range(0, cont.GetComponent<Controller>().player1.Length);
+            }
+        }
+        rand = Random.Range(0, cont.GetComponent<Controller>().player2.Length);
+        pieceFound = false;
+        while(!pieceFound)
+        {
+            if(cont.GetComponent<Controller>().player2[rand])
+            {
+                piece2 = cont.GetComponent<Controller>().player2[rand];
+                pieceFound = true;
+            }else{
+                rand = Random.Range(0, cont.GetComponent<Controller>().player2.Length);
+            }
+        }
+        //Les interchanger
+        int xDummy = piece1.GetComponent<Chessman>().xBoard;
+        int yDummy = piece1.GetComponent<Chessman>().yBoard;
+        piece1.GetComponent<Chessman>().xBoard = piece2.GetComponent<Chessman>().xBoard;
+        piece1.GetComponent<Chessman>().yBoard = piece2.GetComponent<Chessman>().yBoard;
+        piece2.GetComponent<Chessman>().xBoard = xDummy;
+        piece2.GetComponent<Chessman>().yBoard = yDummy;
+        cont.GetComponent<Controller>().SetPosition(piece1);
+        piece1.GetComponent<Chessman>().setCoords(true);
+        cont.GetComponent<Controller>().SetPosition(piece2);
+        piece2.GetComponent<Chessman>().setCoords(false);
     }
 
     public static void SetTeleportation()
