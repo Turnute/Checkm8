@@ -7,13 +7,13 @@ using UnityEngine.UI;
 /**
  * Author : Samuel Goubeau
  * 
- * Manage : 
+ * Manage : Put a yellow tokken on the player's profil when they right click on it
  * 
  * Using : SelectionScene2P.Canvas.Canvas-P1, SelectionScene2P.Canvas.Canvas-P2,
  *         SelectionScene4P.Canvas.Canvas-P1, SelectionScene4P.Canvas.Canvas-P2, 
  *         SelectionScene4P.Canvas.Canvas-P3, SelectionScene4P.Canvas.Canvas-P4
  */
-public class BeginnerToken : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class StartingToken : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private GameObject tkBeginnerCur;
     [SerializeField] private GameObject tkBeginnerOther;
