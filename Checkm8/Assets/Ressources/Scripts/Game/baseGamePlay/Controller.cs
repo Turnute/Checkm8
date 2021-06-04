@@ -40,6 +40,14 @@ public class Controller : MonoBehaviour
 
     void Start()
     {
+        //Qui commence
+        if(GameSettings.whoStarts == 1)
+        {
+            currentPlayer = "p1";
+        }else{
+            currentPlayer = "p2";
+        }
+        
         //On se met à jour avec le ruleset actuel
         GameSettings.UpdateProba();
 

@@ -17,6 +17,8 @@ public class StartGame2P : MonoBehaviour
     [SerializeField] private SpriteRenderer Player2;
     [SerializeField] private GameObject popUpMissingChoice;
     [SerializeField] private GameObject popUpSameColor;
+    [SerializeField] private GameObject p1Canvas;
+    [SerializeField] private GameObject p2Canvas;
 
     public void Start()
     {
@@ -41,6 +43,20 @@ public class StartGame2P : MonoBehaviour
             }
             else
             {
+                if(p1Canvas.GetComponent<StartingToken2P>().isStarting)
+                {
+                    GameSettings.whoStarts = 1;
+                }
+                else if(p2Canvas.GetComponent<StartingToken2P>().isStarting)
+                {
+                    GameSettings.whoStarts = 2;
+                }
+                else
+                {
+                    int rand = Random.Range(1,3);
+                    Debug.Log(rand);
+                    GameSettings.whoStarts = rand;
+                }
                 SceneManager.LoadScene("1v1_game");
             }
         }

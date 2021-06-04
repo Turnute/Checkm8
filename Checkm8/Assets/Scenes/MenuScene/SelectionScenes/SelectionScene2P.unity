@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -254,6 +254,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tkStartingCur: {fileID: 778280696}
   tkStartingOther: {fileID: 1304185315}
+  isStarting: 0
 --- !u!1 &20721358
 GameObject:
   m_ObjectHideFlags: 0
@@ -6599,6 +6600,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tkStartingCur: {fileID: 1304185315}
   tkStartingOther: {fileID: 778280696}
+  isStarting: 0
 --- !u!1 &1524618171
 GameObject:
   m_ObjectHideFlags: 0
@@ -7903,6 +7905,8 @@ MonoBehaviour:
   Player2: {fileID: 889489063}
   popUpMissingChoice: {fileID: 359286510}
   popUpSameColor: {fileID: 184219040}
+  p1Canvas: {fileID: 14923566}
+  p2Canvas: {fileID: 1385800811}
 --- !u!1 &1816371119
 GameObject:
   m_ObjectHideFlags: 0

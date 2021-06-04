@@ -8,6 +8,7 @@ public class GameSettings : MonoBehaviour
     private static bool exists;
     public static Color colorP1 = Color.white;
     public static Color colorP2 = Color.black;
+    public static int whoStarts=1;//1 pour p1 et 2 pour p2
 
     //Attributs nécessaires à la gestion des events
     public static int turnBtwnEvent;
