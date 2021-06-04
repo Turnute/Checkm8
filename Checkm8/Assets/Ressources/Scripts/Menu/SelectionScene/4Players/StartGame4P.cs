@@ -58,32 +58,32 @@ public class StartGame4P : MonoBehaviour
 
     public bool checkColorsSet()
     {
-        if (Player1.color.Equals(Player2.color))
+        if (Player1.color.Equals(Player2.color) && Player1.sprite == Player2.sprite)
         {
             return true;
         }
 
-        if (Player1.color.Equals(Player3.color))
+        if (Player1.color.Equals(Player3.color) && Player1.sprite == Player3.sprite)
         {
             return true;
         }
 
-        if (Player1.color.Equals(Player4.color))
+        if (Player1.color.Equals(Player4.color) && Player1.sprite == Player4.sprite)
         {
             return true;
         }
 
-        if (Player2.color.Equals(Player3.color))
+        if (Player2.color.Equals(Player3.color) && Player2.sprite == Player3.sprite)
         {
             return true;
         }
 
-        if (Player2.color.Equals(Player4.color))
+        if (Player2.color.Equals(Player4.color) && Player2.sprite == Player4.sprite)
         {
             return true;
         }
 
-        if (Player3.color.Equals(Player4.color))
+        if (Player3.color.Equals(Player4.color) && Player3.sprite == Player4.sprite)
         {
             return true;
         }
