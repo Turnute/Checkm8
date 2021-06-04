@@ -18,6 +18,7 @@ public class StartingToken2P : MonoBehaviour, IPointerEnterHandler, IPointerExit
     [SerializeField] private GameObject tkStartingCur;
     [SerializeField] private GameObject tkStartingOther;
 
+    public bool isStarting;
     private bool isIn;
     private CanvasGroup curCanvasGroup;
     private CanvasGroup otherCanvasGroup;
@@ -29,6 +30,7 @@ public class StartingToken2P : MonoBehaviour, IPointerEnterHandler, IPointerExit
         otherCanvasGroup = tkStartingOther.GetComponent<CanvasGroup>();
 
         curCanvasGroup.alpha = 0f;
+        isStarting = false;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -45,11 +47,19 @@ public class StartingToken2P : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     void Update()
     {
+        //  Permet de mettre à FALSE isStarting quand l'opacité est modifiée par
+        // une autre instance
+        if(curCanvasGroup.alpha == 0f && isStarting)
+        {
+            isStarting = false;
+        }
+
         if (Input.GetAxisRaw("Fire2") > 0.5f && isIn)
         {
             if (curCanvasGroup.alpha != 0f)
             {
                 curCanvasGroup.alpha = 0f;
+                isStarting = false;
             }
             else
             {
@@ -59,6 +69,7 @@ public class StartingToken2P : MonoBehaviour, IPointerEnterHandler, IPointerExit
                 }
 
                 curCanvasGroup.alpha = 1f;
+                isStarting = true;
             }
         }
     }
