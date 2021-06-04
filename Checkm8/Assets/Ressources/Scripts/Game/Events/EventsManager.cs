@@ -111,6 +111,11 @@ public class EventsManager : MonoBehaviour
         piece1.GetComponent<Chessman>().setCoords(true);
         cont.GetComponent<Controller>().SetPosition(piece2);
         piece2.GetComponent<Chessman>().setCoords(false);
+        piece1.GetComponent<Chessman>().hasMoved ++;
+        piece2.GetComponent<Chessman>().hasMoved ++;
+        //On test pour une promotion
+        piece1.GetComponent<Chessman>().callPromote(piece1.GetComponent<Chessman>().player);
+        piece2.GetComponent<Chessman>().callPromote(piece2.GetComponent<Chessman>().player);
     }
 
     public static void SetTeleportation()
