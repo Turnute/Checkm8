@@ -13,8 +13,9 @@ public class PieceColorModify : MonoBehaviour
 {
     private int colorChoose;
 
-    // [White, Black, Red, Green, Blue]
-    public static Color[] colors = { new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 0, 0), new Color(0, 255, 0), new Color(0, 0, 255) };
+    // [White, Black, Red, Green, Blue, Cyan, Gray, Magenta, Yellow]
+    public static Color[] colors = { new Color(1f, 1f, 1f), new Color(0f, 0f, 0f), new Color(1f, 0f, 0f), new Color(0f, 1f, 0f), new Color(0f, 0f, 1f),
+                                    new Color(0f, 1f, 1f), new Color(0.5f, 0.5f, 0.5f), new Color(1f, 0f, 1f), new Color(1f, 0.92f, 0.016f) };
 
 
     void Start()
