@@ -8,6 +8,7 @@ public class EventsManager : MonoBehaviour
     public static GameObject eventPlate;
     //public static GameObject eventPanel;
     public static GameObject eventPanelText;
+    public static GameObject flameStrikePanel;
 
     public static Sprite demoIm;
     public static Sprite tpIm;
@@ -216,34 +217,6 @@ public class EventsManager : MonoBehaviour
         EventPanel.demo = true;
     }
 
-    /*public static void SetDemotion()
-    {
-        GameObject controller = GameObject.FindGameObjectWithTag("GameController");
-
-        GameObject cont = GameObject.FindGameObjectWithTag("GameController");
-        //Trouver une case libre
-        List<Vector2> freePos = new List<Vector2>();
-        for(int i = 0;i<8;i++)
-        {
-            for(int j = 0;j<8;j++)
-            {
-                if(cont.GetComponent<Controller>().GetPosition(i,j) == null)//Si position vide
-                {
-                    freePos.Add(new Vector2(i,j));
-                }
-            }
-        }
-        //Tirage d'une case aléatoire
-        int rand = Random.Range(0, freePos.Count);
-
-        EventPlateSpawn((int)freePos[rand].x,(int)freePos[rand].y,5);
-
-        //Animation de l'event
-        eventPanelText.GetComponent<Text>().text = "DEMOTION";
-        controller.GetComponent<Controller>().lighting.GetComponent<Animator>().SetBool("gameOver",true);
-        EventPanel.demo = true;
-    }*/
-
     public static void SetProtection()
     {
         Debug.Log("Protection");
@@ -277,9 +250,38 @@ public class EventsManager : MonoBehaviour
         EventPanel.tp = true;
     }
 
-    public static void FlameStrike()
+    public static void FlameStrikeChoice()
     {
-        Debug.Log("FlameStrike");
+        flameStrikePanel.SetActive(true);
+    }
+
+    public static void FlameStrikeUp()
+    {
+        FlameStrike(0);
+        flameStrikePanel.SetActive(false);
+    }
+
+    public static void FlameStrikeRight()
+    {
+        FlameStrike(1);
+        flameStrikePanel.SetActive(false);
+    }
+
+    public static void FlameStrikeDown()
+    {
+        FlameStrike(2);
+        flameStrikePanel.SetActive(false);
+    }
+
+    public static void FlameStrikeLeft()
+    {
+        FlameStrike(3);
+        flameStrikePanel.SetActive(false);
+    }
+
+    public static void FlameStrike(int direction)
+    {
+        Debug.Log(direction);
     }
 
     private static bool shouldEventPlay(float proba)//Renvoie true si un event doit apparaître ce tour ci

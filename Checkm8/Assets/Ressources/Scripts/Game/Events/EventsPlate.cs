@@ -31,7 +31,7 @@ public class EventsPlate : MonoBehaviour
                     Destroy(gameObject);
                     break;*/
                 case 7 :
-                    EventsManager.FlameStrike();
+                    EventsManager.FlameStrikeChoice();
                     Destroy(gameObject);
                     break;
             }

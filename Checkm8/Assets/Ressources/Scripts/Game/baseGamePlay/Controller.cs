@@ -19,7 +19,7 @@ public class Controller : MonoBehaviour
     public Text winnerName;
     public Text currentPlayerDisplay;
     public GameObject cmManager;
-    public static float timeBeforeNextTurn = 0.3f;//En secondes
+    public static float timeBeforeNextTurn = 0.2f;//En secondes
     public static bool canPlay = true;
     public static int size = 8;//Taille du plateau de jeu, changeant en fonction du nombre de joueur
 
@@ -47,7 +47,7 @@ public class Controller : MonoBehaviour
         }else{
             currentPlayer = "p2";
         }
-        
+
         //On se met à jour avec le ruleset actuel
         GameSettings.UpdateProba();
 
@@ -214,7 +214,7 @@ public class Controller : MonoBehaviour
             else   
                 currentPlayerDisplay.text = "Player 2 turn";
         }
-        if(timeBeforeNextTurn < 0.3f)
+        if(timeBeforeNextTurn < 0.2f)
         {
             timeBeforeNextTurn -= Time.deltaTime;
         }
@@ -222,7 +222,7 @@ public class Controller : MonoBehaviour
         {
             NextTurn();
             Debug.Log(GameSettings.turnBtwnEvent);
-            timeBeforeNextTurn = 0.3f;
+            timeBeforeNextTurn = 0.2f;
         }
     }
 }
