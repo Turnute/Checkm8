@@ -37,7 +37,7 @@ public class StartGame2P : MonoBehaviour
         }
         else
         {
-            if(Player1.color.Equals(Player2.color))
+            if(Player1.color.Equals(Player2.color) && Player1.sprite == Player2.sprite)
             {
                 popUpSameColor.SetActive(true);
             }
