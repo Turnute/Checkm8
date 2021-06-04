@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -4269,7 +4269,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pion: {fileID: 21300000, guid: fa1fc6ef5f64448f4a47eaf593e67ace, type: 3}
   bishop: {fileID: 21300000, guid: cca48ae54786b40ea9700a38582208fe, type: 3}
-  cheval: {fileID: 0}
+  cheval: {fileID: 21300000, guid: c7d7f4a535967324d833f3fd3debd787, type: 3}
   king: {fileID: 21300000, guid: 24d7d67a7cef74174b60abf256ad0229, type: 3}
   queen: {fileID: 21300000, guid: 70736f23abdce4ff4822bea96856a993, type: 3}
   tower: {fileID: 21300000, guid: a61794b898dc54b99a69c46e9b81d638, type: 3}
@@ -5190,8 +5190,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1212946252}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.3, y: -4.5, z: 225}
-  m_LocalScale: {x: 6, y: 6, z: 72.85283}
+  m_LocalPosition: {x: -6.6, y: 1.4, z: 225}
+  m_LocalScale: {x: 7.5, y: 7.5, z: 72.85283}
   m_Children: []
   m_Father: {fileID: 958302788}
   m_RootOrder: 0

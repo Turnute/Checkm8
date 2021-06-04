@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -256,6 +256,7 @@ MonoBehaviour:
   tkStartingOther1: {fileID: 2040058845}
   tkStartingOther2: {fileID: 658198203}
   tkStartingOther3: {fileID: 526053399}
+  isStarting: 0
 --- !u!1 &20721358
 GameObject:
   m_ObjectHideFlags: 0
@@ -6602,8 +6603,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1212946252}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7, y: -2.8, z: 225}
-  m_LocalScale: {x: 6, y: 6, z: 72.85283}
+  m_LocalPosition: {x: -7, y: 1.6, z: 225}
+  m_LocalScale: {x: 7.5, y: 7.5, z: 72.85283}
   m_Children: []
   m_Father: {fileID: 958302788}
   m_RootOrder: 0
@@ -8088,6 +8089,7 @@ MonoBehaviour:
   tkStartingOther1: {fileID: 2040058845}
   tkStartingOther2: {fileID: 1261017454}
   tkStartingOther3: {fileID: 526053399}
+  isStarting: 0
 --- !u!1 &1426766507
 GameObject:
   m_ObjectHideFlags: 0
@@ -10270,6 +10272,7 @@ MonoBehaviour:
   tkStartingOther1: {fileID: 2040058845}
   tkStartingOther2: {fileID: 1261017454}
   tkStartingOther3: {fileID: 658198203}
+  isStarting: 0
 --- !u!1 &1952368143
 GameObject:
   m_ObjectHideFlags: 0
@@ -10534,6 +10537,7 @@ MonoBehaviour:
   tkStartingOther1: {fileID: 1261017454}
   tkStartingOther2: {fileID: 658198203}
   tkStartingOther3: {fileID: 526053399}
+  isStarting: 0
 --- !u!1 &2040058845
 GameObject:
   m_ObjectHideFlags: 0
